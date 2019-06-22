@@ -1,0 +1,13 @@
+.DS_Store
+node_modules/
+.env
+.nyc_output/
+
+# IDE user config
+.vscode/
+.idea/
+.vs/
+
+# Logs
+yarn-error.log
+npm-debug.log

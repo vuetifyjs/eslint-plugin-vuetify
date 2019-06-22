@@ -1,0 +1,21 @@
+{
+  "name": "eslint-plugin-vuetify",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Kael Watts-Deuchar <kaelwd@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "nyc mocha \"lib/**/*.spec.js\" --reporter dot"
+  },
+  "files": [
+    "lib"
+  ],
+  "dependencies": {
+    "eslint-plugin-vue": "^5.2.2"
+  },
+  "devDependencies": {
+    "eslint": "^6.0.0",
+    "mocha": "^6.1.4",
+    "nyc": "^14.1.1"
+  }
+}
