@@ -11,7 +11,8 @@
     "lib"
   ],
   "dependencies": {
-    "eslint-plugin-vue": "^5.2.2"
+    "eslint-plugin-vue": "^5.2.2",
+    "requireindex": "^1.2.0"
   },
   "devDependencies": {
     "eslint": "^6.0.0",
