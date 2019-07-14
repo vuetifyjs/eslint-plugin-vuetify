@@ -1,7 +1,7 @@
 'use strict'
 
 const RuleTester = require('eslint').RuleTester
-const rule = require('./grid-unknown-attributes')
+const rule = require('../../../lib/rules/grid-unknown-attributes')
 
 const tester = new RuleTester({
   parser: require.resolve('vue-eslint-parser'),
@@ -23,8 +23,13 @@ tester.run('grid-unknown-attributes', rule, {
       errors: ['Attributes are no longer converted into classes']
     },
     {
+      code: '<template><v-row px-3 py-2 /></template>',
+      output: '<template><v-row class="px-3 py-2" /></template>',
+      errors: ['Attributes are no longer converted into classes']
+    },
+    {
       code: '<template><v-row px-3 class="foo" /></template>',
-      output: '<template><v-row  class="foo px-3" /></template>',
+      output: '<template><v-row class="foo px-3" /></template>',
       errors: ['Attributes are no longer converted into classes']
     },
     {
