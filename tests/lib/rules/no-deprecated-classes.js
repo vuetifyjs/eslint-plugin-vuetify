@@ -16,10 +16,20 @@ tester.run('no-deprecated-classes', rule, {
     '<template><div class="justify-center" /></template>'
   ],
   invalid: [
-    // {
-    //   code: '<template><div class="justify-center" /></template>',
-    //   output: '<template><div class="justify-content-center" /></template>',
-    //   errors: ['justify-center has been removed']
-    // }
+    {
+      code: '<template><div class="scroll-y" /></template>',
+      output: '<template><div class="overflow-y-auto" /></template>',
+      errors: [{ messageId: 'replacedWith' }]
+    },
+    {
+      code: '<template><div class="text-xs-center" /></template>',
+      output: '<template><div class="text-center" /></template>',
+      errors: [{ messageId: 'replacedWith' }]
+    },
+    {
+      code: '<template><v-layout text-xs-center /></template>',
+      output: '<template><v-layout text-center /></template>',
+      errors: [{ messageId: 'replacedWith' }]
+    }
   ]
 })
