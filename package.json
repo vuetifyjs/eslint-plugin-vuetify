@@ -4,6 +4,7 @@
   "main": "lib/index.js",
   "author": "Kael Watts-Deuchar <kaelwd@gmail.com>",
   "license": "MIT",
+  "repository": "github:vuetifyjs/eslint-plugin-vuetify",
   "scripts": {
     "test": "mocha tests --recursive --reporter dot",
     "test:coverage": "nyc mocha tests --recursive --reporter dot",
