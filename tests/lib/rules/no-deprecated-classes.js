@@ -13,7 +13,8 @@ tester.run('no-deprecated-classes', rule, {
     '<template><div class="" /></template>',
     '<template><div class="custom-class" /></template>',
     '<template><div class="multiple classes" /></template>',
-    '<template><div class="justify-center" /></template>'
+    '<template><div class="justify-center" /></template>',
+    '<template><v-layout text-center /></template>'
   ],
   invalid: [
     {
