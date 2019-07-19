@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-vuetify",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "main": "lib/index.js",
   "author": "Kael Watts-Deuchar <kaelwd@gmail.com>",
   "license": "MIT",
