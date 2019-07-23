@@ -62,11 +62,6 @@ tester.run('no-legacy-grid', rule, {
         />
       </template>`,
       errors: Array(3).fill({ messageId: 'replacedWith' })
-    },
-    {
-      code: '<template><v-spacer /></template>',
-      output: '<template><div class="flex-grow-1"></div></template>',
-      errors: [{ messageId: 'replacedWith' }]
     }
   ]
 })
