@@ -9,16 +9,20 @@
 Built for https://github.com/vuetifyjs/vuetify/pull/7327, requires vuetify >=2.0.0-beta.9
 
 All you need to care about for now is
-```
+```bash
 $ yarn add -D eslint-plugin-vuetify
+# or
+$ npm install -D eslint-plugin-vuetify
 ```
 ```js
 // .eslintrc.js
-plugins: [
-  'vuetify'
-],
-rules: {
-  'vuetify/no-deprecated-classes': 'error'
+module.exports = { 
+  plugins: [
+    'vuetify'
+  ],
+  rules: {
+    'vuetify/no-deprecated-classes': 'error'
+  }
 }
 ```
 
@@ -31,3 +35,4 @@ If you want to update to the new grid system too then add
 'vuetify/grid-unknown-attributes': 'error',
 'vuetify/no-legacy-grid': 'error',
 ```
+to your rules.
