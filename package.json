@@ -27,10 +27,10 @@
     "mocha": "^6.1.4",
     "nyc": "^14.1.1",
     "vue": "^2.6.10",
-    "vuetify": "^2.0.0-beta.3"
+    "vuetify": "^2.0.5"
   },
   "peerDependencies": {
     "eslint": "^6.0.0",
-    "vuetify": "^2.0.0-beta.3"
+    "vuetify": "^2.0.5"
   }
 }
