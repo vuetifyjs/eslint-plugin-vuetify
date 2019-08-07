@@ -31,6 +31,19 @@
   },
   "peerDependencies": {
     "eslint": "^6.0.0",
+    "release-it": "*",
     "vuetify": "^2.0.5"
+  },
+  "release-it": {
+    "git": {
+      "commitMessage": "chore: release v%s",
+      "tagName": "v%s"
+    },
+    "npm": {
+      "publish": true
+    },
+    "github": {
+      "release": true
+    }
   }
 }
