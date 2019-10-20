@@ -14,7 +14,9 @@ tester.run('no-deprecated-classes', rule, {
     '<template><div class="custom-class" /></template>',
     '<template><div class="multiple classes" /></template>',
     '<template><div class="justify-center" /></template>',
-    '<template><v-layout text-center /></template>'
+    '<template><v-layout text-center /></template>',
+    // https://github.com/vuetifyjs/eslint-plugin-vuetify/issues/2
+    '<template><div class /></template>'
   ],
   invalid: [
     {
