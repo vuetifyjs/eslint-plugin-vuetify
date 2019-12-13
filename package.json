@@ -14,7 +14,7 @@
     "lib"
   ],
   "dependencies": {
-    "eslint-plugin-vue": "^5.2.2",
+    "eslint-plugin-vue": "^6.0.0",
     "requireindex": "^1.2.0"
   },
   "devDependencies": {
@@ -27,12 +27,11 @@
     "mocha": "^6.1.4",
     "nyc": "^14.1.1",
     "vue": "^2.6.10",
-    "vuetify": "^2.0.5"
+    "vuetify": "^2.1.0"
   },
   "peerDependencies": {
     "eslint": "^6.0.0",
-    "release-it": "*",
-    "vuetify": "^2.0.5"
+    "vuetify": "^2.0.0"
   },
   "release-it": {
     "git": {
