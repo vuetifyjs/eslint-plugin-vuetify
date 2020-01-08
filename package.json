@@ -1,6 +1,7 @@
 {
   "name": "eslint-plugin-vuetify",
   "version": "1.0.0-beta.6",
+  "description": "An eslint plugin for Vuetify",
   "main": "lib/index.js",
   "author": "Kael Watts-Deuchar <kaelwd@gmail.com>",
   "license": "MIT",
@@ -13,6 +14,7 @@
   "files": [
     "lib"
   ],
+  "homepage": "https://github.com/vuetifyjs/eslint-plugin-vuetify#readme",
   "dependencies": {
     "eslint-plugin-vue": "^6.0.0",
     "requireindex": "^1.2.0"
