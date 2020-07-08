@@ -6,6 +6,12 @@
   "author": "Kael Watts-Deuchar <kaelwd@gmail.com>",
   "license": "MIT",
   "repository": "github:vuetifyjs/eslint-plugin-vuetify",
+  "husky": {
+    "hooks": {
+      "commit-msg": "node scripts/lint-commit-message.js",
+      "pre-commit": "node scripts/warn-npm-install.js && yarn run lint && yarn run test"
+    }
+  },
   "scripts": {
     "test": "mocha tests --recursive --reporter dot",
     "test:coverage": "nyc mocha tests --recursive --reporter dot",
@@ -26,6 +32,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
+    "husky": "^4.2.5",
     "mocha": "^8.0.1",
     "nyc": "^15.1.0",
     "vue": "^2.6.11",
