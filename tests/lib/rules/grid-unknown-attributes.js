@@ -14,7 +14,9 @@ tester.run('grid-unknown-attributes', rule, {
     '<template><v-container fluid /></template>',
     '<template><v-container :fluid="condition" /></template>',
     '<template><v-row justify="center" justify-sm="start" /></template>',
-    '<template><v-row @click="listener" v-if="condition" slot="name" /></template>'
+    '<template><v-row @click="listener" v-if="condition" slot="name" /></template>',
+    // https://github.com/vuetifyjs/eslint-plugin-vuetify/issues/19
+    '<template><v-row class></v-row></template>'
   ],
   invalid: [
     {
@@ -40,6 +42,12 @@ tester.run('grid-unknown-attributes', rule, {
     {
       code: '<template><v-row :px-3="something" /></template>',
       output: '<template><v-row :px-3="something" /></template>',
+      errors: ['Attributes are no longer converted into classes']
+    },
+    // https://github.com/vuetifyjs/eslint-plugin-vuetify/issues/19
+    {
+      code: '<template><v-row px-3 class /></template>',
+      output: '<template><v-row class="px-3" /></template>',
       errors: ['Attributes are no longer converted into classes']
     }
   ]
