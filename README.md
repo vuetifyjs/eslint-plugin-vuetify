@@ -14,6 +14,9 @@
 </p>
 
 ### 💿 Install
+
+You should have [`eslint`](https://eslint.org/docs/user-guide/getting-started) and [`eslint-plugin-vue`](https://eslint.vuejs.org/user-guide/#installation) set up first.
+
 ```bash
 yarn add eslint-plugin-vuetify -D
 # OR
@@ -23,6 +26,9 @@ npm install eslint-plugin-vuetify --save-dev
 ```js
 // .eslintrc.js
 module.exports = {
+  extends: [
+    'plugin:vue/base'
+  ],
   plugins: [
     'vuetify'
   ],
