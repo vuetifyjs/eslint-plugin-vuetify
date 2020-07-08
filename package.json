@@ -34,17 +34,5 @@
   "peerDependencies": {
     "eslint": "^6.0.0",
     "vuetify": "^2.0.0"
-  },
-  "release-it": {
-    "git": {
-      "commitMessage": "chore: release v%s",
-      "tagName": "v%s"
-    },
-    "npm": {
-      "publish": true
-    },
-    "github": {
-      "release": true
-    }
   }
 }
