@@ -35,6 +35,11 @@ tester.run('no-legacy-grid', rule, {
       errors: [{ messageId: 'replacedWith' }, { messageId: 'replacedWith' }]
     },
     {
+      code: '<template><v-layout justify-between /></template>',
+      output: '<template><v-row justify="space-between" /></template>',
+      errors: [{ messageId: 'replacedWith' }, { messageId: 'replacedWith' }]
+    },
+    {
       code: '<template><v-flex xs12 sm4 md3 /></template>',
       output: '<template><v-col cols="12" sm="4" md="3" /></template>',
       errors: Array(4).fill({ messageId: 'replacedWith' })
