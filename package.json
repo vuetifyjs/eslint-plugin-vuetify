@@ -9,30 +9,30 @@
   "scripts": {
     "test": "mocha tests --recursive --reporter dot",
     "test:coverage": "nyc mocha tests --recursive --reporter dot",
-    "lint": "eslint ."
+    "lint": "eslint lib tests"
   },
   "files": [
     "lib"
   ],
   "homepage": "https://github.com/vuetifyjs/eslint-plugin-vuetify#readme",
   "dependencies": {
-    "eslint-plugin-vue": "^6.0.0",
+    "eslint-plugin-vue": "^6.2.2",
     "requireindex": "^1.2.0"
   },
   "devDependencies": {
-    "eslint": "^6.0.1",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-import": "^2.18.0",
-    "eslint-plugin-node": "^9.1.0",
+    "eslint": "^7.4.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.0",
-    "mocha": "^6.1.4",
-    "nyc": "^14.1.1",
-    "vue": "^2.6.10",
-    "vuetify": "^2.1.0"
+    "eslint-plugin-standard": "^4.0.1",
+    "mocha": "^8.0.1",
+    "nyc": "^15.1.0",
+    "vue": "^2.6.11",
+    "vuetify": "^2.3.4"
   },
   "peerDependencies": {
-    "eslint": "^6.0.0",
+    "eslint": "^6.0.0 | ^7.0.0",
     "vuetify": "^2.0.0"
   }
 }

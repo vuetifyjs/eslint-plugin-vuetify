@@ -10,5 +10,8 @@ module.exports = {
       destructuring: 'all',
       ignoreReadBeforeAssign: true
     }],
+    'quotes': ['error', 'single', {
+      allowTemplateLiterals: true,
+    }],
   }
 }
