@@ -25,6 +25,11 @@ tester.run('no-legacy-grid', rule, {
       errors: [{ messageId: 'replacedWith' }]
     },
     {
+      code: '<template><v-layout column /></template>',
+      output: '<template><v-row column /></template>',
+      errors: [{ messageId: 'replacedWith' }, { messageId: 'removed' }]
+    },
+    {
       code: '<template><v-layout row wrap /></template>',
       output: '<template><v-row   /></template>',
       errors: [{ messageId: 'replacedWith' }, { messageId: 'removed' }, { messageId: 'removed' }]
@@ -54,7 +59,12 @@ tester.run('no-legacy-grid', rule, {
         <v-layout
           fill-height
           align-center
+          align-self-center
           justify-center
+          order-xs3
+          order-sm1
+          offset-xs1
+          offset-sm2
           ma-0
         />
       </template>`,
@@ -62,11 +72,16 @@ tester.run('no-legacy-grid', rule, {
         <v-row
           fill-height
           align="center"
+          align-self="center"
           justify="center"
+          order="3"
+          order-sm="1"
+          offset="1"
+          offset-sm="2"
           ma-0
         />
       </template>`,
-      errors: Array(3).fill({ messageId: 'replacedWith' })
+      errors: Array(8).fill({ messageId: 'replacedWith' })
     }
   ]
 })

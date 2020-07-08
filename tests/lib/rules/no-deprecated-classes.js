@@ -25,6 +25,11 @@ tester.run('no-deprecated-classes', rule, {
       errors: [{ messageId: 'replacedWith' }]
     },
     {
+      code: '<template><v-layout scroll-y /></template>',
+      output: '<template><v-layout overflow-y-auto /></template>',
+      errors: [{ messageId: 'replacedWith' }]
+    },
+    {
       code: '<template><div class="text-xs-center" /></template>',
       output: '<template><div class="text-center" /></template>',
       errors: [{ messageId: 'replacedWith' }]
