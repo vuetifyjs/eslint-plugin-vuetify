@@ -15,6 +15,7 @@
   "scripts": {
     "test": "mocha tests --recursive --reporter dot",
     "test:coverage": "nyc mocha tests --recursive --reporter dot",
+    "test:ci": "nyc --reporter=lcov mocha tests --recursive --reporter dot",
     "lint": "eslint lib tests"
   },
   "files": [
