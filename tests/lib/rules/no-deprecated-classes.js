@@ -35,6 +35,11 @@ tester.run('no-deprecated-classes', rule, {
       errors: [{ messageId: 'replacedWith' }]
     },
     {
+      code: `<template><v-layout\n  wrap\n  row\n/></template>`,
+      output: '<template><v-layout\n  wrap\n/></template>',
+      errors: [`Don't use "row" on <v-layout>, see https://github.com/vuetifyjs/vuetify/commit/3f435b5a`]
+    },
+    {
       code: '<template><v-layout row wrap /></template>',
       output: '<template><v-layout wrap /></template>',
       errors: [`Don't use "row" on <v-layout>, see https://github.com/vuetifyjs/vuetify/commit/3f435b5a`]
