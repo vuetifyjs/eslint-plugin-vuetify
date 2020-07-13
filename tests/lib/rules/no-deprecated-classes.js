@@ -16,17 +16,6 @@ tester.run('no-deprecated-classes', rule, {
     '<template><div class="justify-center" /></template>',
     '<template><v-layout text-center /></template>',
     '<template><div class="text-h1" /></template>',
-    '<template><div class="text-h2" /></template>',
-    '<template><div class="text-h3" /></template>',
-    '<template><div class="text-h4" /></template>',
-    '<template><div class="text-h5" /></template>',
-    '<template><div class="text-h6" /></template>',
-    '<template><div class="text-subtitle-1" /></template>',
-    '<template><div class="text-subtitle-2" /></template>',
-    '<template><div class="text-body-1" /></template>',
-    '<template><div class="text-body-2" /></template>',
-    '<template><div class="text-caption" /></template>',
-    '<template><div class="text-text-overline" /></template>',
     // https://github.com/vuetifyjs/eslint-plugin-vuetify/issues/2
     '<template><div class /></template>'
   ],
@@ -69,61 +58,6 @@ tester.run('no-deprecated-classes', rule, {
     {
       code: '<template><div class="display-4" /></template>',
       output: '<template><div class="text-h1" /></template>',
-      errors: [{ messageId: 'replacedWith' }]
-    },
-    {
-      code: '<template><div class="display-3" /></template>',
-      output: '<template><div class="text-h2" /></template>',
-      errors: [{ messageId: 'replacedWith' }]
-    },
-    {
-      code: '<template><div class="display-2" /></template>',
-      output: '<template><div class="text-h3" /></template>',
-      errors: [{ messageId: 'replacedWith' }]
-    },
-    {
-      code: '<template><div class="display-1" /></template>',
-      output: '<template><div class="text-h4" /></template>',
-      errors: [{ messageId: 'replacedWith' }]
-    },
-    {
-      code: '<template><div class="headline" /></template>',
-      output: '<template><div class="text-h5" /></template>',
-      errors: [{ messageId: 'replacedWith' }]
-    },
-    {
-      code: '<template><div class="title" /></template>',
-      output: '<template><div class="text-h6" /></template>',
-      errors: [{ messageId: 'replacedWith' }]
-    },
-    {
-      code: '<template><div class="subtitle-1" /></template>',
-      output: '<template><div class="text-subtitle-1" /></template>',
-      errors: [{ messageId: 'replacedWith' }]
-    },
-    {
-      code: '<template><div class="subtitle-2" /></template>',
-      output: '<template><div class="text-subtitle-2" /></template>',
-      errors: [{ messageId: 'replacedWith' }]
-    },
-    {
-      code: '<template><div class="body-1" /></template>',
-      output: '<template><div class="text-body-1" /></template>',
-      errors: [{ messageId: 'replacedWith' }]
-    },
-    {
-      code: '<template><div class="body-2" /></template>',
-      output: '<template><div class="text-body-2" /></template>',
-      errors: [{ messageId: 'replacedWith' }]
-    },
-    {
-      code: '<template><div class="caption" /></template>',
-      output: '<template><div class="text-caption" /></template>',
-      errors: [{ messageId: 'replacedWith' }]
-    },
-    {
-      code: '<template><div class="overline" /></template>',
-      output: '<template><div class="text-overline" /></template>',
       errors: [{ messageId: 'replacedWith' }]
     }
   ]
