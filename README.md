@@ -55,7 +55,7 @@ These rules are designed to help migrate to the new grid system in Vuetify v2
 These rules will help you avoid deprecated components, props, and classes
 
 - Prevent the use of classes that have been removed from Vuetify ([`no-deprecated-classes`])
-- Prevent the use of components that have been removed from Vuetify (['no-deprecated-components`])
+- Prevent the use of components that have been removed from Vuetify ([`no-deprecated-components`])
 
 
 [`no-legacy-grid`]: ./docs/rules/no-legacy-grid.md
