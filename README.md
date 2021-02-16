@@ -69,8 +69,8 @@ These rules will help you avoid deprecated components, props, and classes
 
 <ul>
   <li>
-    <a href="https://github.com/users/johnleider/sponsorship">Becoming a sponsor on Github</a>
-    <strong><small>(supports John)</small></strong>
+    <a href="https://github.com/sponsors/kaelwd">Becoming a sponsor on Github</a>
+    <strong><small>(supports Kael)</small></strong>
   </li>
   <li>
     <a href="https://opencollective.com/vuetify">Becoming a backer on OpenCollective</a>
