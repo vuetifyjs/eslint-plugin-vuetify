@@ -15,6 +15,7 @@ tester.run('no-deprecated-classes', rule, {
     '<template><div class="multiple classes" /></template>',
     '<template><div class="justify-center" /></template>',
     '<template><v-layout text-center /></template>',
+    '<template><div class="text-h1" /></template>',
     // https://github.com/vuetifyjs/eslint-plugin-vuetify/issues/2
     '<template><div class /></template>'
   ],
@@ -53,6 +54,11 @@ tester.run('no-deprecated-classes', rule, {
       code: '<template><v-layout :row="foo" wrap /></template>',
       output: '<template><v-layout :row="foo" wrap /></template>',
       errors: [`Don't use "row" on <v-layout>, see https://github.com/vuetifyjs/vuetify/commit/3f435b5a`]
+    },
+    {
+      code: '<template><div class="display-4" /></template>',
+      output: '<template><div class="text-h1" /></template>',
+      errors: [{ messageId: 'replacedWith' }]
     }
   ]
 })
