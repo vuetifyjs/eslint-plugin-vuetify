@@ -13,7 +13,7 @@
   </a>
 </p>
 
-### 💿 Install
+## 💿 Install
 
 You should have [`eslint`](https://eslint.org/docs/user-guide/getting-started) and [`eslint-plugin-vue`](https://eslint.vuejs.org/user-guide/#installation) set up first.
 
@@ -41,17 +41,28 @@ module.exports = {
 **NOTE** This plugin does not affect _**pug**_ templates due to [a limitation in vue-eslint-parser](https://github.com/mysticatea/vue-eslint-parser/issues/29). I suggest converting your pug templates to HTML with [pug-to-html](https://github.com/leo-buneev/pug-to-html) in order to use this plugin.
 
 
-### 🚀 Usage
+## Rules
 
-Add the **grid-unknown-attributes** and **no-legacy-grid** rules and the plugin will automatically update your templates.
+### Grid system
 
-```js
-// .eslintrc.js
+These rules are designed to help migrate to the new grid system in Vuetify v2
 
-'vuetify/grid-unknown-attributes': 'error',
-'vuetify/no-legacy-grid': 'error',
-```
-### 💪 Supporting Vuetify
+- Prevent the use of legacy grid components and props ([`no-legacy-grid`])
+- Warn about unknown attributes not being converted to classes on new grid components ([`grid-unknown-attributes`])
+
+### Deprecations
+
+These rules will help you avoid deprecated components, props, and classes
+
+- Disallow the use of classes that have been removed from Vuetify ([`no-deprecated-classes`])
+
+
+[`no-legacy-grid`]: ./docs/rules/no-legacy-grid.md
+[`grid-unknown-attributes`]: ./docs/rules/grid-unknown-attributes.md
+[`no-deprecated-classes`]: ./docs/rules/no-deprecated-classes.md
+
+
+## 💪 Supporting Vuetify
 <p>Vuetify is an open source MIT project that has been made possible due to the generous contributions by <a href="https://github.com/vuetifyjs/vuetify/blob/dev/BACKERS.md">community backers</a>. If you are interested in supporting this project, please consider:</p>
 
 <ul>

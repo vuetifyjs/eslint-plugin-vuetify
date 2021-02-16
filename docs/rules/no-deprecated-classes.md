@@ -1,36 +1,37 @@
 # Disallow the use of classes that have been removed from Vuetify (no-deprecated-classes)
 
-Please describe the origin of the rule here.
+:wrench: This rule is fixable with `eslint --fix`
+
+Vuetify v2 and v2.3 changed several utility classes (documented [here](https://vuetifyjs.com/en/getting-started/upgrade-guide/#grid)).
 
 
 ## Rule Details
 
-This rule aims to...
+This rule disallows the use of removed utility classes.
+
+Some of the changes cannot be detected automatically, you should apply these yourself:
+
+- Change spacing helpers to intervals of 4px
+  - ma-3 -> ma-4
+  - ma-4 -> ma-6
+  - ma-5 -> ma-12
 
 Examples of **incorrect** code for this rule:
 
-```js
-
-// fill me in
-
+```html
+<div class="text-xs-left"></div>
+<div class="left"></div>
+<v-container scroll-y></v-container>
 ```
 
 Examples of **correct** code for this rule:
 
 ```js
-
-// fill me in
-
+<div class="text-left"></div>
+<div class="float-left"></div>
+<v-container overflow-y-visible></v-container>
 ```
 
 ### Options
 
-If there are any options, describe them here. Otherwise, delete this section.
-
-## When Not To Use It
-
-Give a short description of when it would be appropriate to turn off this rule.
-
-## Further Reading
-
-If there are other links that describe the issue this rule addresses, please include them here in a bulleted list.
+This rule has no configuration options.
