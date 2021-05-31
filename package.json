@@ -6,12 +6,6 @@
   "author": "Kael Watts-Deuchar <kaelwd@gmail.com>",
   "license": "MIT",
   "repository": "github:vuetifyjs/eslint-plugin-vuetify",
-  "husky": {
-    "hooks": {
-      "commit-msg": "node scripts/lint-commit-message.js",
-      "pre-commit": "node scripts/warn-npm-install.js && yarn run lint && yarn run test"
-    }
-  },
   "scripts": {
     "test": "mocha tests --recursive --reporter dot",
     "test:coverage": "nyc mocha tests --recursive --reporter dot",
@@ -23,24 +17,23 @@
   ],
   "homepage": "https://github.com/vuetifyjs/eslint-plugin-vuetify#readme",
   "dependencies": {
-    "eslint-plugin-vue": "^6.2.2",
+    "eslint-plugin-vue": "^7.0.0",
     "requireindex": "^1.2.0"
   },
   "devDependencies": {
-    "eslint": "^7.4.0",
-    "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-import": "^2.22.0",
+    "eslint": "^7.27.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
-    "husky": "^4.2.5",
-    "mocha": "^8.0.1",
+    "eslint-plugin-promise": "^5.1.0",
+    "husky": "^6.0.0",
+    "mocha": "^8.4.0",
     "nyc": "^15.1.0",
-    "vue": "^2.6.11",
-    "vuetify": "^2.3.4"
+    "vue": "^2.6.12",
+    "vuetify": "^2.5.1"
   },
   "peerDependencies": {
-    "eslint": "^6.0.0 || ^7.0.0",
+    "eslint": "^6.2.0 || ^7.0.0",
     "vuetify": "^2.0.0"
   }
 }
