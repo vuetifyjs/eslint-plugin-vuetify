@@ -1,6 +1,6 @@
-# eslint-plugin-vuetify (WIP)
+# eslint-plugin-vuetify
 > An eslint plugin for Vuetify.
-> Built for https://github.com/vuetifyjs/vuetify/pull/7327, requires vuetify >=2.0.0-beta.9
+> Built for https://github.com/vuetifyjs/vuetify/pull/7327, requires vuetify >=2.0.0
 
 <br>
 
@@ -33,6 +33,8 @@ module.exports = {
     'vuetify'
   ],
   rules: {
+    'vuetify/no-deprecated-components': 'error',
+    'vuetify/no-deprecated-props': 'error',
     'vuetify/no-deprecated-classes': 'error'
   }
 }
