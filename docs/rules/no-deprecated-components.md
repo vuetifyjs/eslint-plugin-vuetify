@@ -20,7 +20,7 @@ Examples of **incorrect** code for this rule:
 
 Examples of **correct** code for this rule:
 
-```js
+```html
 <v-main>
   <v-list-item>
     <v-list-item-title></v-list-item-title>
