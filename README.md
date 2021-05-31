@@ -27,16 +27,9 @@ npm install eslint-plugin-vuetify --save-dev
 // .eslintrc.js
 module.exports = {
   extends: [
-    'plugin:vue/base'
-  ],
-  plugins: [
-    'vuetify'
-  ],
-  rules: {
-    'vuetify/no-deprecated-components': 'error',
-    'vuetify/no-deprecated-props': 'error',
-    'vuetify/no-deprecated-classes': 'error'
-  }
+    'plugin:vue/base',
+    'plugin:vuetify/base'
+  ]
 }
 ```
 
@@ -45,20 +38,20 @@ module.exports = {
 
 ## Rules
 
-### Grid system
-
-These rules are designed to help migrate to the new grid system in Vuetify v2
-
-- Prevent the use of legacy grid components and props ([`no-legacy-grid`])
-- Warn about unknown attributes not being converted to classes on new grid components ([`grid-unknown-attributes`])
-
 ### Deprecations
 
-These rules will help you avoid deprecated components, props, and classes
+These rules will help you avoid deprecated components, props, and classes. They are included in the `plugin:vuetify/base` preset.
 
 - Prevent the use of components that have been removed from Vuetify ([`no-deprecated-components`])
 - Prevent the use of props that have been removed from Vuetify ([`no-deprecated-props`])
 - Prevent the use of classes that have been removed from Vuetify ([`no-deprecated-classes`])
+
+### Grid system
+
+These rules are designed to help migrate to the new grid system in Vuetify v2. They are included in the `plugin:vuetify/recommended` preset.
+
+- Prevent the use of legacy grid components and props ([`no-legacy-grid`])
+- Warn about unknown attributes not being converted to classes on new grid components ([`grid-unknown-attributes`])
 
 
 [`no-legacy-grid`]: ./docs/rules/no-legacy-grid.md
