@@ -11,7 +11,10 @@ const tester = new RuleTester({
 tester.run('no-deprecated-props', rule, {
   valid: [
     '<template><v-btn outlined /></template>',
-    '<template><v-btn :outlined="false" /></template>'
+    '<template><v-btn :outlined="false" /></template>',
+    '<template><v-btn v-bind:outlined="false" /></template>',
+    // https://github.com/vuetifyjs/eslint-plugin-vuetify/issues/35
+    '<template><v-btn v-bind="" /></template>'
   ],
 
   invalid: [
@@ -23,6 +26,11 @@ tester.run('no-deprecated-props', rule, {
     {
       code: '<template><v-btn :outline="false" /></template>',
       output: '<template><v-btn :outlined="false" /></template>',
+      errors: [{ messageId: 'replacedWith' }]
+    },
+    {
+      code: '<template><v-btn v-bind:outline="false" /></template>',
+      output: '<template><v-btn v-bind:outlined="false" /></template>',
       errors: [{ messageId: 'replacedWith' }]
     },
     {
