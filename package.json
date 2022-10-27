@@ -7,6 +7,7 @@
   "license": "MIT",
   "repository": "github:vuetifyjs/eslint-plugin-vuetify",
   "scripts": {
+    "build": "tsc --outdir lib",
     "test": "mocha tests --recursive --reporter dot",
     "test:coverage": "nyc mocha tests --recursive --reporter dot",
     "test:ci": "nyc --reporter=lcov mocha tests --recursive --reporter dot",
@@ -17,23 +18,23 @@
   ],
   "homepage": "https://github.com/vuetifyjs/eslint-plugin-vuetify#readme",
   "dependencies": {
-    "eslint-plugin-vue": "^7.0.0",
+    "eslint-plugin-vue": "^9.6.0",
     "requireindex": "^1.2.0"
   },
   "devDependencies": {
-    "eslint": "^8.0.1",
-    "eslint-config-standard": "^16.0.3",
-    "eslint-plugin-import": "^2.25.2",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.1.1",
-    "husky": "^6.0.0",
-    "mocha": "^9.1.3",
+    "eslint": "^8.26.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.3.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "husky": "^8.0.1",
+    "mocha": "^10.1.0",
     "nyc": "^15.1.0",
-    "vue": "^2.6.14",
-    "vuetify": "^2.5.10"
+    "vue": "^3.2.41",
+    "vuetify": "^3.0.0-beta.15"
   },
   "peerDependencies": {
-    "eslint": "^6.2.0 || ^7.0.0 || ^8.0.0",
-    "vuetify": "^2.0.0"
+    "eslint": "^8.0.0",
+    "vuetify": "^3.0.0"
   }
 }

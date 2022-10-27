@@ -12,3 +12,6 @@ coverage/
 # Logs
 yarn-error.log
 npm-debug.log
+
+# Build output
+lib/
