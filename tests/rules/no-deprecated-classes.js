@@ -13,6 +13,9 @@ tester.run('no-deprecated-classes', rule, {
     '<template><div class="multiple classes" /></template>',
     '<template><div class="justify-center" /></template>',
     '<template><div class="text-h1" /></template>',
+    '<template><div class="rounded-s" /></template>',
+    '<template><div class="rounded-ts" /></template>',
+    '<template><div class="rounded-ts-0" /></template>',
     // https://github.com/vuetifyjs/eslint-plugin-vuetify/issues/2
     '<template><div class /></template>',
   ],
@@ -30,6 +33,26 @@ tester.run('no-deprecated-classes', rule, {
     {
       code: '<template><div class="display-4" /></template>',
       output: '<template><div class="text-h1" /></template>',
+      errors: [{ messageId: 'replacedWith' }],
+    },
+    {
+      code: '<template><div class="rounded-l" /></template>',
+      output: '<template><div class="rounded-s" /></template>',
+      errors: [{ messageId: 'replacedWith' }],
+    },
+    {
+      code: '<template><div class="rounded-l-0" /></template>',
+      output: '<template><div class="rounded-s-0" /></template>',
+      errors: [{ messageId: 'replacedWith' }],
+    },
+    {
+      code: '<template><div class="rounded-tl" /></template>',
+      output: '<template><div class="rounded-ts" /></template>',
+      errors: [{ messageId: 'replacedWith' }],
+    },
+    {
+      code: '<template><div class="rounded-tl-0" /></template>',
+      output: '<template><div class="rounded-ts-0" /></template>',
       errors: [{ messageId: 'replacedWith' }],
     },
   ],

@@ -1,22 +1,26 @@
 'use strict'
 
-const { getInstalledVuetifyVersion } = require('../util/get-installed-vuetify-version')
-
-// const spacers = {
-//   0: 0,
-//   1: 1,
-//   2: 2,
-//   3: 4,
-//   4: 6,
-//   5: 12
-// }
-
 /** @type {Map<RegExp, (args: string[]) => string> | Map<string, string>} */
 const replacements = new Map([
-  // ['shrink', 'flex-grow-0'],
-  // ['grow', 'flex-shrink-0'],
+  [/^rounded-(r|l|tr|tl|br|bl)(.*)$/, ([side, rest]) => {
+    side = {
+      r: 'e',
+      l: 's',
+      tr: 'te',
+      tl: 'ts',
+      br: 'be',
+      bl: 'bs',
+    }[side]
+    return `rounded-${side}${rest}`
+  }],
+  [/^border-([rl])(.*)$/, ([side, rest]) => {
+    side = {
+      r: 'e',
+      l: 's',
+    }[side]
+    return `border-${side}${rest}`
+  }],
   [/^text-xs-(left|right|center|justify)$/, ([align]) => `text-${align}`],
-  // ['child-flex', false],
   ['scroll-y', 'overflow-y-auto'],
   ['hide-overflow', 'overflow-hidden'],
   ['show-overflow', 'overflow-visible'],
@@ -24,25 +28,20 @@ const replacements = new Map([
   ['ellipsis', 'text-truncate'],
   ['left', 'float-left'],
   ['right', 'float-right'],
-  // TODO: only run fixer once
-  // [/([mp][axytblr])-(\d)/, (type, n) => `${type}-${spacers[n]}`]
+  ['display-4', 'text-h1'],
+  ['display-3', 'text-h2'],
+  ['display-2', 'text-h3'],
+  ['display-1', 'text-h4'],
+  ['headline', 'text-h5'],
+  ['title', 'text-h6'],
+  ['subtitle-1', 'text-subtitle-1'],
+  ['subtitle-2', 'text-subtitle-2'],
+  ['body-1', 'text-body-1'],
+  ['body-2', 'text-body-2'],
+  ['caption', 'text-caption'],
+  ['caption', 'text-caption'],
+  ['overline', 'text-overline'],
 ])
-
-if (getInstalledVuetifyVersion() >= '2.3.0') {
-  replacements
-    .set('display-4', 'text-h1')
-    .set('display-3', 'text-h2')
-    .set('display-2', 'text-h3')
-    .set('display-1', 'text-h4')
-    .set('headline', 'text-h5')
-    .set('title', 'text-h6')
-    .set('subtitle-1', 'text-subtitle-1')
-    .set('subtitle-2', 'text-subtitle-2')
-    .set('body-1', 'text-body-1')
-    .set('body-2', 'text-body-2')
-    .set('caption', 'text-caption')
-    .set('overline', 'text-overline')
-}
 
 // ------------------------------------------------------------------------------
 // Rule Definition
