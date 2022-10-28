@@ -1,7 +1,5 @@
 'use strict'
 
-const { classify, getAttributes } = require('../util/helpers')
-const { removeAttr } = require('../util/fixers')
 const { getInstalledVuetifyVersion } = require('../util/get-installed-vuetify-version')
 
 // const spacers = {
@@ -25,7 +23,7 @@ const replacements = new Map([
   ['no-wrap', 'text-no-wrap'],
   ['ellipsis', 'text-truncate'],
   ['left', 'float-left'],
-  ['right', 'float-right']
+  ['right', 'float-right'],
   // TODO: only run fixer once
   // [/([mp][axytblr])-(\d)/, (type, n) => `${type}-${spacers[n]}`]
 ])
@@ -46,9 +44,6 @@ if (getInstalledVuetifyVersion() >= '2.3.0') {
     .set('overline', 'text-overline')
 }
 
-// These components treat attributes like classes
-const gridComponents = ['VContainer', 'VLayout', 'VFlex', 'VSpacer']
-
 // ------------------------------------------------------------------------------
 // Rule Definition
 // ------------------------------------------------------------------------------
@@ -56,72 +51,18 @@ const gridComponents = ['VContainer', 'VLayout', 'VFlex', 'VSpacer']
 module.exports = {
   meta: {
     docs: {
-      description: 'Disallow the use of classes that have been removed from Vuetify'
+      description: 'Disallow the use of classes that have been removed from Vuetify',
     },
     fixable: 'code',
     schema: [],
     messages: {
       replacedWith: `'{{ a }}' has been replaced with '{{ b }}'`,
-      removed: `'{{ name }}' has been removed`
-    }
+      removed: `'{{ name }}' has been removed`,
+    },
   },
 
   create (context) {
     return context.parserServices.defineTemplateBodyVisitor({
-      VElement (element) {
-        const tag = classify(element.rawName)
-
-        if (!gridComponents.includes(tag)) return
-
-        getAttributes(element).forEach(attr => {
-          for (const replacer of replacements) {
-            if (typeof replacer[0] === 'string' && replacer[0] === attr.name) {
-              const replacement = replacer[1]
-              return context.report({
-                messageId: 'replacedWith',
-                data: {
-                  a: attr.name,
-                  b: replacement
-                },
-                node: attr.node,
-                fix (fixer) {
-                  return fixer.replaceText(attr.node, replacement)
-                }
-              })
-            }
-            if (replacer[0] instanceof RegExp) {
-              const matches = (replacer[0].exec(attr.name) || []).slice(1)
-              const replace = replacer[1]
-              if (matches.length && typeof replace === 'function') {
-                const replacement = replace(matches)
-                return context.report({
-                  messageId: 'replacedWith',
-                  data: {
-                    a: attr.name,
-                    b: replacement
-                  },
-                  node: attr.node,
-                  fix (fixer) {
-                    return fixer.replaceText(attr.node, replacement)
-                  }
-                })
-              }
-            }
-          }
-
-          // Remove <v-layout row> as it conflicts with <v-row> styles
-          // https://github.com/vuetifyjs/vuetify/commit/3f435b5a
-          if (tag === 'VLayout' && attr.name === 'row') {
-            return context.report({
-              node: attr.node,
-              message: `Don't use "row" on <v-layout>, see https://github.com/vuetifyjs/vuetify/commit/3f435b5a`,
-              fix (fixer) {
-                if (!attr.node.directive) return removeAttr(context, fixer, attr.node)
-              }
-            })
-          }
-        })
-      },
       'VAttribute[key.name="class"]' (node) {
         if (!node.value || !node.value.value) return
 
@@ -148,25 +89,25 @@ module.exports = {
           const idx = node.value.value.indexOf(change[0]) + 1
           const range = [
             node.value.range[0] + idx,
-            node.value.range[0] + idx + change[0].length
+            node.value.range[0] + idx + change[0].length,
           ]
           const loc = {
             start: source.getLocFromIndex(range[0]),
-            end: source.getLocFromIndex(range[1])
+            end: source.getLocFromIndex(range[1]),
           }
           context.report({
             loc,
             messageId: 'replacedWith',
             data: {
               a: change[0],
-              b: change[1]
+              b: change[1],
             },
             fix (fixer) {
               return fixer.replaceTextRange(range, change[1])
-            }
+            },
           })
         })
-      }
+      },
     })
-  }
+  },
 }

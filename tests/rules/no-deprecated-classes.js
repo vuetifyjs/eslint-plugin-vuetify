@@ -12,7 +12,6 @@ tester.run('no-deprecated-classes', rule, {
     '<template><div class="custom-class" /></template>',
     '<template><div class="multiple classes" /></template>',
     '<template><div class="justify-center" /></template>',
-    '<template><v-layout text-center /></template>',
     '<template><div class="text-h1" /></template>',
     // https://github.com/vuetifyjs/eslint-plugin-vuetify/issues/2
     '<template><div class /></template>',
@@ -24,34 +23,9 @@ tester.run('no-deprecated-classes', rule, {
       errors: [{ messageId: 'replacedWith' }],
     },
     {
-      code: '<template><v-layout scroll-y /></template>',
-      output: '<template><v-layout overflow-y-auto /></template>',
-      errors: [{ messageId: 'replacedWith' }],
-    },
-    {
       code: '<template><div class="text-xs-center" /></template>',
       output: '<template><div class="text-center" /></template>',
       errors: [{ messageId: 'replacedWith' }],
-    },
-    {
-      code: '<template><v-layout text-xs-center /></template>',
-      output: '<template><v-layout text-center /></template>',
-      errors: [{ messageId: 'replacedWith' }],
-    },
-    {
-      code: `<template><v-layout\n  wrap\n  row\n/></template>`,
-      output: '<template><v-layout\n  wrap\n/></template>',
-      errors: [`Don't use "row" on <v-layout>, see https://github.com/vuetifyjs/vuetify/commit/3f435b5a`],
-    },
-    {
-      code: '<template><v-layout row wrap /></template>',
-      output: '<template><v-layout wrap /></template>',
-      errors: [`Don't use "row" on <v-layout>, see https://github.com/vuetifyjs/vuetify/commit/3f435b5a`],
-    },
-    {
-      code: '<template><v-layout :row="foo" wrap /></template>',
-      output: '<template><v-layout :row="foo" wrap /></template>',
-      errors: [`Don't use "row" on <v-layout>, see https://github.com/vuetifyjs/vuetify/commit/3f435b5a`],
     },
     {
       code: '<template><div class="display-4" /></template>',
