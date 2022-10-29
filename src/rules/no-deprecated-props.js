@@ -1,113 +1,577 @@
 'use strict'
 
-const { hyphenate, classify, mergeDeep } = require('../util/helpers')
-const { getInstalledVuetifyVersion } = require('../util/get-installed-vuetify-version')
+const { hyphenate, classify } = require('../util/helpers')
+
+const size = {
+  maxHeight: false,
+  maxWidth: false,
+  minHeight: false,
+  minWidth: false,
+}
+
+const sizes = {
+  large: { name: 'size', value: 'large' },
+  medium: { name: 'size', value: 'medium' },
+  small: { name: 'size', value: 'small' },
+  xLarge: { name: 'size', value: 'x-large' },
+  xSmall: { name: 'size', value: 'x-small' },
+}
+
+const inputs = {
+  appendOuterIcon: 'append-icon',
+  backgroundColor: 'bg-color',
+  box: { name: 'variant', value: 'filled' },
+  errorCount: 'max-errors',
+  filled: { name: 'variant', value: 'filled' },
+  flat: false,
+  fullWidth: false,
+  height: false,
+  hideSpinButtons: false,
+  loaderHeight: false,
+  outline: { name: 'variant', value: 'outlined' },
+  outlined: { name: 'variant', value: 'outlined' },
+  rounded: false,
+  shaped: false,
+  solo: { name: 'variant', value: 'solo' },
+  soloInverted: false,
+  success: false,
+  successMessages: false,
+  validateOnBlur: { name: 'validate-on', value: 'blur' },
+  value: 'model-value',
+}
+
+const select = {
+  allowOverflow: false,
+  attach: { custom: ':menu-props="{ attach: true }"' },
+  autoSelectFirst: false,
+  cacheItems: false,
+  deletableChips: 'closable-chips',
+  disableLookup: false,
+  itemColor: { custom: 'item-props.color' },
+  itemDisabled: { custom: 'item-props.disabled' },
+  itemText: 'item-title',
+  searchInput: 'search',
+  smallChips: false,
+  valueComparator: false,
+  filter: 'customFilter',
+  ...inputs,
+}
+
+const theme = {
+  dark: false,
+  light: false,
+}
+
+const link = {
+  append: false,
+  exactActiveClass: false,
+  exactPath: false,
+  nuxt: false,
+}
+
+const overlay = {
+  hideOverlay: { name: 'scrim', value: false },
+  internalActivator: false,
+  overlayColor: { name: 'scrim', value: value => value },
+  overlayOpacity: false,
+  value: 'model-value',
+  returnValue: false,
+}
 
 const replacements = {
-  VBtn: {
-    outline: 'outlined',
-    flat: 'text',
-    round: 'rounded'
+  VAppBar: {
+    app: false,
+    clippedLeft: false,
+    clippedRight: false,
+    collapseOnScroll: false,
+    elevateOnScroll: false,
+    fadeImgOnScroll: false,
+    fixed: false,
+    hideOnScroll: false,
+    invertedScroll: false,
+    outlined: 'border',
+    prominent: false,
+    scrollOffScreen: false,
+    scrollTarget: false,
+    scrollThreshold: false,
+    shaped: false,
+    short: false,
+    shrinkOnScroll: false,
+    tile: false,
+    width: false,
+    ...theme,
+    ...size,
   },
   VAlert: {
-    outline: 'outlined'
+    border: { name: 'border', value: value => ({ right: 'end', left: 'start' }[value]) },
+    outline: { name: 'variant', value: 'outlined' },
+    coloredBorder: { custom: 'border-color' },
+    dismissible: 'closable',
+    mode: false,
+    origin: false,
+    outlined: { name: 'variant', value: 'outlined' },
+    shaped: false,
+    tile: { name: 'rounded', value: 0 },
+    transition: false,
+    ...theme,
+  },
+  VAvatar: {
+    height: { custom: 'size' },
+    width: { custom: 'size' },
+    left: 'start',
+    right: 'end',
+    ...size,
+  },
+  VBadge: {
+    avatar: false,
+    mode: false,
+    origin: false,
+    overlap: false,
+  },
+  VBanner: {
+    app: false,
+    iconColor: false,
+    mobileBreakPoint: false,
+    outlined: false,
+    shaped: false,
+    value: false,
   },
   VBottomNavigation: {
-    active: { custom: 'value or v-model' }
+    activeClass: 'selected-class',
+    app: false,
+    fixed: false,
+    hideOnScroll: false,
+    inputValue: 'model-value',
+    scrollTarget: false,
+    scrollThreshold: false,
+    width: false,
+    ...size,
+  },
+  VBreadcrumbs: {
+    large: false,
+    ...theme,
+  },
+  VBreadcrumbsItem: {
+    link: false,
+    ripple: false,
+    ...link,
+  },
+  VBtn: {
+    activeClass: 'selected-class',
+    bottom: { name: 'location', value: 'bottom' },
+    depressed: { name: 'variant', value: 'depressed' },
+    fab: false,
+    flat: { name: 'variant', value: 'flat' },
+    inputValue: false,
+    left: { name: 'location', value: 'left' },
+    link: false,
+    outline: { name: 'variant', value: 'outlined' },
+    outlined: { name: 'variant', value: 'outlined' },
+    plain: { name: 'variant', value: 'plain' },
+    retainFocusOnClick: false,
+    right: { name: 'location', value: 'right' },
+    round: 'rounded',
+    shaped: false,
+    text: { name: 'variant', value: 'text' },
+    tile: false,
+    top: { name: 'location', value: 'top' },
+    ...link,
+    ...theme,
+    ...sizes,
+  },
+  VBtnToggle: {
+    activeClass: 'selected-class',
+    backgroundColor: false,
+    borderless: false,
+    dense: { custom: 'density' },
+    shaped: false,
+    tile: { name: 'rounded', value: 0 },
+    value: 'model-value',
+    valueComparator: false,
+    ...theme,
+  },
+  VCard: {
+    activeClass: false,
+    loaderHeight: false,
+    outlined: { name: 'variant', value: 'outlined' },
+    raised: { name: 'elevation', value: 8 },
+    shaped: false,
+    tile: { name: 'rounded', value: 0 },
+    ...link,
   },
   VCarousel: {
-    hideControls: { custom: ':show-arrows="false"' }
+    activeClass: 'selected-class',
+    max: false,
+    multiple: false,
+    progressColor: { custom: 'progress="<color>"' },
+    showArrowsOnHover: { name: 'show-arrows', value: 'hover' },
+    touchless: false,
+    valueComparator: false,
+    vertical: { name: 'direction', value: 'vertical' },
+    value: 'model-value',
+    ...theme,
+  },
+  VCarouselItem: {
+    activeClass: 'selected-class',
+    exact: false,
+    href: false,
+    link: false,
+    replace: false,
+    ripple: false,
+    target: false,
+    to: false,
+    ...link,
+  },
+  VCheckbox: {
+    backgroundColor: false,
+    errorCount: 'max-errors',
+    hideSpinButtons: false,
+    hint: false,
+    inputValue: 'model-value',
+    offIcon: 'false-icon',
+    onIcon: 'true-icon',
+    offValue: 'false-value',
+    onValue: 'true-value',
+    success: false,
+    successMessages: false,
+    validateOnBlur: { name: 'validate-on', value: 'blur' },
   },
   VChip: {
-    outline: 'outlined',
-    selected: 'value'
+    active: false,
+    close: 'cloasable',
+    inputValue: 'model-value',
+    outline: { name: 'variant', value: 'outlined' },
+    outlined: { name: 'variant', value: 'outlined' },
+    selected: 'value',
+    textColor: false,
+    ...link,
   },
-  VDataIterator: {
-    expand: 'showExpand',
-    contentClass: false,
-    contentProps: false,
-    contentTag: false,
-    disableInitialSort: 'sortBy',
-    filter: 'customFilter',
-    pagination: 'options',
-    totalItems: 'serverItemsLength',
-    hideActions: 'hideDefaultFooter',
-    rowsPerPageItems: { custom: 'footer-props.itemsPerPageOptions' },
-    rowsPerPageText: { custom: 'footer-props.itemsPerPageText' },
-    prevIcon: { custom: 'footer-props.prevIcon' },
-    nextIcon: { custom: 'footer-props.nextIcon' }
+  VChipGroup: {
+    activeClass: 'selected-class',
+    centerActive: false,
+    mobileBreakPoint: false,
+    nextIcon: false,
+    prevIcon: false,
+    showArrows: false,
+    value: 'model-value',
   },
-  VDataTable: {
-    sortIcon: { custom: 'header-props.sortIcon' },
-    hideHeaders: 'hideDefaultHeader',
-    selectAll: 'showSelect'
+  VColorPicker: {
+    flat: false,
+    hideModeSwitch: false,
+    value: 'model-value',
   },
   VExpansionPanels: {
-    expand: 'multiple'
+    activeClass: 'selected-class',
+    flat: false,
+    focusable: false,
+    hover: false,
+    tile: false,
+    value: 'model-value',
+    valueComparator: false,
   },
   VTextField: {
-    box: 'filled',
-    outline: 'outlined',
-    mask: false
+    ...inputs,
   },
   VTextarea: {
-    box: 'filled',
-    outline: 'outlined',
-    mask: false
+    ...inputs,
+  },
+  VFileInput: {
+    type: false,
+    ...inputs,
   },
   VSelect: {
-    box: 'filled',
-    combobox: { custom: '<v-combobox />' },
-    outline: 'outlined'
+    ...select,
   },
   VAutocomplete: {
-    box: 'filled',
-    outline: 'outlined'
+    ...select,
   },
   VCombobox: {
-    box: 'filled',
-    outline: 'outlined'
+    ...select,
+  },
+  VInput: {
+    ...inputs,
+  },
+  VDialog: {
+    ...overlay,
+  },
+  VMenu: {
+    allowOverflow: false,
+    auto: false,
+    bottom: { custom: 'location and origin' },
+    closeOnClick: { name: 'persistent', value: true },
+    left: { custom: 'location and origin' },
+    nudgeBottom: { custom: 'offset' },
+    nudgeLeft: { custom: 'offset' },
+    nudgeRight: { custom: 'offset' },
+    nudgeTop: { custom: 'offset' },
+    offsetOverflow: false,
+    offsetX: false,
+    offsetY: false,
+    positionX: false,
+    positionY: false,
+    right: { custom: 'location and origin' },
+    rounded: false,
+    tile: false,
+    top: { custom: 'location and origin' },
+    value: 'model-value',
+    ...overlay,
+  },
+  VFooter: {
+    fixed: false,
+    outlined: false,
+    padless: false,
+    shaped: false,
+    tile: false,
+    width: false,
+    ...size,
+  },
+  VForm: {
+    value: 'model-value',
+  },
+  VHover: {
+    value: 'model-value',
+  },
+  VIcon: {
+    dense: false,
+    disabled: false,
+    left: 'start',
+    right: 'end',
+  },
+  VImg: {
+    contain: { custom: 'cover' },
+    contentClass: false,
+    height: false,
+    position: false,
+    ...theme,
+    ...size,
+  },
+  VItemGroup: {
+    activeClass: 'selected-class',
+    value: 'model-value',
+    valueComparator: false,
+  },
+  VItem: {
+    activeClass: 'selected-class',
+  },
+  VLazy: {
+    value: 'model-value',
+  },
+  VList: {
+    expand: false,
+    flat: false,
+    outlined: false,
+    subheader: false,
+    threeLine: { name: 'lines', value: 'three' },
+    twoLine: { name: 'lines', value: 'two' },
+    tile: false,
+  },
+  VListGroup: {
+    activeClass: false,
+    disabled: false,
+    eager: false,
+    group: false,
+    noAction: false,
+    ripple: false,
+    subGroup: false,
   },
   VListItem: {
-    avatar: false
+    append: false,
+    ripple: false,
+    selectable: { custom: 'value' },
+    threeLine: { name: 'lines', value: 'three' },
+    twoLine: { name: 'lines', value: 'two' },
+    inputValue: { custom: 'active' },
+    ...link,
   },
-  VToolbar: {
-    app: { custom: '<v-app-bar app />' },
-    manualScroll: { custom: '<v-app-bar :value="false" />' },
-    clippedLeft: { custom: '<v-app-bar clipped-left />' },
-    clippedRight: { custom: '<v-app-bar clipped-right />' },
-    invertedScroll: { custom: '<v-app-bar inverted-scroll />' },
-    scrollOffScreen: { custom: '<v-app-bar scroll-off-screen />' },
-    scrollTarget: { custom: '<v-app-bar scroll-target />' },
-    scrollThreshold: { custom: '<v-app-bar scroll-threshold />' },
-    card: 'flat'
+  VNavigationDrawer: {
+    app: false,
+    bottom: { name: 'location', value: 'bottom' },
+    clipped: false,
+    fixed: false,
+    height: false,
+    hideOverlay: { name: 'scrim', value: false },
+    miniVariant: 'rail',
+    miniVariantWidth: 'rail-width',
+    mobileBreakPoint: false,
+    overlayColor: { name: 'scrim', value: value => value },
+    overlayOpacity: false,
+    right: { name: 'location', value: 'right' },
+    src: 'image',
+    stateless: false,
+    value: 'model-value',
+  },
+  VOverlay: {
+    color: { name: 'scrim', value: value => value },
+    opacity: false,
+    value: 'model-value',
+  },
+  VPagination: {
+    circle: 'rounded',
+    value: 'model-value',
+    wrapperAriaLabel: 'aria-label',
+  },
+  VProgressCircular: {
+    button: false,
+    value: 'model-value',
+  },
+  VProgressLinear: {
+    absolute: false,
+    backgroundColor: 'bg-color',
+    backgroundOpacity: 'bg-opacity',
+    bottom: false,
+    fixed: false,
+    query: false,
+    top: false,
+    value: 'model-value',
+  },
+  VRadio: {
+    activeClass: 'false',
+    offIcon: 'false-icon',
+    onIcon: 'true-icon',
+    offValue: 'false-value',
+    onValue: 'true-value',
+  },
+  VRadioGroup: {
+    activeClass: false,
+    backgroundColor: false,
+    column: false,
+    multiple: false,
+    ...inputs,
+  },
+  VSlider: {
+    backgroundColor: false,
+    tickLabels: 'ticks',
+    ticks: { custom: 'show-ticks' },
+    vertical: { name: 'direction', value: 'vertical' },
+    height: false,
+    loading: false,
+    inverseLabel: false,
+    ...inputs,
+    ...theme,
+  },
+  VRangeSlider: {
+    backgroundColor: false,
+    tickLabels: 'ticks',
+    ticks: { custom: 'show-ticks' },
+    vertical: { name: 'direction', value: 'vertical' },
+    height: false,
+    loading: false,
+    inverseLabel: false,
+    ...inputs,
+    ...theme,
+  },
+  VRating: {
+    backgroundColor: false,
+    closeDelay: false,
+    halfIcon: false,
+    iconLabel: 'item-aria-label',
+    large: false,
+    openDelay: false,
+    value: 'model-value',
+    ...sizes,
+  },
+  VSheet: {
+    outlined: false,
+    shaped: false,
+    tile: false,
+  },
+  VSlideGroup: {
+    activeClass: 'selected-class',
+    mobileBreakPoint: false,
+    value: 'model-value',
+    valueComparator: false,
+    ...theme,
   },
   VSnackbar: {
-    autoHeight: false
-  }
+    app: false,
+    bottom: { name: 'location', value: 'bottom' },
+    centered: { custom: 'location' },
+    elevation: false,
+    left: { name: 'location', value: 'left' },
+    outlined: { name: 'variant', value: 'outlined' },
+    right: { name: 'location', value: 'right' },
+    shaped: false,
+    text: false,
+    tile: false,
+    top: { name: 'location', value: 'top' },
+    value: 'model-value',
+  },
+  VSwitch: {
+    ...inputs,
+  },
+  VSystemBar: {
+    app: false,
+    fixed: false,
+    lightsOut: false,
+  },
+  VTabs: {
+    activeClass: false,
+    alignWithTitle: { name: 'align-tabs', value: 'title' },
+    backgroundColor: 'bg-color',
+    value: 'model-value',
+    ...theme,
+  },
+  VTab: {
+    activeClass: 'selected-class',
+    link: false,
+    ...link,
+  },
+  VThemeProvider: {
+    root: false,
+  },
+  VTimeline: {
+    alignTop: { name: 'align', value: 'top' },
+    reverse: false,
+  },
+  VTimelineItem: {
+    color: 'dot-color',
+    left: false,
+    right: false,
+    ...theme,
+    ...sizes,
+  },
+  VToolbar: {
+    bottom: false,
+    outlined: false,
+    prominent: false,
+    shaped: false,
+    short: false,
+    src: 'image',
+    tile: false,
+    width: false,
+    ...size,
+  },
+  VToolbarItems: {
+    tag: false,
+  },
+  VTooltip: {
+    allowOverflow: false,
+    bottom: { custom: 'location and origin' },
+    closeOnClick: { name: 'persistent', value: true },
+    left: { custom: 'location and origin' },
+    nudgeBottom: { custom: 'offset' },
+    nudgeLeft: { custom: 'offset' },
+    nudgeRight: { custom: 'offset' },
+    nudgeTop: { custom: 'offset' },
+    positionX: false,
+    positionY: false,
+    right: { custom: 'location and origin' },
+    top: { custom: 'location and origin' },
+    value: 'model-value',
+    ...overlay,
+  },
+  VWindow: {
+    activeClass: 'selected-class',
+    showArrowsOnHover: false,
+    touchless: false,
+    value: 'model-value',
+    valueComparator: false,
+    vertical: { name: 'direction', value: 'vertical' },
+  },
+  VWindowItem: {
+    activeClass: 'selected-class',
+  },
 }
-
-if (getInstalledVuetifyVersion() >= '2.3.0') {
-  mergeDeep(replacements, {
-    VBanner: {
-      mobileBreakPoint: 'mobileBreakpoint'
-    },
-    VDataIterator: {
-      mobileBreakPoint: 'mobileBreakpoint'
-    },
-    VNavigationDrawer: {
-      mobileBreakPoint: 'mobileBreakpoint'
-    },
-    VSlideGroup: {
-      mobileBreakPoint: 'mobileBreakpoint'
-    },
-    VTabs: {
-      mobileBreakPoint: 'mobileBreakpoint'
-    }
-  })
-}
-
-mergeDeep(replacements.VDataTable, replacements.VDataIterator)
 
 // ------------------------------------------------------------------------------
 // Rule Definition
@@ -117,14 +581,14 @@ module.exports = {
   meta: {
     docs: {
       description: 'Prevent the use of removed and deprecated props.',
-      category: 'recommended'
+      category: 'recommended',
     },
     fixable: 'code',
     schema: [],
     messages: {
       replacedWith: `'{{ a }}' has been replaced with '{{ b }}'`,
-      removed: `'{{ name }}' has been removed`
-    }
+      removed: `'{{ name }}' has been removed`,
+    },
   },
 
   create (context) {
@@ -152,33 +616,52 @@ module.exports = {
               context.report({
                 messageId: 'removed',
                 data: { name: propName },
-                node: propNameNode
+                node: propNameNode,
               })
             } else if (typeof replace === 'string') {
               context.report({
                 messageId: 'replacedWith',
                 data: {
                   a: propName,
-                  b: replace
+                  b: replace,
                 },
                 node: propNameNode,
                 fix (fixer) {
                   return fixer.replaceText(propNameNode, replace)
-                }
+                },
               })
-            } else if (typeof replace === 'object' && Object.hasOwnProperty.call(replace, 'custom')) {
+            } else if (typeof replace === 'object' && 'name' in replace && 'value' in replace) {
+              const value = typeof replace.value === 'function' ? replace.value(attr.value?.value) : replace.value
+              if (value == null) return
               context.report({
                 messageId: 'replacedWith',
                 data: {
                   a: propName,
-                  b: replace.custom
+                  b: `${replace.name}="${value}"`,
                 },
-                node: propNameNode
+                node: propNameNode,
+                fix (fixer) {
+                  if (attr.directive) {
+                    const expression = attr.value.expression.raw
+                    return [fixer.replaceText(propNameNode, replace.name), fixer.replaceText(attr.value, `"${expression} && '${value}'"`)]
+                  } else {
+                    return fixer.replaceText(attr, `${replace.name}="${value}"`)
+                  }
+                },
+              })
+            } else if (typeof replace === 'object' && 'custom' in replace) {
+              context.report({
+                messageId: 'replacedWith',
+                data: {
+                  a: propName,
+                  b: replace.custom,
+                },
+                node: propNameNode,
               })
             }
           }
         })
-      }
+      },
     })
-  }
+  },
 }

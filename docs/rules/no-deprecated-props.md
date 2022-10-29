@@ -4,22 +4,16 @@
 
 ## Rule Details
 
-Grid components are not included in this rule, use [`no-legacy-grid`](./no-legacy-grid.md) instead.
-
 Examples of **incorrect** code for this rule:
 
 ```html
-<v-btn outline round />
-<v-carousel hide-controls />
-<v-toolbar app manual-scroll />
+<v-btn outlined />
 ```
 
 Examples of **correct** code for this rule:
 
 ```html
-<v-btn outlined rounded />
-<v-carousel :show-arrows="false" />
-<v-app-bar app :value="false" />
+<v-btn variant="outlined" />
 ```
 
 ### Options

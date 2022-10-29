@@ -8,9 +8,6 @@ const tester = new RuleTester({
 
 tester.run('no-deprecated-props', rule, {
   valid: [
-    '<template><v-btn outlined /></template>',
-    '<template><v-btn :outlined="false" /></template>',
-    '<template><v-btn v-bind:outlined="false" /></template>',
     // https://github.com/vuetifyjs/eslint-plugin-vuetify/issues/35
     '<template><v-btn v-bind="" /></template>',
   ],
@@ -18,27 +15,22 @@ tester.run('no-deprecated-props', rule, {
   invalid: [
     {
       code: '<template><v-btn outline /></template>',
-      output: '<template><v-btn outlined /></template>',
+      output: '<template><v-btn variant="outlined" /></template>',
       errors: [{ messageId: 'replacedWith' }],
     },
     {
       code: '<template><v-btn :outline="false" /></template>',
-      output: '<template><v-btn :outlined="false" /></template>',
+      output: `<template><v-btn :variant="false && 'outlined'" /></template>`,
       errors: [{ messageId: 'replacedWith' }],
     },
     {
       code: '<template><v-btn v-bind:outline="false" /></template>',
-      output: '<template><v-btn v-bind:outlined="false" /></template>',
+      output: `<template><v-btn v-bind:variant="false && 'outlined'" /></template>`,
       errors: [{ messageId: 'replacedWith' }],
     },
     {
-      code: '<template><v-data-iterator content-class="foo" /></template>',
-      output: '<template><v-data-iterator content-class="foo" /></template>',
-      errors: [{ messageId: 'removed' }],
-    },
-    {
-      code: '<template><v-toolbar app /></template>',
-      output: '<template><v-toolbar app /></template>',
+      code: '<template><v-alert border="left" /></template>',
+      output: '<template><v-alert border="start" /></template>',
       errors: [{ messageId: 'replacedWith' }],
     },
   ],

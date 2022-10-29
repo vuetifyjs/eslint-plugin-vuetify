@@ -1,14 +1,13 @@
 'use strict'
 
 const { hyphenate, classify } = require('../util/helpers')
-const { getInstalledVuetifyVersion } = require('../util/get-installed-vuetify-version')
 
 const replacements = {
   VListTile: 'v-list-item',
   VListTileAction: 'v-list-item-action',
-  VListTileAvatar: 'v-list-item-avatar',
+  VListTileAvatar: false,
   VListTileActionText: 'v-list-item-action-text',
-  VListTileContent: 'v-list-item-content',
+  VListTileContent: false,
   VListTileTitle: 'v-list-item-title',
   VListTileSubTitle: 'v-list-item-subtitle',
   VJumbotron: false,
@@ -16,11 +15,29 @@ const replacements = {
 
   // Possible typos
   VListItemSubTitle: 'v-list-item-subtitle',
-  VListTileSubtitle: 'v-list-item-subtitle'
-}
+  VListTileSubtitle: 'v-list-item-subtitle',
 
-if (getInstalledVuetifyVersion() >= '2.3.0') {
-  replacements.VContent = 'v-main'
+  VContent: 'v-main',
+
+  VBannerActions: false,
+  VBannerText: false,
+  VBottomSheet: false,
+  VCalendar: false,
+  VData: false,
+  VDataIterator: false,
+  VDataTable: false,
+  VDatePicker: false,
+  VOtpInput: false,
+  VOverflowBtn: false,
+  VPicker: false,
+  VSimpleCheckbox: 'v-checkbox-btn',
+  VSkeletonLoader: false,
+  VSparkline: false,
+  VSpeedDial: false,
+  VStepper: false,
+  VTimePicker: false,
+  VTreeview: false,
+  VVirtualScroll: false,
 }
 
 // ------------------------------------------------------------------------------
@@ -31,14 +48,14 @@ module.exports = {
   meta: {
     docs: {
       description: 'Prevent the use of components that have been removed from Vuetify',
-      category: 'recommended'
+      category: 'recommended',
     },
     fixable: 'code',
     schema: [],
     messages: {
       replacedWith: `'{{ a }}' has been replaced with '{{ b }}'`,
-      removed: `'{{ name }}' has been removed`
-    }
+      removed: `'{{ name }}' has been removed`,
+    },
   },
   create (context) {
     return context.parserServices.defineTemplateBodyVisitor({
@@ -55,7 +72,7 @@ module.exports = {
               messageId: 'replacedWith',
               data: {
                 a: hyphenate(tag),
-                b: replacement
+                b: replacement,
               },
               fix (fixer) {
                 const open = tokens.getFirstToken(element.startTag)
@@ -66,19 +83,19 @@ module.exports = {
                 const endTagOpen = tokens.getFirstToken(endTag)
                 return [
                   fixer.replaceText(open, `<${replacement}`),
-                  fixer.replaceText(endTagOpen, `</${replacement}`)
+                  fixer.replaceText(endTagOpen, `</${replacement}`),
                 ]
-              }
+              },
             })
           } else {
             context.report({
               node: element,
               messageId: 'removed',
-              data: { name: hyphenate(tag) }
+              data: { name: hyphenate(tag) },
             })
           }
         }
-      }
+      },
     })
-  }
+  },
 }
