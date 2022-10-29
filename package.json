@@ -7,7 +7,7 @@
   "license": "MIT",
   "repository": "github:vuetifyjs/eslint-plugin-vuetify",
   "scripts": {
-    "build": "tsc --outdir lib",
+    "build": "rimraf lib && babel src --out-dir lib",
     "test": "mocha tests --recursive --reporter dot",
     "test:coverage": "nyc mocha tests --recursive --reporter dot",
     "test:ci": "nyc --reporter=lcov mocha tests --recursive --reporter dot",
@@ -23,6 +23,9 @@
     "requireindex": "^1.2.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.19.6",
+    "@babel/preset-env": "^7.19.4",
     "eslint": "^8.26.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
@@ -31,6 +34,7 @@
     "husky": "^8.0.1",
     "mocha": "^10.1.0",
     "nyc": "^15.1.0",
+    "rimraf": "^3.0.2",
     "vue": "^3.2.41",
     "vuetify": "^3.0.0-beta.15"
   },
