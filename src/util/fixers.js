@@ -26,5 +26,5 @@ function removeAttr (context, fixer, node) {
 
 module.exports = {
   addClass,
-  removeAttr
+  removeAttr,
 }

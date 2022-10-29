@@ -16,7 +16,7 @@ function classify (str) {
 const specialAttrs = [
   'style', 'class', 'id',
   'contenteditable', 'draggable', 'spellcheck',
-  'key', 'ref', 'slot', 'is', 'slot-scope'
+  'key', 'ref', 'slot', 'is', 'slot-scope',
 ]
 
 function isBuiltinAttribute (name) {
@@ -70,5 +70,5 @@ module.exports = {
   isBuiltinAttribute,
   getAttributes,
   isObject,
-  mergeDeep
+  mergeDeep,
 }
