@@ -70,9 +70,9 @@ const link = {
 }
 
 const overlay = {
-  hideOverlay: { name: 'scrim', value: false },
+  hideOverlay: { name: 'scrim', bind: true, value: false },
   internalActivator: false,
-  overlayColor: { name: 'scrim', value: value => value },
+  overlayColor: 'scrim',
   overlayOpacity: false,
   value: 'model-value',
   returnValue: false,
@@ -103,7 +103,7 @@ const replacements = {
     ...size,
   },
   VAlert: {
-    border: { name: 'border', value: value => ({ right: 'end', left: 'start' }[value]) },
+    border: { name: 'border', value: value => ({ right: 'end', left: 'start' }[value] || value) },
     outline: { name: 'variant', value: 'outlined' },
     coloredBorder: { custom: 'border-color' },
     dismissible: 'closable',
@@ -159,7 +159,7 @@ const replacements = {
   VBtn: {
     activeClass: 'selected-class',
     bottom: { name: 'location', value: 'bottom' },
-    depressed: { name: 'variant', value: 'depressed' },
+    depressed: { name: 'variant', value: 'flat' },
     fab: false,
     flat: { name: 'variant', value: 'flat' },
     inputValue: false,
@@ -238,7 +238,7 @@ const replacements = {
   },
   VChip: {
     active: false,
-    close: 'cloasable',
+    close: 'closable',
     inputValue: 'model-value',
     outline: { name: 'variant', value: 'outlined' },
     outlined: { name: 'variant', value: 'outlined' },
@@ -298,7 +298,11 @@ const replacements = {
     allowOverflow: false,
     auto: false,
     bottom: { custom: 'location and origin' },
-    closeOnClick: { name: 'persistent', value: true },
+    closeOnClick: {
+      name: 'persistent',
+      bind: true,
+      value: value => value ? `!(${value})` : false,
+    },
     left: { custom: 'location and origin' },
     nudgeBottom: { custom: 'offset' },
     nudgeLeft: { custom: 'offset' },
@@ -336,6 +340,7 @@ const replacements = {
     disabled: false,
     left: 'start',
     right: 'end',
+    ...sizes,
   },
   VImg: {
     contain: { custom: 'cover' },
@@ -389,11 +394,11 @@ const replacements = {
     clipped: false,
     fixed: false,
     height: false,
-    hideOverlay: { name: 'scrim', value: false },
+    hideOverlay: { name: 'scrim', bind: true, value: false },
     miniVariant: 'rail',
     miniVariantWidth: 'rail-width',
     mobileBreakPoint: false,
-    overlayColor: { name: 'scrim', value: value => value },
+    overlayColor: 'scrim',
     overlayOpacity: false,
     right: { name: 'location', value: 'right' },
     src: 'image',
@@ -401,7 +406,7 @@ const replacements = {
     value: 'model-value',
   },
   VOverlay: {
-    color: { name: 'scrim', value: value => value },
+    color: 'scrim',
     opacity: false,
     value: 'model-value',
   },
@@ -498,6 +503,7 @@ const replacements = {
   },
   VSwitch: {
     ...inputs,
+    value: undefined,
   },
   VSystemBar: {
     app: false,
@@ -608,7 +614,7 @@ module.exports = {
 
         const propNameNode = attr.directive
           ? attr.key.argument
-          : attr
+          : attr.key
 
         Object.entries(replacements[tag]).forEach(([test, replace]) => {
           if (hyphenate(test) === propName) {
@@ -631,7 +637,9 @@ module.exports = {
                 },
               })
             } else if (typeof replace === 'object' && 'name' in replace && 'value' in replace) {
-              const value = typeof replace.value === 'function' ? replace.value(attr.value?.value) : replace.value
+              const value = typeof replace.value === 'function'
+                ? replace.value(attr.directive ? context.getSourceCode().getText(attr.value.expression) : attr.value?.value)
+                : replace.value
               if (value == null) return
               context.report({
                 messageId: 'replacedWith',
@@ -642,10 +650,17 @@ module.exports = {
                 node: propNameNode,
                 fix (fixer) {
                   if (attr.directive) {
-                    const expression = attr.value.expression.raw
-                    return [fixer.replaceText(propNameNode, replace.name), fixer.replaceText(attr.value, `"${expression} && '${value}'"`)]
+                    if (replace.bind) {
+                      if (value === 'true' || value === '!(false)') {
+                        return fixer.replaceText(attr, replace.name)
+                      }
+                      return [fixer.replaceText(propNameNode, replace.name), fixer.replaceText(attr.value, `"${value}"`)]
+                    } else {
+                      const expression = context.getSourceCode().getText(attr.value.expression)
+                      return [fixer.replaceText(propNameNode, replace.name), fixer.replaceText(attr.value, `"${expression} && '${value}'"`)]
+                    }
                   } else {
-                    return fixer.replaceText(attr, `${replace.name}="${value}"`)
+                    return fixer.replaceText(attr, `${replace.bind ? ':' : ''}${replace.name}="${value}"`)
                   }
                 },
               })
