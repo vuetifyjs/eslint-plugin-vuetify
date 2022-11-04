@@ -74,5 +74,10 @@ tester.run('no-deprecated-props', rule, {
       output: `<template><v-window :direction="condition && 'vertical'" /></template>`,
       errors: [{ messageId: 'replacedWith' }],
     },
+    {
+      code: '<template><v-menu bottom left /></template>',
+      output: '<template><v-menu location="bottom" location="left" /></template>',
+      errors: [{ messageId: 'replacedWith' }, { messageId: 'replacedWith' }],
+    },
   ],
 })
