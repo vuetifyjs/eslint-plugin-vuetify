@@ -2,7 +2,7 @@
 
 /** @type {Map<RegExp, (args: string[]) => string> | Map<string, string>} */
 const replacements = new Map([
-  [/^rounded-(r|l|tr|tl|br|bl)(.*)$/, ([side, rest]) => {
+  [/^rounded-(r|l|tr|tl|br|bl)(-.*)?$/, ([side, rest]) => {
     side = {
       r: 'e',
       l: 's',
@@ -11,7 +11,7 @@ const replacements = new Map([
       br: 'be',
       bl: 'bs',
     }[side]
-    return `rounded-${side}${rest}`
+    return `rounded-${side}${rest || ''}`
   }],
   [/^border-([rl])(.*)$/, ([side, rest]) => {
     side = {

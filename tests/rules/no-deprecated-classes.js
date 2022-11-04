@@ -16,6 +16,8 @@ tester.run('no-deprecated-classes', rule, {
     '<template><div class="rounded-s" /></template>',
     '<template><div class="rounded-ts" /></template>',
     '<template><div class="rounded-ts-0" /></template>',
+    '<template><div class="rounded-lg" /></template>',
+    '<template><div class="rounded-0" /></template>',
     // https://github.com/vuetifyjs/eslint-plugin-vuetify/issues/2
     '<template><div class /></template>',
   ],
