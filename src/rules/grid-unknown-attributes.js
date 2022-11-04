@@ -4,7 +4,7 @@ const { hyphenate, classify, getAttributes } = require('../util/helpers')
 const { isGridAttribute } = require('../util/grid-attributes')
 const { addClass, removeAttr } = require('../util/fixers')
 
-const { components } = require('vuetify')
+const { components } = require('vuetify/dist/vuetify.js')
 
 const VGrid = {
   VContainer: components.VContainer,

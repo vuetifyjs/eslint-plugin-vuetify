@@ -16,7 +16,7 @@ specifiers:
   requireindex: ^1.2.0
   rimraf: ^3.0.2
   vue: ^3.2.41
-  vuetify: ^3.0.0-beta.15
+  vuetify: ^3.0.0
 
 dependencies:
   eslint-plugin-vue: 9.6.0_eslint@8.26.0
@@ -36,7 +36,7 @@ devDependencies:
   nyc: 15.1.0
   rimraf: 3.0.2
   vue: 3.2.41
-  vuetify: 3.0.0-beta.15_vue@3.2.41
+  vuetify: 3.0.0_vue@3.2.41
 
 packages:
 
@@ -3497,8 +3497,8 @@ packages:
       '@vue/shared': 3.2.41
     dev: true
 
-  /vuetify/3.0.0-beta.15_vue@3.2.41:
-    resolution: {integrity: sha512-Tw4StO4JJxwzN7RIAJ+nBVTaftlk3TqfqCtMLwJY/SO/ciVru+sHtahOpXIbp8B43d/DIRql3mfnrz1ooTSXtQ==}
+  /vuetify/3.0.0_vue@3.2.41:
+    resolution: {integrity: sha512-0olLmKWb+oTaebGTM02+1fWaAgnGDuIt86K3jDv2LnALQ2atSzhDS1SSASJsJCZ2PgFBdDAeJVLcNWWavRYAlQ==}
     engines: {node: ^12.20 || >=14.13}
     peerDependencies:
       vite-plugin-vuetify: ^1.0.0-alpha.12
