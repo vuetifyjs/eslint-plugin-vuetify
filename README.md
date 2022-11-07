@@ -42,6 +42,7 @@ These rules will help you avoid deprecated components, props, and classes. They 
 
 - Prevent the use of components that have been removed from Vuetify ([`no-deprecated-components`])
 - Prevent the use of props that have been removed from Vuetify ([`no-deprecated-props`])
+- Prevent the use of events that have been removed from Vuetify ([`no-deprecated-events`])
 - Prevent the use of classes that have been removed from Vuetify ([`no-deprecated-classes`])
 - Prevent the use of the old theme class syntax ([`no-deprecated-colors`])
 
@@ -55,6 +56,7 @@ These rules are designed to help migrate to the new grid system in Vuetify v2. T
 [`grid-unknown-attributes`]: ./docs/rules/grid-unknown-attributes.md
 [`no-deprecated-components`]: ./docs/rules/no-deprecated-components.md
 [`no-deprecated-props`]: ./docs/rules/no-deprecated-props.md
+[`no-deprecated-events`]: ./docs/rules/no-deprecated-events.md
 [`no-deprecated-classes`]: ./docs/rules/no-deprecated-classes.md
 [`no-deprecated-colors`]: ./docs/rules/no-deprecated-colors.md
 

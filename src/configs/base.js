@@ -12,6 +12,7 @@ module.exports = {
     'vuetify/no-deprecated-classes': 'error',
     'vuetify/no-deprecated-colors': 'error',
     'vuetify/no-deprecated-components': 'error',
+    'vuetify/no-deprecated-events': 'error',
     'vuetify/no-deprecated-props': 'error',
   },
 }
