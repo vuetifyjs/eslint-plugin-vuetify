@@ -141,10 +141,11 @@ const replacements = {
     app: false,
     fixed: false,
     hideOnScroll: false,
-    inputValue: 'model-value',
+    inputValue: false,
     scrollTarget: false,
     scrollThreshold: false,
     width: false,
+    value: 'model-value',
     ...size,
   },
   VBreadcrumbs: {
@@ -430,6 +431,7 @@ const replacements = {
     value: 'model-value',
   },
   VRadio: {
+    inputValue: 'model-value',
     activeClass: 'false',
     offIcon: 'false-icon',
     onIcon: 'true-icon',

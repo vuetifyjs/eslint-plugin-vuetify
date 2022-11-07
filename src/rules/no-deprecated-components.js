@@ -27,6 +27,7 @@ const replacements = {
   VDataIterator: false,
   VDataTable: false,
   VDatePicker: false,
+  VListItemGroup: false,
   VOtpInput: false,
   VOverflowBtn: false,
   VPicker: false,
