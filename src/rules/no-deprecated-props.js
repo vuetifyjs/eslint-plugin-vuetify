@@ -346,10 +346,8 @@ const replacements = {
   VImg: {
     contain: { custom: 'cover' },
     contentClass: false,
-    height: false,
     position: false,
     ...theme,
-    ...size,
   },
   VItemGroup: {
     activeClass: 'selected-class',
