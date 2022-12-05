@@ -505,6 +505,7 @@ const replacements = {
   },
   VSwitch: {
     ...inputs,
+    inputValue: 'model-value',
     value: undefined,
   },
   VSystemBar: {
