@@ -36,6 +36,7 @@ const replacements = {
   VSparkline: false,
   VSpeedDial: false,
   VStepper: false,
+  VSubheader: { custom: 'v-list-subheader or class="text-subheader-2"' },
   VTimePicker: false,
   VTreeview: false,
   VVirtualScroll: false,
