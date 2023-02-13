@@ -40,6 +40,7 @@ const replacements = {
   VSpeedDial: false,
   VStepper: false,
   VSubheader: { custom: 'v-list-subheader or class="text-subheader-2"' },
+  VSimpleTable: 'v-table',
   VTimePicker: false,
   VTreeview: false,
   VVirtualScroll: false,
