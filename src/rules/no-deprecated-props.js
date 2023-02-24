@@ -104,6 +104,7 @@ const replacements = {
   },
   VAlert: {
     border: { name: 'border', value: value => ({ right: 'end', left: 'start' }[value] || value) },
+    dense: { name: 'density', value: 'compact' },
     outline: { name: 'variant', value: 'outlined' },
     coloredBorder: { custom: 'border-color' },
     dismissible: 'closable',
@@ -184,7 +185,7 @@ const replacements = {
     activeClass: 'selected-class',
     backgroundColor: false,
     borderless: false,
-    dense: { custom: 'density' },
+    dense: { name: 'density', value: 'compact' },
     shaped: false,
     tile: { name: 'rounded', value: 0 },
     value: 'model-value',
@@ -225,6 +226,7 @@ const replacements = {
   },
   VCheckbox: {
     backgroundColor: false,
+    dense: false,
     errorCount: 'max-errors',
     hideSpinButtons: false,
     hint: false,
@@ -361,6 +363,7 @@ const replacements = {
     value: 'model-value',
   },
   VList: {
+    dense: { name: 'density', value: 'compact' },
     expand: false,
     flat: false,
     outlined: false,
@@ -380,6 +383,7 @@ const replacements = {
   },
   VListItem: {
     append: false,
+    dense: { name: 'density', value: 'compact' },
     ripple: false,
     selectable: { custom: 'value' },
     threeLine: { name: 'lines', value: 'three' },
@@ -467,6 +471,7 @@ const replacements = {
   VRating: {
     backgroundColor: false,
     closeDelay: false,
+    dense: { name: 'density', value: 'compact' },
     halfIcon: false,
     iconLabel: 'item-aria-label',
     large: false,
@@ -527,6 +532,7 @@ const replacements = {
   },
   VTimeline: {
     alignTop: { name: 'align', value: 'top' },
+    dense: { name: 'density', value: 'compact' },
     reverse: false,
   },
   VTimelineItem: {
