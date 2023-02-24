@@ -419,7 +419,6 @@ const replacements = {
     value: 'model-value',
   },
   VProgressLinear: {
-    absolute: false,
     backgroundColor: 'bg-color',
     backgroundOpacity: 'bg-opacity',
     bottom: false,
