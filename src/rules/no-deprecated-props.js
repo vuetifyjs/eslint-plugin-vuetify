@@ -637,10 +637,11 @@ module.exports = {
                 },
               })
             } else if (typeof replace === 'object' && 'name' in replace && 'value' in replace) {
+              const oldValue = attr.directive ? context.getSourceCode().getText(attr.value.expression) : attr.value?.value
               const value = typeof replace.value === 'function'
-                ? replace.value(attr.directive ? context.getSourceCode().getText(attr.value.expression) : attr.value?.value)
+                ? replace.value(oldValue)
                 : replace.value
-              if (value == null) return
+              if (value == null || value === oldValue) return
               context.report({
                 messageId: 'replacedWith',
                 data: {

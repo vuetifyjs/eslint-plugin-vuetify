@@ -11,6 +11,8 @@ tester.run('no-deprecated-props', rule, {
     // https://github.com/vuetifyjs/eslint-plugin-vuetify/issues/35
     '<template><v-btn v-bind="" /></template>',
     '<template><v-switch value="foo" /></template>',
+    '<template><v-alert border="start" /></template>',
+    '<template><v-alert :border="expr" /></template>',
   ],
 
   invalid: [
