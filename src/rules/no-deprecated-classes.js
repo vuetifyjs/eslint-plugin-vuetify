@@ -1,6 +1,6 @@
 'use strict'
 
-/** @type {Map<RegExp, (args: string[]) => string> | Map<string, string>} */
+/** @type {Map<RegExp, ((args: string[]) => string | false) | false> | Map<string, string | false>} */
 const replacements = new Map([
   [/^rounded-(r|l|tr|tl|br|bl)(-.*)?$/, ([side, rest]) => {
     side = {
@@ -41,6 +41,7 @@ const replacements = new Map([
   ['caption', 'text-caption'],
   ['caption', 'text-caption'],
   ['overline', 'text-overline'],
+  [/^transition-(fast-out-slow-in|linear-out-slow-in|fast-out-linear-in|ease-in-out|fast-in-fast-out|swing)$/, false],
 ])
 
 // ------------------------------------------------------------------------------
@@ -77,8 +78,12 @@ module.exports = {
             if (replacer[0] instanceof RegExp) {
               const matches = (replacer[0].exec(className) || []).slice(1)
               const replace = replacer[1]
-              if (matches.length && typeof replace === 'function') {
-                return changed.push([className, replace(matches)])
+              if (matches.length) {
+                if (typeof replace === 'function') {
+                  return changed.push([className, replace(matches)])
+                } else {
+                  return changed.push([className, replace])
+                }
               }
             }
           }
@@ -94,17 +99,27 @@ module.exports = {
             start: source.getLocFromIndex(range[0]),
             end: source.getLocFromIndex(range[1]),
           }
-          context.report({
-            loc,
-            messageId: 'replacedWith',
-            data: {
-              a: change[0],
-              b: change[1],
-            },
-            fix (fixer) {
-              return fixer.replaceTextRange(range, change[1])
-            },
-          })
+          if (change[1]) {
+            context.report({
+              loc,
+              messageId: 'replacedWith',
+              data: {
+                a: change[0],
+                b: change[1],
+              },
+              fix (fixer) {
+                return fixer.replaceTextRange(range, change[1])
+              },
+            })
+          } else {
+            context.report({
+              loc,
+              messageId: 'removed',
+              data: {
+                name: change[0],
+              },
+            })
+          }
         })
       },
     })

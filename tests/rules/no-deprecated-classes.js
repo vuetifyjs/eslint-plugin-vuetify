@@ -57,5 +57,10 @@ tester.run('no-deprecated-classes', rule, {
       output: '<template><div class="rounded-ts-0" /></template>',
       errors: [{ messageId: 'replacedWith' }],
     },
+    {
+      code: '<template><div class="transition-fast-out-slow-in" /></template>',
+      output: '<template><div class="transition-fast-out-slow-in" /></template>',
+      errors: [{ messageId: 'removed' }],
+    },
   ],
 })
