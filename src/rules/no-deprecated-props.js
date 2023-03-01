@@ -495,7 +495,7 @@ const replacements = {
     app: false,
     bottom: { name: 'location', value: 'bottom' },
     centered: { custom: 'location' },
-    elevation: false,
+    elevation: { name: 'content-class', value: value => `elevation-${value}` },
     left: { name: 'location', value: 'left' },
     outlined: { name: 'variant', value: 'outlined' },
     right: { name: 'location', value: 'right' },

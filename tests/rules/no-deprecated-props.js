@@ -81,5 +81,10 @@ tester.run('no-deprecated-props', rule, {
       output: '<template><v-menu location="bottom" location="left" /></template>',
       errors: [{ messageId: 'replacedWith' }, { messageId: 'replacedWith' }],
     },
+    {
+      code: '<template><v-snackbar elevation="4" /></template>',
+      output: '<template><v-snackbar content-class="elevation-4" /></template>',
+      errors: [{ messageId: 'replacedWith' }],
+    },
   ],
 })
