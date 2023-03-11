@@ -2,7 +2,7 @@
   "name": "eslint-plugin-vuetify",
   "version": "2.0.0-beta.2",
   "description": "An eslint plugin for Vuetify",
-  "main": "lib/index.js",
+  "main": "src/index.js",
   "author": "Kael Watts-Deuchar <kaelwd@gmail.com>",
   "license": "MIT",
   "repository": "github:vuetifyjs/eslint-plugin-vuetify",
