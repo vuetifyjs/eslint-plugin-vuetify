@@ -498,7 +498,17 @@ const replacements = {
     app: false,
     bottom: { name: 'location', value: 'bottom' },
     centered: { custom: 'location' },
-    elevation: { name: 'content-class', value: value => `elevation-${value}` },
+    elevation (attr) {
+      if (attr.directive
+        ? attr.value.type === 'VExpressionContainer' && attr.value.expression.type === 'Literal'
+        : attr.value.type === 'VLiteral'
+      ) {
+        return { name: 'class', value: value => `elevation-${value}`, bind: false }
+      } else if (attr.directive && attr.value.type === 'VExpressionContainer') {
+        return { name: 'class', value: value => `\`elevation-$\{${value}}\``, bind: true }
+      }
+      return { name: 'class', custom: 'elevation-<value>' }
+    },
     left: { name: 'location', value: 'left' },
     outlined: { name: 'variant', value: 'outlined' },
     right: { name: 'location', value: 'right' },
@@ -627,6 +637,10 @@ module.exports = {
 
         Object.entries(replacements[tag]).forEach(([test, replace]) => {
           if (hyphenate(test) === propName) {
+            if (typeof replace === 'function') {
+              replace = replace(attr)
+            }
+
             if (replace === false) {
               context.report({
                 messageId: 'removed',
@@ -659,7 +673,7 @@ module.exports = {
                 },
                 node: propNameNode,
                 fix (fixer) {
-                  if (attr.directive) {
+                  if (attr.directive && replace.bind !== false) {
                     if (replace.bind) {
                       if (value === 'true' || value === '!(false)') {
                         return fixer.replaceText(attr, replace.name)

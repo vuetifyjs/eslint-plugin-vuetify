@@ -83,7 +83,32 @@ tester.run('no-deprecated-props', rule, {
     },
     {
       code: '<template><v-snackbar elevation="4" /></template>',
-      output: '<template><v-snackbar content-class="elevation-4" /></template>',
+      output: '<template><v-snackbar class="elevation-4" /></template>',
+      errors: [{ messageId: 'replacedWith' }],
+    },
+    {
+      code: '<template><v-snackbar :elevation="4" /></template>',
+      output: '<template><v-snackbar class="elevation-4" /></template>',
+      errors: [{ messageId: 'replacedWith' }],
+    },
+    {
+      code: '<template><v-snackbar :elevation="variable" /></template>',
+      output: '<template><v-snackbar :class="`elevation-${variable}`" /></template>',
+      errors: [{ messageId: 'replacedWith' }],
+    },
+    {
+      code: '<template><v-snackbar elevation="4" class="foo" /></template>',
+      output: '<template><v-snackbar class="elevation-4" class="foo" /></template>',
+      errors: [{ messageId: 'replacedWith' }],
+    },
+    {
+      code: '<template><v-snackbar :elevation="4" class="foo" /></template>',
+      output: '<template><v-snackbar class="elevation-4" class="foo" /></template>',
+      errors: [{ messageId: 'replacedWith' }],
+    },
+    {
+      code: '<template><v-snackbar :elevation="variable" class="foo" /></template>',
+      output: '<template><v-snackbar :class="`elevation-${variable}`" class="foo" /></template>',
       errors: [{ messageId: 'replacedWith' }],
     },
   ],

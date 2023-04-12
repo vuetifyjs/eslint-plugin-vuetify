@@ -20,5 +20,6 @@ module.exports = {
       exports: 'always-multiline',
       functions: 'only-multiline',
     }],
+    'no-template-curly-in-string': 'off',
   },
 }
