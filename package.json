@@ -17,6 +17,7 @@
   "files": [
     "lib"
   ],
+  "packageManager": "pnpm@7",
   "homepage": "https://github.com/vuetifyjs/eslint-plugin-vuetify#readme",
   "dependencies": {
     "eslint-plugin-vue": "^9.6.0",
@@ -26,6 +27,9 @@
     "@babel/cli": "^7.19.3",
     "@babel/core": "^7.19.6",
     "@babel/preset-env": "^7.19.4",
+    "conventional-changelog-cli": "^2.2.2",
+    "conventional-changelog-vuetify": "^1.1.0",
+    "conventional-github-releaser": "^3.1.5",
     "eslint": "^8.26.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
