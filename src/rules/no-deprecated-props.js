@@ -522,7 +522,10 @@ const replacements = {
     activeClass: false,
     alignWithTitle: { name: 'align-tabs', value: 'title' },
     backgroundColor: 'bg-color',
+    centered: { name: 'align-tabs', value: 'center' },
+    right: { name: 'align-tabs', value: 'end' },
     value: 'model-value',
+    vertical: { name: 'direction', value: 'vertical' },
     ...theme,
   },
   VTab: {
