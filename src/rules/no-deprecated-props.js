@@ -264,6 +264,9 @@ const replacements = {
     value: 'model-value',
   },
   VExpansionPanels: {
+    accordion: { name: 'variant', value: 'accordion' },
+    inset: { name: 'variant', value: 'inset' },
+    popout: { name: 'variant', value: 'popout' },
     activeClass: 'selected-class',
     flat: false,
     focusable: false,
