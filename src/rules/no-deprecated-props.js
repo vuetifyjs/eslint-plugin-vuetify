@@ -523,6 +523,7 @@ const replacements = {
     alignWithTitle: { name: 'align-tabs', value: 'title' },
     backgroundColor: 'bg-color',
     centered: { name: 'align-tabs', value: 'center' },
+    iconsAndText: ',
     right: { name: 'align-tabs', value: 'end' },
     value: 'model-value',
     vertical: { name: 'direction', value: 'vertical' },
