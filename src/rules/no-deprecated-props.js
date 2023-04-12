@@ -21,6 +21,7 @@ const inputs = {
   appendOuterIcon: 'append-icon',
   backgroundColor: 'bg-color',
   box: { name: 'variant', value: 'filled' },
+  dense: { name: 'density', value: 'compact' },
   errorCount: 'max-errors',
   filled: { name: 'variant', value: 'filled' },
   flat: false,
@@ -55,6 +56,7 @@ const select = {
   valueComparator: false,
   filter: 'customFilter',
   ...inputs,
+  dense: false,
 }
 
 const theme = {
