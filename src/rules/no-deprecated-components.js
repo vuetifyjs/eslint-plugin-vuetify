@@ -19,13 +19,8 @@ const replacements = {
 
   VContent: 'v-main',
 
-  VBannerActions: false,
-  VBannerText: false,
-  VBottomSheet: false,
   VCalendar: false,
   VData: false,
-  VDataIterator: false,
-  VDataTable: false,
   VDatePicker: false,
   VListItemGroup: false,
   VListItemAvatar: false,
@@ -35,7 +30,6 @@ const replacements = {
   VOverflowBtn: false,
   VPicker: false,
   VSimpleCheckbox: 'v-checkbox-btn',
-  VSkeletonLoader: false,
   VSparkline: false,
   VSpeedDial: false,
   VStepper: false,
@@ -43,7 +37,6 @@ const replacements = {
   VSimpleTable: 'v-table',
   VTimePicker: false,
   VTreeview: false,
-  VVirtualScroll: false,
 }
 
 // ------------------------------------------------------------------------------
