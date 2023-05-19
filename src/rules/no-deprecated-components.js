@@ -53,6 +53,7 @@ module.exports = {
     schema: [],
     messages: {
       replacedWith: `'{{ a }}' has been replaced with '{{ b }}'`,
+      replacedWithCustom: `'{{ a }}' has been replaced with {{ b }}`,
       removed: `'{{ name }}' has been removed`,
     },
   },
@@ -65,7 +66,16 @@ module.exports = {
 
         if (Object.prototype.hasOwnProperty.call(replacements, tag)) {
           const replacement = replacements[tag]
-          if (replacement) {
+          if (typeof replacement === 'object' && 'custom' in replacement) {
+            context.report({
+              node: element,
+              messageId: 'replacedWithCustom',
+              data: {
+                a: hyphenate(tag),
+                b: replacement.custom,
+              },
+            })
+          } else if (typeof replacement === 'string') {
             context.report({
               node: element,
               messageId: 'replacedWith',
@@ -86,7 +96,7 @@ module.exports = {
                 ]
               },
             })
-          } else {
+          } else if (!replacement) {
             context.report({
               node: element,
               messageId: 'removed',

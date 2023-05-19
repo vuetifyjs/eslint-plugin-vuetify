@@ -20,5 +20,10 @@ tester.run('no-deprecated-components', rule, {
       code: '<template><v-jumbotron /></template>',
       errors: [{ messageId: 'removed' }],
     },
+    {
+      code: '<template><v-subheader /></template>',
+      output: '<template><v-subheader /></template>',
+      errors: [{ messageId: 'replacedWithCustom' }],
+    },
   ],
 })
