@@ -389,7 +389,6 @@ const replacements = {
   VListItem: {
     append: false,
     dense: { name: 'density', value: 'compact' },
-    ripple: false,
     selectable: { custom: 'value' },
     threeLine: { name: 'lines', value: 'three' },
     twoLine: { name: 'lines', value: 'two' },
