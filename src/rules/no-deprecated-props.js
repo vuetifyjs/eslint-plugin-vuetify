@@ -24,7 +24,6 @@ const inputs = {
   dense: { name: 'density', value: 'compact' },
   errorCount: 'max-errors',
   filled: { name: 'variant', value: 'filled' },
-  flat: false,
   fullWidth: false,
   height: false,
   hideSpinButtons: false,
