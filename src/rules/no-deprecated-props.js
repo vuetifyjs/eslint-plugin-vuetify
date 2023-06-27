@@ -227,7 +227,7 @@ const replacements = {
   },
   VCheckbox: {
     backgroundColor: false,
-    dense: { name: 'density', value: 'compact' },
+    dense: false,
     errorCount: 'max-errors',
     hideSpinButtons: false,
     inputValue: 'model-value',
