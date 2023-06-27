@@ -21,7 +21,6 @@ const replacements = {
 
   VCalendar: false,
   VData: false,
-  VDatePicker: false,
   VListItemGroup: false,
   VListItemAvatar: false,
   VListItemContent: false,
