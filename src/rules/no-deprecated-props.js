@@ -33,7 +33,7 @@ const inputs = {
   rounded: false,
   shaped: false,
   solo: { name: 'variant', value: 'solo' },
-  soloInverted: false,
+  soloInverted: { name: 'variant', value: 'solo-inverted' },
   success: false,
   successMessages: false,
   validateOnBlur: { name: 'validate-on', value: 'blur' },
