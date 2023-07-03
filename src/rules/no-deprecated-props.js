@@ -290,6 +290,7 @@ const replacements = {
   },
   VAutocomplete: {
     ...select,
+    autoSelectFirst: undefined,
   },
   VCombobox: {
     ...select,
