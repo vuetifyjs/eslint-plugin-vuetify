@@ -100,6 +100,13 @@ module.exports = {
               node: element,
               messageId: 'removed',
               data: { name: hyphenate(tag) },
+              fix (fixer) {
+                if (tag === 'VListItemContent' && !element.startTag.attributes.length) {
+                  return element.children.length
+                    ? [fixer.remove(element.startTag), fixer.remove(element.endTag)]
+                    : fixer.remove(element)
+                }
+              },
             })
           }
         }
