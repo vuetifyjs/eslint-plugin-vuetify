@@ -342,7 +342,7 @@ const replacements = {
     value: 'model-value',
   },
   VIcon: {
-    dense: false,
+    dense: { name: 'size', value: 'small' },
     disabled: false,
     left: 'start',
     right: 'end',
