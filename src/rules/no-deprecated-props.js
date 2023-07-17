@@ -409,6 +409,7 @@ const replacements = {
     src: 'image',
     stateless: false,
     value: 'model-value',
+    ...theme,
   },
   VOverlay: {
     color: 'scrim',
@@ -516,6 +517,7 @@ const replacements = {
     tile: false,
     top: { name: 'location', value: 'top' },
     value: 'model-value',
+    ...theme,
   },
   VSwitch: {
     ...inputs,
