@@ -43,7 +43,6 @@ const inputs = {
 const select = {
   allowOverflow: false,
   attach: { custom: ':menu-props="{ attach: true }"' },
-  autoSelectFirst: false,
   cacheItems: false,
   deletableChips: 'closable-chips',
   disableLookup: false,
