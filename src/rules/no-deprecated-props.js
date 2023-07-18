@@ -43,7 +43,6 @@ const inputs = {
 const select = {
   allowOverflow: false,
   attach: { custom: ':menu-props="{ attach: true }"' },
-  autoSelectFirst: false,
   cacheItems: false,
   deletableChips: 'closable-chips',
   disableLookup: false,
@@ -343,7 +342,7 @@ const replacements = {
     value: 'model-value',
   },
   VIcon: {
-    dense: false,
+    dense: { name: 'size', value: 'small' },
     disabled: false,
     left: 'start',
     right: 'end',
@@ -410,6 +409,7 @@ const replacements = {
     src: 'image',
     stateless: false,
     value: 'model-value',
+    ...theme,
   },
   VOverlay: {
     color: 'scrim',
@@ -517,6 +517,7 @@ const replacements = {
     tile: false,
     top: { name: 'location', value: 'top' },
     value: 'model-value',
+    ...theme,
   },
   VSwitch: {
     ...inputs,
