@@ -17,6 +17,11 @@ const sizes = {
   xSmall: { name: 'size', value: 'x-small' },
 }
 
+const theme = {
+  dark: false,
+  light: false,
+}
+
 const inputs = {
   appendOuterIcon: 'append-icon',
   backgroundColor: 'bg-color',
@@ -38,6 +43,7 @@ const inputs = {
   successMessages: false,
   validateOnBlur: { name: 'validate-on', value: 'blur' },
   value: 'model-value',
+  ...theme,
 }
 
 const select = {
@@ -55,11 +61,6 @@ const select = {
   filter: 'customFilter',
   ...inputs,
   dense: false,
-}
-
-const theme = {
-  dark: false,
-  light: false,
 }
 
 const link = {
@@ -458,7 +459,6 @@ const replacements = {
     loading: false,
     inverseLabel: false,
     ...inputs,
-    ...theme,
   },
   VRangeSlider: {
     backgroundColor: false,
@@ -469,7 +469,6 @@ const replacements = {
     loading: false,
     inverseLabel: false,
     ...inputs,
-    ...theme,
   },
   VRating: {
     backgroundColor: false,
