@@ -35,7 +35,6 @@ const inputs = {
   loaderHeight: false,
   outline: { name: 'variant', value: 'outlined' },
   outlined: { name: 'variant', value: 'outlined' },
-  rounded: false,
   shaped: false,
   solo: { name: 'variant', value: 'solo' },
   soloInverted: { name: 'variant', value: 'solo-inverted' },
