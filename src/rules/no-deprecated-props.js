@@ -129,6 +129,10 @@ const replacements = {
     mode: false,
     origin: false,
     overlap: false,
+    bottom: { name: 'location', value: 'bottom' },
+    left: { name: 'location', value: 'left' },
+    right: { name: 'location', value: 'right' },
+    top: { name: 'location', value: 'top' },
   },
   VBanner: {
     app: false,
