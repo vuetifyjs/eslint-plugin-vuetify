@@ -251,6 +251,7 @@ const replacements = {
     selected: 'value',
     textColor: false,
     ...link,
+    ...sizes,
   },
   VChipGroup: {
     activeClass: 'selected-class',
