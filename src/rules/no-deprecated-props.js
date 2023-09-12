@@ -252,6 +252,7 @@ const replacements = {
     textColor: false,
     ...link,
     ...sizes,
+    ...theme,
   },
   VChipGroup: {
     activeClass: 'selected-class',
