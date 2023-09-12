@@ -12,6 +12,8 @@ const replacements = {
   VListTileSubTitle: 'v-list-item-subtitle',
   VJumbotron: false,
   VToolbarSideIcon: 'v-app-bar-nav-icon',
+  VExpansionPanelHeader: 'v-expansion-panel-title',
+  VExpansionPanelContent: 'v-expansion-panel-text',
 
   // Possible typos
   VListItemSubTitle: 'v-list-item-subtitle',
