@@ -14,5 +14,6 @@ module.exports = {
     'vuetify/no-deprecated-components': 'error',
     'vuetify/no-deprecated-events': 'error',
     'vuetify/no-deprecated-props': 'error',
+    'vuetify/no-deprecated-slots': 'error',
   },
 }
