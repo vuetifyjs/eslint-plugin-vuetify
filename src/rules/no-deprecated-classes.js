@@ -21,6 +21,7 @@ const replacements = new Map([
     return `border-${side}${rest}`
   }],
   [/^text-xs-(left|right|center|justify)$/, ([align]) => `text-${align}`],
+  [/hidden-(xs|sm|md|lg|xl)-only/, ([breakpoint]) => `hidden-${breakpoint}`],
   ['scroll-y', 'overflow-y-auto'],
   ['hide-overflow', 'overflow-hidden'],
   ['show-overflow', 'overflow-visible'],
