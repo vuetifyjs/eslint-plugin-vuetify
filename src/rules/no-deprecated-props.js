@@ -59,7 +59,6 @@ const select = {
   valueComparator: false,
   filter: 'customFilter',
   ...inputs,
-  dense: false,
 }
 
 const link = {
