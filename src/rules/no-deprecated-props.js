@@ -634,7 +634,8 @@ module.exports = {
         const attrGroups = {}
         tag.attributes.forEach(attr => {
           if (['location'].includes(attr.key.name)) {
-            (attrGroups[attr.key.name] ??= []).push(attr)
+            attrGroups[attr.key.name] = attrGroups[attr.key.name] ?? []
+            attrGroups[attr.key.name].push(attr)
           }
         })
         Object.values(attrGroups).forEach(attrGroup => {
@@ -648,8 +649,8 @@ module.exports = {
             node: head,
             fix (fixer) {
               return [
-                fixer.replaceText(head.value, `"${attrGroup.map(a => a.value.value).join(" ")}"`),
-                ...tail.map(a => fixer.remove(a))
+                fixer.replaceText(head.value, `"${attrGroup.map(a => a.value.value).join(' ')}"`),
+                ...tail.map(a => fixer.remove(a)),
               ]
             },
           })
