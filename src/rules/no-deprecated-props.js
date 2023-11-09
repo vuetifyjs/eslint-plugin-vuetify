@@ -268,6 +268,13 @@ const replacements = {
     hideModeSwitch: false,
     value: 'model-value',
   },
+  VDataTable: {
+    serverItemsLength: { custom: '<v-data-table-server>' },
+    itemClass: { custom: 'row-props' },
+    itemStyle: { custom: 'row-props' },
+    sortDesc: { custom: 'sort-by' },
+    groupDesc: { custom: 'group-by' },
+  },
   VDatePicker: {
     activePicker: 'view-mode',
     pickerDate: { custom: 'separate month and year props' },
