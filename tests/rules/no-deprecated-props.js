@@ -111,5 +111,10 @@ tester.run('no-deprecated-props', rule, {
       output: '<template><v-snackbar :class="`elevation-${variable}`" class="foo" /></template>',
       errors: [{ messageId: 'replacedWith' }],
     },
+    {
+      code: '<template><v-menu location="bottom" location="left" /></template>',
+      output: '<template><v-menu location="bottom left"  /></template>',
+      errors: [{ messageId: 'combined' }],
+    },
   ],
 })

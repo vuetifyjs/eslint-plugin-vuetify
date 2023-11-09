@@ -623,11 +623,37 @@ module.exports = {
     messages: {
       replacedWith: `'{{ a }}' has been replaced with '{{ b }}'`,
       removed: `'{{ name }}' has been removed`,
+      combined: `multiple {{ a }} attributes have been combined`,
     },
   },
 
   create (context) {
     return context.parserServices.defineTemplateBodyVisitor({
+      VStartTag (tag) {
+        const attrGroups = {}
+        tag.attributes.forEach(attr => {
+          if (['location'].includes(attr.key.name)) {
+            (attrGroups[attr.key.name] ??= []).push(attr)
+          }
+        })
+        Object.values(attrGroups).forEach(attrGroup => {
+          const [head, ...tail] = attrGroup
+          if (!tail.length) return
+          context.report({
+            messageId: 'combined',
+            data: {
+              a: head.key.name,
+            },
+            node: head,
+            fix (fixer) {
+              return [
+                fixer.replaceText(head.value, `"${attrGroup.map(a => a.value.value).join(" ")}"`),
+                ...tail.map(a => fixer.remove(a))
+              ]
+            },
+          })
+        })
+      },
       VAttribute (attr) {
         if (
           attr.directive &&
