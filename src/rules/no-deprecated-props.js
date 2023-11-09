@@ -451,6 +451,7 @@ const replacements = {
   VRadioGroup: {
     activeClass: false,
     backgroundColor: false,
+    row: 'inline',
     column: false,
     multiple: false,
     ...inputs,
