@@ -93,7 +93,6 @@ const replacements = {
     prominent: false,
     scrollOffScreen: false,
     scrollTarget: false,
-    scrollThreshold: false,
     shaped: false,
     short: false,
     shrinkOnScroll: false,
