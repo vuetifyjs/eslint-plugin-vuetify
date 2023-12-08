@@ -1,5 +1,7 @@
 # eslint-plugin-vuetify
 
+This package is for migrating from Vuetify v2 to v3, use [eslint-plugin-vuetify@vuetify-2](https://www.npmjs.com/package/eslint-plugin-vuetify/v/vuetify-2) for v1 to v2.
+
 <br>
 
 <p align="center">Support the maintainer of this plugin:</p>
