@@ -117,16 +117,12 @@ const replacements = {
     ...model,
     change: false,
     'update:error': false,
-    start: false,
-    end: false,
   },
   VRating: model,
   VSlider: {
     ...model,
     change: false,
     'update:error': false,
-    start: false,
-    end: false,
   },
   VSlideGroup: {
     change: 'update:modelValue',
