@@ -26,16 +26,6 @@ tester.run('no-deprecated-components', rule, {
       errors: [{ messageId: 'replacedWithCustom' }],
     },
     {
-      code: '<template><v-list-item-avatar /></template>',
-      output: '<template><v-list-item-avatar /></template>',
-      errors: [{ messageId: 'replacedWithCustom' }],
-    },
-    {
-      code: '<template><v-list-item-icon /></template>',
-      output: '<template><v-list-item-icon /></template>',
-      errors: [{ messageId: 'replacedWithCustom' }],
-    },
-    {
       code: '<template><v-list-item><v-list-item-content><v-list-item-title /></v-list-item-content></v-list-item></template>',
       output: '<template><v-list-item><v-list-item-title /></v-list-item></template>',
       errors: [{ messageId: 'removed' }],
