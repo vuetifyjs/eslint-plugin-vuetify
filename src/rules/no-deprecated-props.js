@@ -56,7 +56,6 @@ const select = {
   itemText: 'item-title',
   searchInput: 'search',
   smallChips: false,
-  valueComparator: false,
   filter: 'customFilter',
   ...inputs,
   dense: false,
