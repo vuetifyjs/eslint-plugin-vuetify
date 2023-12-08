@@ -99,16 +99,16 @@ const groups = [
                   if (isLast) {
                     const comma = template.getTokenBefore(ref.prop, { filter: token => token.value === ',' })
                     if (comma) {
-                      yield fixer.removeRange([comma.start, ref.prop.end])
+                      yield fixer.removeRange([comma.range[0], ref.prop.range[1]])
                     } else {
-                      yield fixer.removeRange([ref.prop.start - 1, ref.prop.end])
+                      yield fixer.removeRange([ref.prop.range[0] - 1, ref.prop.range[1]])
                     }
                   } else {
                     const comma = template.getTokenAfter(ref.prop, { filter: token => token.value === ',' })
                     if (comma) {
-                      yield fixer.removeRange([ref.prop.start - 1, comma.end])
+                      yield fixer.removeRange([ref.prop.range[0] - 1, comma.range[1]])
                     } else {
-                      yield fixer.removeRange([ref.prop.start - 1, ref.prop.end])
+                      yield fixer.removeRange([ref.prop.range[0] - 1, ref.prop.range[1]])
                     }
                   }
                   yield fixer.removeRange([ref.id.parent.parent.range[0] - 1, ref.id.parent.parent.range[1]])
