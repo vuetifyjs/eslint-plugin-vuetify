@@ -437,7 +437,6 @@ const replacements = {
   },
   VOverlay: {
     color: 'scrim',
-    opacity: false,
     value: 'model-value',
   },
   VPagination: {
