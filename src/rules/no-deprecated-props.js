@@ -337,7 +337,7 @@ const replacements = {
     positionY: false,
     right: { name: 'location', value: 'right' },
     rounded: false,
-    tile: false,
+    tile: { custom: 'apply border-radius changes to the root element of the `v-menu`\'s content' },
     top: { name: 'location', value: 'top' },
     value: 'model-value',
     ...overlay,
