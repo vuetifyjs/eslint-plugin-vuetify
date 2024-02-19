@@ -391,7 +391,7 @@ const replacements = {
     dense: { name: 'density', value: 'compact' },
     expand: false,
     flat: false,
-    outlined: false,
+    outlined: 'border',
     subheader: false,
     threeLine: { name: 'lines', value: 'three' },
     twoLine: { name: 'lines', value: 'two' },
