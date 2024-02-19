@@ -132,7 +132,7 @@ const replacements = {
     app: false,
     iconColor: false,
     mobileBreakPoint: false,
-    outlined: false,
+    outlined: 'border',
     shaped: false,
     value: false,
   },
@@ -345,7 +345,7 @@ const replacements = {
   },
   VFooter: {
     fixed: false,
-    outlined: false,
+    outlined: 'border',
     padless: false,
     shaped: false,
     width: false,
@@ -497,7 +497,7 @@ const replacements = {
     ...sizes,
   },
   VSheet: {
-    outlined: false,
+    outlined: 'border',
     shaped: false,
   },
   VSlideGroup: {
@@ -574,7 +574,7 @@ const replacements = {
   },
   VToolbar: {
     bottom: false,
-    outlined: false,
+    outlined: 'border',
     prominent: false,
     shaped: false,
     short: false,
