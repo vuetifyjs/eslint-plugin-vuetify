@@ -58,7 +58,6 @@ const select = {
   smallChips: false,
   filter: 'customFilter',
   ...inputs,
-  dense: false,
 }
 
 const link = {
