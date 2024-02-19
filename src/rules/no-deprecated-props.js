@@ -369,6 +369,7 @@ const replacements = {
     left: 'start',
     right: 'end',
     ...sizes,
+    ...theme,
   },
   VImg: {
     contain: { custom: 'cover' },
