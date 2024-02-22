@@ -32,7 +32,7 @@ const replacements = {
   VSimpleCheckbox: 'v-checkbox-btn',
   VSparkline: false,
   VSpeedDial: false,
-  VSubheader: { custom: 'v-list-subheader or class="text-subheader-2"' },
+  VSubheader: { custom: 'v-list-subheader or class="text-subtitle-2"' },
   VSimpleTable: 'v-table',
   VTabsSlider: false,
   VTabsItems: false,
