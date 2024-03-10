@@ -21,7 +21,6 @@ const replacements = {
 
   VContent: 'v-main',
 
-  VCalendar: false,
   VData: false,
   VListItemGroup: false,
   VListItemAvatar: { custom: '`v-list-item` with `avatar` props, or `v-avatar` in the list item append or prepend slot' },
@@ -30,15 +29,12 @@ const replacements = {
   VOverflowBtn: false,
   VPicker: false,
   VSimpleCheckbox: 'v-checkbox-btn',
-  VSparkline: false,
-  VSpeedDial: false,
   VSubheader: { custom: 'v-list-subheader or class="text-subtitle-2"' },
   VSimpleTable: 'v-table',
   VTabsSlider: false,
   VTabsItems: false,
   VTabItem: false,
   VTimePicker: false,
-  VTreeview: false,
 }
 
 // ------------------------------------------------------------------------------
