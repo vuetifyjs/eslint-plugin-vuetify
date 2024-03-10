@@ -12,14 +12,15 @@ module.exports = {
   create (context) {
     return {
       ImportDeclaration (node) {
-        const source = node.source.value
-        if (source === 'vuetify/lib/util/colors') {
+        if (node.source.value === 'vuetify/lib/util/colors') {
           context.report({
             node,
             message: 'Import from "vuetify/lib/util/colors" is deprecated. Use "vuetify/util/colors" instead.',
             fix (fixer) {
-              const fixedSource = source.replace('vuetify/lib/util/colors', 'vuetify/util/colors')
-              return fixer.replaceText(node.source, `'${fixedSource}'`)
+              return fixer.replaceText(
+                node.source,
+                node.source.raw.replace('vuetify/lib/util/colors', 'vuetify/util/colors')
+              )
             },
           })
         }
