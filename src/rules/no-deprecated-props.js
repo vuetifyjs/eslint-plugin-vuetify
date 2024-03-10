@@ -31,7 +31,6 @@ const inputs = {
   filled: { name: 'variant', value: 'filled' },
   fullWidth: false,
   height: false,
-  hideSpinButtons: false,
   loaderHeight: false,
   outline: { name: 'variant', value: 'outlined' },
   outlined: { name: 'variant', value: 'outlined' },
