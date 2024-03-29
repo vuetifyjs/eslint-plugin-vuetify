@@ -357,7 +357,6 @@ const replacements = {
   },
   VIcon: {
     dense: { name: 'size', value: 'small' },
-    disabled: false,
     left: 'start',
     right: 'end',
     ...sizes,
