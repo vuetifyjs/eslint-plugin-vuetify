@@ -314,6 +314,7 @@ const replacements = {
   },
   VDialog: {
     ...overlay,
+    tile: { custom: 'apply border-radius changes to the root element of the `v-dialog`\'s content' },
   },
   VMenu: {
     allowOverflow: false,
