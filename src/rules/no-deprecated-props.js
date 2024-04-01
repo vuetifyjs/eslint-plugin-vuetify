@@ -117,6 +117,7 @@ const replacements = {
     ...size,
   },
   VBadge: {
+    value: 'model-value',
     avatar: false,
     mode: false,
     origin: false,
