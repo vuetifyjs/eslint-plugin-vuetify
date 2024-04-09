@@ -145,6 +145,24 @@ const groups = [
       })
     },
   },
+  {
+    components: ['VSnackbar'],
+    slots: ['action'],
+    handler (context, node, directive, param) {
+      context.report({
+        node: directive,
+        messageId: 'renamed',
+        data: {
+          component: node.parent.name,
+          slot: directive.key.argument.name,
+          newSlot: 'actions',
+        },
+        fix (fixer) {
+          return fixer.replaceText(directive.key.argument, 'action')
+        },
+      })
+    },
+  },
 ]
 
 // ------------------------------------------------------------------------------
