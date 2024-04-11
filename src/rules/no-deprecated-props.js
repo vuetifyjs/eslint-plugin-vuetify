@@ -191,7 +191,7 @@ const replacements = {
   VCard: {
     activeClass: false,
     loaderHeight: false,
-    outlined: { name: 'variant', value: 'outlined' },
+    outlined: 'border',
     raised: { name: 'elevation', value: 8 },
     shaped: false,
     ...link,
