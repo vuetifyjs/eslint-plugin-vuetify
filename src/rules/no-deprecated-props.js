@@ -722,7 +722,7 @@ module.exports = {
                       return [fixer.replaceText(propNameNode, replace.name), fixer.replaceText(attr.value, `"${value}"`)]
                     } else {
                       const expression = context.getSourceCode().getText(attr.value.expression)
-                      return [fixer.replaceText(propNameNode, replace.name), fixer.replaceText(attr.value, `"${expression} && '${value}'"`)]
+                      return [fixer.replaceText(propNameNode, replace.name), fixer.replaceText(attr.value, `"${expression} ? '${value}' : undefined"`)]
                     }
                   } else {
                     return fixer.replaceText(attr, `${replace.bind ? ':' : ''}${replace.name}="${value}"`)

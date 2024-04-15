@@ -23,12 +23,12 @@ tester.run('no-deprecated-props', rule, {
     },
     {
       code: '<template><v-btn :outline="false" /></template>',
-      output: `<template><v-btn :variant="false && 'outlined'" /></template>`,
+      output: `<template><v-btn :variant="false ? 'outlined' : undefined" /></template>`,
       errors: [{ messageId: 'replacedWith' }],
     },
     {
       code: '<template><v-btn v-bind:outline="false" /></template>',
-      output: `<template><v-btn v-bind:variant="false && 'outlined'" /></template>`,
+      output: `<template><v-btn v-bind:variant="false ? 'outlined' : undefined" /></template>`,
       errors: [{ messageId: 'replacedWith' }],
     },
     {
@@ -73,7 +73,7 @@ tester.run('no-deprecated-props', rule, {
     },
     {
       code: '<template><v-window :vertical="condition" /></template>',
-      output: `<template><v-window :direction="condition && 'vertical'" /></template>`,
+      output: `<template><v-window :direction="condition ? 'vertical' : undefined" /></template>`,
       errors: [{ messageId: 'replacedWith' }],
     },
     {
