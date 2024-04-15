@@ -50,7 +50,6 @@ const select = {
   cacheItems: false,
   deletableChips: 'closable-chips',
   disableLookup: false,
-  itemColor: { custom: 'item-props.color' },
   itemDisabled: { custom: 'item-props.disabled' },
   itemText: 'item-title',
   searchInput: 'search',
