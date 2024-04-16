@@ -48,6 +48,7 @@ These rules will help you avoid deprecated components, props, and classes. They 
 - Prevent the use of classes that have been removed from Vuetify ([`no-deprecated-classes`])
 - Prevent the use of the old theme class syntax ([`no-deprecated-colors`])
 - Prevent the use of deprecated import paths ([`no-deprecated-imports`])
+- Ensure icon buttons have a variant defined ([`icon-button-variant`])
 
 ### Grid system
 
@@ -63,6 +64,7 @@ These rules are designed to help migrate to the new grid system in Vuetify v2. T
 [`no-deprecated-classes`]: ./docs/rules/no-deprecated-classes.md
 [`no-deprecated-colors`]: ./docs/rules/no-deprecated-colors.md
 [`no-deprecated-imports`]: ./docs/rules/no-deprecated-imports.md
+[`icon-button-variant`]: ./docs/rules/icon-button-variant.md
 
 
 ## 💪 Supporting Vuetify
