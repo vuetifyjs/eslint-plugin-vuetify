@@ -14,6 +14,7 @@ Object.assign(plugin.configs, {
     plugins: {
       vuetify: plugin,
     },
+    files: ['*.vue', '**/*.vue'],
     rules: {
       ...configs.recommended.rules,
     },
@@ -22,6 +23,7 @@ Object.assign(plugin.configs, {
     plugins: {
       vuetify: plugin,
     },
+    files: ['*.vue', '**/*.vue'],
     rules: {
       ...configs.base.rules,
     },
