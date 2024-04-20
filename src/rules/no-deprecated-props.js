@@ -631,7 +631,7 @@ module.exports = {
   },
 
   create (context) {
-    return context.parserServices.defineTemplateBodyVisitor({
+    return context.sourceCode.parserServices.defineTemplateBodyVisitor({
       VStartTag (tag) {
         const attrGroups = {}
         tag.attributes.forEach(attr => {
