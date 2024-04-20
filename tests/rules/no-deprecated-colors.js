@@ -2,8 +2,10 @@ const RuleTester = require('eslint').RuleTester
 const rule = require('../../src/rules/no-deprecated-colors')
 
 const tester = new RuleTester({
-  parser: require.resolve('vue-eslint-parser'),
-  parserOptions: { ecmaVersion: 2015 },
+  languageOptions: {
+    ecmaVersion: 2015,
+    parser: require('vue-eslint-parser'),
+  },
 })
 
 tester.run('no-deprecated-colors', rule, {
@@ -42,12 +44,10 @@ tester.run('no-deprecated-colors', rule, {
     },
     {
       code: '<template><div class="darken-2" /></template>',
-      output: '<template><div class="darken-2" /></template>',
       errors: [{ messageId: 'removed' }],
     },
     {
       code: '<template><div class="text--darken-2" /></template>',
-      output: '<template><div class="text--darken-2" /></template>',
       errors: [{ messageId: 'removed' }],
     },
     {

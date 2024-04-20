@@ -2,8 +2,10 @@ const RuleTester = require('eslint').RuleTester
 const rule = require('../../src/rules/no-deprecated-components')
 
 const tester = new RuleTester({
-  parser: require.resolve('vue-eslint-parser'),
-  parserOptions: { ecmaVersion: 2015 },
+  languageOptions: {
+    ecmaVersion: 2015,
+    parser: require('vue-eslint-parser'),
+  },
 })
 
 tester.run('no-deprecated-components', rule, {
@@ -22,7 +24,6 @@ tester.run('no-deprecated-components', rule, {
     },
     {
       code: '<template><v-subheader /></template>',
-      output: '<template><v-subheader /></template>',
       errors: [{ messageId: 'replacedWithCustom' }],
     },
     {

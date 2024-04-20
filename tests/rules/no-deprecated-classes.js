@@ -2,8 +2,10 @@ const RuleTester = require('eslint').RuleTester
 const rule = require('../../src/rules/no-deprecated-classes')
 
 const tester = new RuleTester({
-  parser: require.resolve('vue-eslint-parser'),
-  parserOptions: { ecmaVersion: 2015 },
+  languageOptions: {
+    ecmaVersion: 2015,
+    parser: require('vue-eslint-parser'),
+  },
 })
 
 tester.run('no-deprecated-classes', rule, {
@@ -59,7 +61,6 @@ tester.run('no-deprecated-classes', rule, {
     },
     {
       code: '<template><div class="transition-fast-out-slow-in" /></template>',
-      output: '<template><div class="transition-fast-out-slow-in" /></template>',
       errors: [{ messageId: 'removed' }],
     },
   ],

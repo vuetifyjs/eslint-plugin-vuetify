@@ -2,8 +2,10 @@ const RuleTester = require('eslint').RuleTester
 const rule = require('../../src/rules/no-deprecated-slots')
 
 const tester = new RuleTester({
-  parser: require.resolve('vue-eslint-parser'),
-  parserOptions: { ecmaVersion: 2015 },
+  languageOptions: {
+    ecmaVersion: 2015,
+    parser: require('vue-eslint-parser'),
+  },
 })
 
 tester.run('no-deprecated-slots', rule, {
@@ -84,14 +86,6 @@ tester.run('no-deprecated-slots', rule, {
     },
     {
       code:
-`<template>
-  <v-dialog>
-    <template #activator="{ attrs }">
-      <v-btn v-bind="attrs" />
-    </template>
-  </v-dialog>
-</template>`,
-      output:
 `<template>
   <v-dialog>
     <template #activator="{ attrs }">
