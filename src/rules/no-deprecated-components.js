@@ -34,7 +34,6 @@ const replacements = {
   VTabsSlider: false,
   VTabsItems: false,
   VTabItem: false,
-  VTimePicker: false,
 }
 
 // ------------------------------------------------------------------------------
