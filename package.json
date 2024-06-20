@@ -11,7 +11,7 @@
     "test": "mocha tests --recursive --reporter dot",
     "test:coverage": "nyc mocha tests --recursive --reporter dot",
     "test:ci": "nyc --reporter=lcov mocha tests --recursive --reporter dot",
-    "lint": "eslint src tests",
+    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint src tests",
     "prepublishOnly": "npm run build"
   },
   "files": [
@@ -29,11 +29,8 @@
     "conventional-changelog-cli": "^2.2.2",
     "conventional-changelog-vuetify": "^1.1.0",
     "conventional-github-releaser": "^3.1.5",
-    "eslint": "^8.26.0",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-n": "^15.3.0",
-    "eslint-plugin-promise": "^6.1.1",
+    "eslint": "^9.1.0",
+    "eslint-config-standard": "^17.1.0",
     "husky": "^8.0.1",
     "mocha": "^10.1.0",
     "nyc": "^15.1.0",
@@ -42,7 +39,7 @@
     "vuetify": "^3.0.0"
   },
   "peerDependencies": {
-    "eslint": "^8.0.0",
+    "eslint": "^9.0.0",
     "vuetify": "^3.0.0"
   }
 }
