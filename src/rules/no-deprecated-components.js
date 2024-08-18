@@ -55,11 +55,12 @@ module.exports = {
     },
   },
   create (context) {
-    return context.parserServices.defineTemplateBodyVisitor({
+    const sourceCode = context.getSourceCode()
+    return sourceCode.parserServices.defineTemplateBodyVisitor({
       VElement (element) {
         const tag = classify(element.rawName)
 
-        const tokens = context.parserServices.getTemplateBodyTokenStore()
+        const tokens = sourceCode.parserServices.getTemplateBodyTokenStore()
 
         if (Object.prototype.hasOwnProperty.call(replacements, tag)) {
           const replacement = replacements[tag]

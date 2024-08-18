@@ -61,7 +61,8 @@ module.exports = {
       return [base, variant]
     }
 
-    return context.parserServices.defineTemplateBodyVisitor({
+    const sourceCode = context.getSourceCode()
+    return sourceCode.parserServices.defineTemplateBodyVisitor({
       'VAttribute[key.name="color"]' (node) {
         if (!node.value || !node.value.value) return
 

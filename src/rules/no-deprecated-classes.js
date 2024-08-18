@@ -56,12 +56,13 @@ module.exports = {
   },
 
   create (context) {
-    return context.parserServices.defineTemplateBodyVisitor({
+    const sourceCode = context.getSourceCode()
+    return sourceCode.parserServices.defineTemplateBodyVisitor({
       'VAttribute[key.name="class"]' (node) {
         if (!node.value || !node.value.value) return
 
         const classes = node.value.value.split(/\s+/).filter(s => !!s)
-        const source = context.getSourceCode()
+        const source = sourceCode.getText()
 
         const changed = []
         classes.forEach(className => {

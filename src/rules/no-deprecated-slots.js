@@ -93,7 +93,7 @@ const groups = [
                   yield fixer.replaceText(ref.id.parent.parent, `v-bind="props"`)
                 }
                 if (boundVariables.attrs) {
-                  const template = context.parserServices.getTemplateBodyTokenStore()
+                  const template = context.getSourceCode().parserServices.getTemplateBodyTokenStore()
                   const ref = boundVariables.attrs
                   const isLast = ref.prop === param.properties.at(-1)
                   if (isLast) {
@@ -187,7 +187,8 @@ module.exports = {
   create (context) {
     let scopeStack
 
-    return context.parserServices.defineTemplateBodyVisitor({
+    const sourceCode = context.getSourceCode()
+    return sourceCode.parserServices.defineTemplateBodyVisitor({
       VElement (node) {
         scopeStack = {
           parent: scopeStack,

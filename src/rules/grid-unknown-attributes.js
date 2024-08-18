@@ -32,7 +32,8 @@ module.exports = {
     schema: [],
   },
   create (context) {
-    return context.parserServices.defineTemplateBodyVisitor({
+    const sourceCode = context.getSourceCode()
+    return sourceCode.parserServices.defineTemplateBodyVisitor({
       VElement (element) {
         const tag = classify(element.rawName)
         if (!Object.keys(tags).includes(tag)) return

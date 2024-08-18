@@ -10,7 +10,7 @@ function addClass (context, fixer, element, className) {
   } else {
     // nothing
     return fixer.insertTextAfter(
-      context.parserServices.getTemplateBodyTokenStore().getFirstToken(element.startTag),
+      context.getSourceCode().parserServices.getTemplateBodyTokenStore().getFirstToken(element.startTag),
       ` class="${className}"`
     )
   }

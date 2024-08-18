@@ -158,7 +158,8 @@ module.exports = {
   },
 
   create (context) {
-    return context.parserServices.defineTemplateBodyVisitor({
+    const sourceCode = context.getSourceCode()
+    return sourceCode.parserServices.defineTemplateBodyVisitor({
       VAttribute (attr) {
         if (!(attr.directive && attr.key.name.name === 'on' && attr.key.argument?.type === 'VIdentifier')) return
 

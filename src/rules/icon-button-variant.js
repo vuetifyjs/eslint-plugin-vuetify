@@ -22,7 +22,8 @@ module.exports = {
   },
 
   create (context) {
-    return context.parserServices.defineTemplateBodyVisitor({
+    const sourceCode = context.getSourceCode()
+    return sourceCode.parserServices.defineTemplateBodyVisitor({
       VElement (element) {
         const tag = classify(element.rawName)
         if (tag !== 'VBtn') return
