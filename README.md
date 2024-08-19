@@ -67,7 +67,6 @@ These rules will help you avoid deprecated components, props, and classes. They 
 These rules are designed to help migrate to the new grid system in Vuetify v2. They are included in the `vuetify.configs.recommended` preset.
 
 - Warn about unknown attributes not being converted to classes on new grid components ([`grid-unknown-attributes`])
-- Ensure icon buttons have a variant defined ([`icon-button-variant`])
 
 
 [`grid-unknown-attributes`]: ./docs/rules/grid-unknown-attributes.md
