@@ -33,6 +33,18 @@ module.exports = {
 }
 ```
 
+If you are using the new ["flat" config system](https://eslint.org/blog/2022/08/new-config-system-part-2/) introduced in eslint v8.21.0 and made the default starting in v9.0.0. Then instead of an `.eslintrc.js` file you will have a `eslint.config.js` file. In that case you will use the following snippet instead.
+
+```js
+// eslint.config.js
+import pluginVuetify from "eslint-plugin-vuetify/configs/flat/base.js"
+// To use the `recommended` configuration (including extra rules for the grid system) replace `base.js` with `recommended.js`
+
+export default [
+  pluginVuetify
+]
+```
+
 **NOTE** This plugin does not affect _**pug**_ templates due to [a limitation in vue-eslint-parser](https://github.com/mysticatea/vue-eslint-parser/issues/29). I suggest converting your pug templates to HTML with [pug-to-html](https://github.com/leo-buneev/pug-to-html) in order to use this plugin.
 
 
