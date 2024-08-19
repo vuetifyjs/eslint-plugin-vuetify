@@ -23,14 +23,26 @@ yarn add eslint-plugin-vuetify -D
 npm install eslint-plugin-vuetify --save-dev
 ```
 
+## 📖 Usage
+
+Use `eslint.config.js` file to configure rules. This is the default in ESLint v9, but can be used starting from ESLint v8.57.0. See also: https://eslint.org/docs/latest/use/configure/configuration-files-new.
+
 ```js
-// .eslintrc.js
-module.exports = {
-  extends: [
-    'plugin:vue/base',
-    'plugin:vuetify/base'
-  ]
-}
+// eslint.config.js
+import pluginVue from 'eslint-plugin-vue'
+import vuetify from "eslint-plugin-vuetify";
+
+export default [
+  ...pluginVue.configs['flat/recommended'],
+  vuetify.configs.base,
+  {
+    rules: {
+      // override/add rules settings here, such as:
+      'vuetify/no-deprecated-classes': 'off',
+      'vuetify/icon-button-variant': 'error',
+    }
+  }
+]
 ```
 
 **NOTE** This plugin does not affect _**pug**_ templates due to [a limitation in vue-eslint-parser](https://github.com/mysticatea/vue-eslint-parser/issues/29). I suggest converting your pug templates to HTML with [pug-to-html](https://github.com/leo-buneev/pug-to-html) in order to use this plugin.
@@ -40,7 +52,7 @@ module.exports = {
 
 ### Deprecations
 
-These rules will help you avoid deprecated components, props, and classes. They are included in the `plugin:vuetify/base` preset.
+These rules will help you avoid deprecated components, props, and classes. They are included in the `vuetify.configs.base` preset.
 
 - Prevent the use of components that have been removed from Vuetify ([`no-deprecated-components`])
 - Prevent the use of props that have been removed from Vuetify ([`no-deprecated-props`])
@@ -48,13 +60,14 @@ These rules will help you avoid deprecated components, props, and classes. They 
 - Prevent the use of classes that have been removed from Vuetify ([`no-deprecated-classes`])
 - Prevent the use of the old theme class syntax ([`no-deprecated-colors`])
 - Prevent the use of deprecated import paths ([`no-deprecated-imports`])
-- Ensure icon buttons have a variant defined ([`icon-button-variant`])
+- Prevent the use of deprecated slot names ([`no-deprecated-slots`])
 
 ### Grid system
 
-These rules are designed to help migrate to the new grid system in Vuetify v2. They are included in the `plugin:vuetify/recommended` preset.
+These rules are designed to help migrate to the new grid system in Vuetify v2. They are included in the `vuetify.configs.recommended` preset.
 
 - Warn about unknown attributes not being converted to classes on new grid components ([`grid-unknown-attributes`])
+- Ensure icon buttons have a variant defined ([`icon-button-variant`])
 
 
 [`grid-unknown-attributes`]: ./docs/rules/grid-unknown-attributes.md
