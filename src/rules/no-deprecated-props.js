@@ -260,6 +260,7 @@ const replacements = {
   },
   VDataTable: {
     serverItemsLength: { custom: '<v-data-table-server>' },
+    dense: { name: 'density', value: 'compact' },
     itemClass: { custom: 'row-props' },
     itemStyle: { custom: 'row-props' },
     sortDesc: { custom: 'sort-by' },
