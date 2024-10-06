@@ -32,7 +32,7 @@ module.exports = {
     schema: [],
   },
   create (context) {
-    const sourceCode = context.getSourceCode()
+    const sourceCode = context.sourceCode
     return sourceCode.parserServices.defineTemplateBodyVisitor({
       VElement (element) {
         const tag = classify(element.rawName)

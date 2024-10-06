@@ -631,7 +631,7 @@ module.exports = {
   },
 
   create (context) {
-    const sourceCode = context.getSourceCode()
+    const sourceCode = context.sourceCode
     return sourceCode.parserServices.defineTemplateBodyVisitor({
       VStartTag (tag) {
         const attrGroups = {}
@@ -701,7 +701,7 @@ module.exports = {
                 },
               })
             } else if (typeof replace === 'object' && 'name' in replace && 'value' in replace) {
-              const oldValue = attr.directive ? context.getSourceCode().getText(attr.value.expression) : attr.value?.value
+              const oldValue = attr.directive ? context.sourceCode.getText(attr.value.expression) : attr.value?.value
               const value = typeof replace.value === 'function'
                 ? replace.value(oldValue)
                 : replace.value
@@ -721,7 +721,7 @@ module.exports = {
                       }
                       return [fixer.replaceText(propNameNode, replace.name), fixer.replaceText(attr.value, `"${value}"`)]
                     } else {
-                      const expression = context.getSourceCode().getText(attr.value.expression)
+                      const expression = context.sourceCode.getText(attr.value.expression)
                       return [fixer.replaceText(propNameNode, replace.name), fixer.replaceText(attr.value, `"${expression} ? '${value}' : undefined"`)]
                     }
                   } else {

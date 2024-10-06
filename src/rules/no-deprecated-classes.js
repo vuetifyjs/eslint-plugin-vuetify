@@ -56,7 +56,7 @@ module.exports = {
   },
 
   create (context) {
-    const sourceCode = context.getSourceCode()
+    const sourceCode = context.sourceCode
     return sourceCode.parserServices.defineTemplateBodyVisitor({
       'VAttribute[key.name="class"]' (node) {
         if (!node.value || !node.value.value) return
