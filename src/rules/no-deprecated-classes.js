@@ -62,7 +62,7 @@ module.exports = {
         if (!node.value || !node.value.value) return
 
         const classes = node.value.value.split(/\s+/).filter(s => !!s)
-        const source = sourceCode.getText()
+        const source = sourceCode
 
         const changed = []
         classes.forEach(className => {
