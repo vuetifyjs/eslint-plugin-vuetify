@@ -10,14 +10,14 @@ function addClass (context, fixer, element, className) {
   } else {
     // nothing
     return fixer.insertTextAfter(
-      context.parserServices.getTemplateBodyTokenStore().getFirstToken(element.startTag),
+      context.sourceCode.parserServices.getTemplateBodyTokenStore().getFirstToken(element.startTag),
       ` class="${className}"`
     )
   }
 }
 
 function removeAttr (context, fixer, node) {
-  const source = context.getSourceCode().text
+  const source = context.sourceCode.text
   let [start, end] = node.range
   // Remove extra whitespace before attributes
   start -= /\s*$/g.exec(source.substring(0, start))[0].length

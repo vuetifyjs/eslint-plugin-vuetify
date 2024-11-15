@@ -1,10 +1,5 @@
-const RuleTester = require('eslint').RuleTester
+const tester = require('../setup').tester
 const rule = require('../../src/rules/no-deprecated-slots')
-
-const tester = new RuleTester({
-  parser: require.resolve('vue-eslint-parser'),
-  parserOptions: { ecmaVersion: 2015 },
-})
 
 tester.run('no-deprecated-slots', rule, {
   valid: [
@@ -91,14 +86,7 @@ tester.run('no-deprecated-slots', rule, {
     </template>
   </v-dialog>
 </template>`,
-      output:
-`<template>
-  <v-dialog>
-    <template #activator="{ attrs }">
-      <v-btn v-bind="attrs" />
-    </template>
-  </v-dialog>
-</template>`,
+      output: null,
       errors: [{ messageId: 'invalidProps' }],
     },
     {

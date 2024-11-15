@@ -56,13 +56,11 @@ module.exports = {
   },
 
   create (context) {
-    return context.parserServices.defineTemplateBodyVisitor({
+    return context.sourceCode.parserServices.defineTemplateBodyVisitor({
       'VAttribute[key.name="class"]' (node) {
         if (!node.value || !node.value.value) return
 
         const classes = node.value.value.split(/\s+/).filter(s => !!s)
-        const source = context.getSourceCode()
-
         const changed = []
         classes.forEach(className => {
           for (const replacer of replacements) {
@@ -90,8 +88,8 @@ module.exports = {
             node.value.range[0] + idx + change[0].length,
           ]
           const loc = {
-            start: source.getLocFromIndex(range[0]),
-            end: source.getLocFromIndex(range[1]),
+            start: context.sourceCode.getLocFromIndex(range[0]),
+            end: context.sourceCode.getLocFromIndex(range[1]),
           }
           if (change[1]) {
             context.report({
