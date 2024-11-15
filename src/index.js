@@ -6,3 +6,5 @@ module.exports = {
   configs: requireindex(path.join(__dirname, './configs')),
   rules: requireindex(path.join(__dirname, './rules')),
 }
+
+console.log(module.exports.configs)

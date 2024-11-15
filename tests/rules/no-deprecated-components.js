@@ -1,10 +1,5 @@
-const RuleTester = require('eslint').RuleTester
+const tester = require('../setup').tester
 const rule = require('../../src/rules/no-deprecated-components')
-
-const tester = new RuleTester({
-  parser: require.resolve('vue-eslint-parser'),
-  parserOptions: { ecmaVersion: 2015 },
-})
 
 tester.run('no-deprecated-components', rule, {
   valid: [
@@ -22,7 +17,7 @@ tester.run('no-deprecated-components', rule, {
     },
     {
       code: '<template><v-subheader /></template>',
-      output: '<template><v-subheader /></template>',
+      output: null,
       errors: [{ messageId: 'replacedWithCustom' }],
     },
     {

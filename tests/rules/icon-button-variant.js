@@ -1,10 +1,5 @@
-const RuleTester = require('eslint').RuleTester
+const tester = require('../setup').tester
 const rule = require('../../src/rules/icon-button-variant')
-
-const tester = new RuleTester({
-  parser: require.resolve('vue-eslint-parser'),
-  parserOptions: { ecmaVersion: 2015 },
-})
 
 tester.run('icon-button-variant', rule, {
   valid: [
