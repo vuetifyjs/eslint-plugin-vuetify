@@ -352,6 +352,7 @@ const replacements = {
   },
   VForm: {
     value: 'model-value',
+    lazyValidation: false,
   },
   VHover: {
     value: 'model-value',
