@@ -20,6 +20,7 @@
   ],
   "homepage": "https://github.com/vuetifyjs/eslint-plugin-vuetify#readme",
   "dependencies": {
+    "eslint-plugin-vue": "^9.6.0",
     "requireindex": "^1.2.0"
   },
   "devDependencies": {

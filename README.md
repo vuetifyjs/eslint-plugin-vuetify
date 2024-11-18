@@ -15,13 +15,26 @@ This package is for migrating from Vuetify v2 to v3, use [eslint-plugin-vuetify@
 
 ## 💿 Install
 
-You should have [`eslint`](https://eslint.org/docs/user-guide/getting-started) and [`eslint-plugin-vue`](https://eslint.vuejs.org/user-guide/#installation) set up first.
+You should have [`eslint`](https://eslint.org/docs/latest/use/getting-started) and [`eslint-plugin-vue`](https://eslint.vuejs.org/user-guide/#installation) set up first.
 
 ```bash
 yarn add eslint-plugin-vuetify -D
 # OR
 npm install eslint-plugin-vuetify --save-dev
 ```
+
+```js
+// eslint.config.js
+import vue from 'eslint-plugin-vue'
+import vuetify from 'eslint-plugin-vuetify'
+
+export default [
+  ...vue.configs['flat/base'],
+  ...vuetify.configs['flat/base'],
+]
+```
+
+Eslint 8 can alternatively use the older configuration format:
 
 ```js
 // .eslintrc.js
@@ -40,7 +53,7 @@ module.exports = {
 
 ### Deprecations
 
-These rules will help you avoid deprecated components, props, and classes. They are included in the `plugin:vuetify/base` preset.
+These rules will help you avoid deprecated components, props, and classes. They are included in the `base` preset.
 
 - Prevent the use of components that have been removed from Vuetify ([`no-deprecated-components`])
 - Prevent the use of props that have been removed from Vuetify ([`no-deprecated-props`])
@@ -52,7 +65,7 @@ These rules will help you avoid deprecated components, props, and classes. They 
 
 ### Grid system
 
-These rules are designed to help migrate to the new grid system in Vuetify v2. They are included in the `plugin:vuetify/recommended` preset.
+These rules are designed to help migrate to the new grid system in Vuetify v2. They are included in the `recommended` preset.
 
 - Warn about unknown attributes not being converted to classes on new grid components ([`grid-unknown-attributes`])
 
