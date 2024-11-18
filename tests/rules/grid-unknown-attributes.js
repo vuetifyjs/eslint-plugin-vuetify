@@ -1,10 +1,5 @@
-const RuleTester = require('eslint').RuleTester
+const { tester } = require('../setup')
 const rule = require('../../src/rules/grid-unknown-attributes')
-
-const tester = new RuleTester({
-  parser: require.resolve('vue-eslint-parser'),
-  parserOptions: { ecmaVersion: 2015 },
-})
 
 tester.run('grid-unknown-attributes', rule, {
   valid: [
@@ -39,7 +34,7 @@ tester.run('grid-unknown-attributes', rule, {
     },
     {
       code: '<template><v-row :px-3="something" /></template>',
-      output: '<template><v-row :px-3="something" /></template>',
+      output: null,
       errors: ['Attributes are no longer converted into classes'],
     },
     // https://github.com/vuetifyjs/eslint-plugin-vuetify/issues/19

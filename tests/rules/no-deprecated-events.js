@@ -1,10 +1,5 @@
-const RuleTester = require('eslint').RuleTester
+const { tester } = require('../setup')
 const rule = require('../../src/rules/no-deprecated-events')
-
-const tester = new RuleTester({
-  parser: require.resolve('vue-eslint-parser'),
-  parserOptions: { ecmaVersion: 2015 },
-})
 
 tester.run('no-deprecated-events', rule, {
   valid: [
