@@ -1,5 +1,7 @@
 'use strict'
 
+const path = require('node:path')
+
 function hyphenate (
   /* istanbul ignore next */
   str = ''
@@ -64,6 +66,13 @@ function mergeDeep (source, target) {
   return source
 }
 
+function isVueTemplate (context) {
+  if (context.sourceCode.parserServices.defineTemplateBodyVisitor == null) {
+    return path.extname(context.getFilename()) === '.vue'
+  }
+  return true
+}
+
 module.exports = {
   hyphenate,
   classify,
@@ -71,4 +80,5 @@ module.exports = {
   getAttributes,
   isObject,
   mergeDeep,
+  isVueTemplate,
 }

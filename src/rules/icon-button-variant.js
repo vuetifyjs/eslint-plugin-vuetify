@@ -1,6 +1,6 @@
 'use strict'
 
-const { classify, getAttributes } = require('../util/helpers')
+const { classify, getAttributes, isVueTemplate } = require('../util/helpers')
 
 // ------------------------------------------------------------------------------
 // Rule Definition
@@ -22,6 +22,8 @@ module.exports = {
   },
 
   create (context) {
+    if (!isVueTemplate(context)) return {}
+
     return context.sourceCode.parserServices.defineTemplateBodyVisitor({
       VElement (element) {
         const tag = classify(element.rawName)

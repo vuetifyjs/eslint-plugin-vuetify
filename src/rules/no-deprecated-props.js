@@ -1,6 +1,6 @@
 'use strict'
 
-const { hyphenate, classify } = require('../util/helpers')
+const { hyphenate, classify, isVueTemplate } = require('../util/helpers')
 
 const size = {
   maxHeight: false,
@@ -632,6 +632,8 @@ module.exports = {
   },
 
   create (context) {
+    if (!isVueTemplate(context)) return {}
+
     return context.sourceCode.parserServices.defineTemplateBodyVisitor({
       VStartTag (tag) {
         const attrGroups = {}

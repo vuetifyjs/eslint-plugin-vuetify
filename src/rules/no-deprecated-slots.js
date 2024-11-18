@@ -1,6 +1,6 @@
 'use strict'
 
-const { classify, getAttributes } = require('../util/helpers')
+const { classify, getAttributes, isVueTemplate } = require('../util/helpers')
 
 const groups = [
   {
@@ -185,6 +185,8 @@ module.exports = {
   },
 
   create (context) {
+    if (!isVueTemplate(context)) return {}
+
     let scopeStack
 
     return context.sourceCode.parserServices.defineTemplateBodyVisitor({

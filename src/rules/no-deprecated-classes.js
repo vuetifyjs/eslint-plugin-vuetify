@@ -1,5 +1,7 @@
 'use strict'
 
+const { isVueTemplate } = require('../util/helpers')
+
 /** @type {Map<RegExp, ((args: string[]) => string | false) | false> | Map<string, string | false>} */
 const replacements = new Map([
   [/^rounded-(r|l|tr|tl|br|bl)(-.*)?$/, ([side, rest]) => {
@@ -56,6 +58,8 @@ module.exports = {
   },
 
   create (context) {
+    if (!isVueTemplate(context)) return {}
+
     return context.sourceCode.parserServices.defineTemplateBodyVisitor({
       'VAttribute[key.name="class"]' (node) {
         if (!node.value || !node.value.value) return

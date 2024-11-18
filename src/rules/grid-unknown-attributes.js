@@ -1,6 +1,6 @@
 'use strict'
 
-const { hyphenate, classify, getAttributes } = require('../util/helpers')
+const { hyphenate, classify, getAttributes, isVueTemplate } = require('../util/helpers')
 const { isGridAttribute } = require('../util/grid-attributes')
 const { addClass, removeAttr } = require('../util/fixers')
 
@@ -32,6 +32,8 @@ module.exports = {
     schema: [],
   },
   create (context) {
+    if (!isVueTemplate(context)) return {}
+
     return context.sourceCode.parserServices.defineTemplateBodyVisitor({
       VElement (element) {
         const tag = classify(element.rawName)
