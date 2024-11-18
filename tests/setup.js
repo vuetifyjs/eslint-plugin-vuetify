@@ -1,4 +1,4 @@
-const RuleTester = require(process.env.ESLINT8 ? 'eslint8' : 'eslint').RuleTester
+const { RuleTester } = require(process.env.ESLINT8 ? 'eslint8' : 'eslint')
 
 const tester = new RuleTester(
   process.env.ESLINT8

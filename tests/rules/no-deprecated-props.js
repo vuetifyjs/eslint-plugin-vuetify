@@ -1,4 +1,4 @@
-const tester = require('../setup').tester
+const { tester } = require('../setup')
 const rule = require('../../src/rules/no-deprecated-props')
 
 tester.run('no-deprecated-props', rule, {

@@ -1,4 +1,4 @@
-const tester = require('../setup').tester
+const { tester } = require('../setup')
 const rule = require('../../src/rules/icon-button-variant')
 
 tester.run('icon-button-variant', rule, {

@@ -1,4 +1,4 @@
-const tester = require('../setup').tester
+const { tester } = require('../setup')
 const rule = require('../../src/rules/no-deprecated-events')
 
 tester.run('no-deprecated-events', rule, {

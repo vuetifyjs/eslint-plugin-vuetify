@@ -1,4 +1,4 @@
-const tester = require('../setup').tester
+const { tester } = require('../setup')
 const rule = require('../../src/rules/grid-unknown-attributes')
 
 tester.run('grid-unknown-attributes', rule, {
