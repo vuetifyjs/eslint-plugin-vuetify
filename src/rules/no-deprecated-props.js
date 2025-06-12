@@ -270,7 +270,6 @@ const replacements = {
     pickerDate: { custom: 'separate month and year props' },
     locale: false,
     localeFirstDayOfYear: false,
-    firstDayOfWeek: false,
     dayFormat: false,
     weekdayFormat: false,
     monthFormat: false,
