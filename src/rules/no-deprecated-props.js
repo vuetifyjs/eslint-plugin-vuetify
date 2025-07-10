@@ -86,6 +86,7 @@ const replacements = {
     hideOnScroll: { name: 'scroll-behavior', value: 'hide' },
     invertedScroll: { name: 'scroll-behavior', value: 'inverted' },
     outlined: 'border',
+    dense: { name: 'density', value: 'compact' },
     prominent: { name: 'density', value: 'prominent' },
     scrollOffScreen: false,
     shaped: false,
@@ -264,6 +265,7 @@ const replacements = {
     itemStyle: { custom: 'row-props' },
     sortDesc: { custom: 'sort-by' },
     groupDesc: { custom: 'group-by' },
+    dense: { name: 'density', value: 'compact' },
   },
   VDatePicker: {
     activePicker: 'view-mode',
@@ -563,6 +565,9 @@ const replacements = {
     link: false,
     ...link,
   },
+  VTable: {
+    dense: { name: 'density', value: 'compact' },
+  },
   VThemeProvider: {
     root: false,
   },
@@ -581,6 +586,7 @@ const replacements = {
   VToolbar: {
     bottom: false,
     outlined: 'border',
+    dense: { name: 'density', value: 'compact' },
     prominent: { name: 'density', value: 'prominent' },
     shaped: false,
     short: false,
@@ -607,6 +613,9 @@ const replacements = {
     top: { name: 'location', value: 'top' },
     value: 'model-value',
     ...overlay,
+  },
+  VTreeview: {
+    dense: { name: 'density', value: 'compact' },
   },
   VWindow: {
     activeClass: 'selected-class',
