@@ -580,6 +580,7 @@ const replacements = {
   },
   VToolbar: {
     bottom: false,
+    dense: { name: 'density', value: 'compact' },
     outlined: 'border',
     prominent: { name: 'density', value: 'prominent' },
     shaped: false,
