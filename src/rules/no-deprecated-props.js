@@ -464,7 +464,12 @@ const replacements = {
   VSlider: {
     backgroundColor: false,
     tickLabels: 'ticks',
-    ticks: { custom: 'show-ticks' },
+    ticks (attr) {
+      return (!attr.directive && !attr.value) ||
+        (attr.directive && [true, false].includes(attr.value.expression.value))
+        ? 'show-ticks'
+        : true
+    },
     vertical: { name: 'direction', value: 'vertical' },
     height: false,
     loading: false,
@@ -474,7 +479,12 @@ const replacements = {
   VRangeSlider: {
     backgroundColor: false,
     tickLabels: 'ticks',
-    ticks: { custom: 'show-ticks' },
+    ticks (attr) {
+      return (!attr.directive && !attr.value) ||
+        (attr.directive && [true, false].includes(attr.value.expression.value))
+        ? 'show-ticks'
+        : true
+    },
     vertical: { name: 'direction', value: 'vertical' },
     height: false,
     loading: false,
