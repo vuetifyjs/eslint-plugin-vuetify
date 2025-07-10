@@ -86,7 +86,7 @@ const replacements = {
     hideOnScroll: { name: 'scroll-behavior', value: 'hide' },
     invertedScroll: { name: 'scroll-behavior', value: 'inverted' },
     outlined: 'border',
-    prominent: false,
+    prominent: { name: 'density', value: 'prominent' },
     scrollOffScreen: false,
     shaped: false,
     short: false,
@@ -581,7 +581,7 @@ const replacements = {
   VToolbar: {
     bottom: false,
     outlined: 'border',
-    prominent: false,
+    prominent: { name: 'density', value: 'prominent' },
     shaped: false,
     short: false,
     src: 'image',
