@@ -269,7 +269,7 @@ const replacements = {
     activePicker: 'view-mode',
     pickerDate: { custom: 'separate month and year props' },
     locale: false,
-    localeFirstDayOfYear: false,
+    localeFirstDayOfYear: 'firstDayOfYear',
     dayFormat: false,
     weekdayFormat: false,
     monthFormat: false,
