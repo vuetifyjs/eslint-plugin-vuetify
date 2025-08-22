@@ -30,6 +30,7 @@ const replacements = new Map([
   ['display-1', 'text-h4'],
   ['headline', 'text-h5'],
   ['title', 'text-h6'],
+  ['subheading', 'text-subtitle-1'],
   ['subtitle-1', 'text-subtitle-1'],
   ['subtitle-2', 'text-subtitle-2'],
   ['body-1', 'text-body-1'],
