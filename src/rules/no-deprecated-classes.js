@@ -35,7 +35,6 @@ const replacements = new Map([
   ['body-1', 'text-body-1'],
   ['body-2', 'text-body-2'],
   ['caption', 'text-caption'],
-  ['caption', 'text-caption'],
   ['overline', 'text-overline'],
   [/^transition-(fast-out-slow-in|linear-out-slow-in|fast-out-linear-in|ease-in-out|fast-in-fast-out|swing)$/, false],
 ])
