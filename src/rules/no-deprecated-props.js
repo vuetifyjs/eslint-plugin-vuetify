@@ -172,7 +172,12 @@ const replacements = {
     right: { name: 'location', value: 'right' },
     round: 'rounded',
     shaped: false,
-    text: { name: 'variant', value: 'text' },
+    text (attr) {
+      return (!attr.directive && !attr.value) ||
+        (attr.directive && [true, false].includes(attr.value.expression.value))
+        ? { name: 'variant', value: 'text' }
+        : true
+    },
     top: { name: 'location', value: 'top' },
     ...link,
     ...theme,
