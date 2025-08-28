@@ -27,7 +27,6 @@ const replacements = {
   VListItemContent: false,
   VListItemIcon: { custom: '`v-list-item` with `icon` props, or `v-icon` in the list item append or prepend slot' },
   VOverflowBtn: false,
-  VPicker: false,
   VSimpleCheckbox: 'v-checkbox-btn',
   VSubheader: { custom: 'v-list-subheader or class="text-subtitle-2"' },
   VSimpleTable: 'v-table',
