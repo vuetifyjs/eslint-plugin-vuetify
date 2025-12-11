@@ -1,0 +1,26 @@
+name: CI
+on:
+  push:
+    tags: [v*]
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && startswith(github.ref, 'refs/tags/v') && github.repository_owner == 'vuetifyjs'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN:?}
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: npm publish
+      - name: GitHub release
+        run: pnpm conventional-github-releaser -p vuetify
+        env:
+          CONVENTIONAL_GITHUB_RELEASER_TOKEN: ${{ secrets.GITHUB_TOKEN }}

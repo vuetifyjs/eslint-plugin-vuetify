@@ -13,7 +13,8 @@
     "test:coverage": "nyc mocha tests --recursive --reporter dot",
     "test:ci": "nyc --reporter=lcov mocha tests --recursive --reporter dot",
     "lint": "eslint src tests",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "release": "bumpp -r"
   },
   "files": [
     "lib"
@@ -25,11 +26,12 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.19.3",
+    "bumpp": "^10.1.0",
     "@babel/core": "^7.19.6",
     "@babel/preset-env": "^7.19.4",
     "@stylistic/eslint-plugin": "^2.10.1",
     "conventional-changelog-cli": "^2.2.2",
-    "conventional-changelog-vuetify": "^1.1.0",
+    "conventional-changelog-vuetify": "^2.0.2",
     "conventional-github-releaser": "^3.1.5",
     "eslint": "^9.22.0",
     "eslint8": "npm:eslint@8.57.1",
