@@ -182,5 +182,25 @@ tester.run('no-deprecated-slots', rule, {
     // </template>`,
     //       errors: [{ messageId: 'changedProps' }],
     //     },
+    // VSnackbarQueue: #default -> #item
+    {
+      code:
+`<template>
+  <v-snackbar-queue>
+    <template #default="{ item }">
+      <v-snackbar v-bind="item" />
+    </template>
+  </v-snackbar-queue>
+</template>`,
+      output:
+`<template>
+  <v-snackbar-queue>
+    <template #item="{ item }">
+      <v-snackbar v-bind="item" />
+    </template>
+  </v-snackbar-queue>
+</template>`,
+      errors: [{ messageId: 'renamed' }],
+    },
   ],
 })

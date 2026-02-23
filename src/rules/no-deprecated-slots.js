@@ -163,6 +163,25 @@ const groups = [
       })
     },
   },
+  {
+    components: ['VSnackbarQueue'],
+    slots: ['default'],
+    noParam: true,
+    handler (context, node, directive) {
+      context.report({
+        node: directive,
+        messageId: 'renamed',
+        data: {
+          component: node.parent.name,
+          slot: directive.key.argument.name,
+          newSlot: 'item',
+        },
+        fix (fixer) {
+          return fixer.replaceText(directive.key.argument, 'item')
+        },
+      })
+    },
+  },
 ]
 
 // ------------------------------------------------------------------------------
@@ -213,8 +232,12 @@ module.exports = {
               group.slots.includes(attr.key.argument?.name)
             )
           })
+          if (!directive) continue
+          if (group.noParam) {
+            group.handler(context, node, directive)
+            continue
+          }
           if (
-            !directive ||
             !directive.value ||
             directive.value.type !== 'VExpressionContainer' ||
             !directive.value.expression ||

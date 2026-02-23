@@ -536,6 +536,7 @@ const replacements = {
       return { name: 'class', custom: 'elevation-<value>' }
     },
     left: { name: 'location', value: 'left' },
+    multiLine: { name: 'min-height', value: '68' },
     outlined: { name: 'variant', value: 'outlined' },
     right: { name: 'location', value: 'right' },
     shaped: false,
