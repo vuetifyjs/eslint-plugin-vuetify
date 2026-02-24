@@ -1,4 +1,9 @@
-const { RuleTester } = require(process.env.ESLINT8 ? 'eslint8' : 'eslint')
+const eslintPkg = process.env.ESLINT9
+  ? 'eslint9'
+  : process.env.ESLINT8
+    ? 'eslint8'
+    : 'eslint'
+const { RuleTester } = require(eslintPkg)
 
 const tester = new RuleTester(
   process.env.ESLINT8
@@ -11,7 +16,7 @@ const tester = new RuleTester(
           parser: require('vue-eslint-parser'),
           ecmaVersion: 2015,
         },
-      }
+      },
 )
 
 module.exports = { tester }
