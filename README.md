@@ -1,7 +1,7 @@
 <div align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://cdn.vuetifyjs.com/docs/images/one/logos/veslint-plugin-logo-dark.png">
-    <img alt="Vuetify ESLint Plugin Logo" src="https://cdn.vuetifyjs.com/docs/images/one/logos/veslint-plugin-logo-light.png" height="100">
+    <source media="(prefers-color-scheme: dark)" srcset="https://cdn.vuetifyjs.com/docs/images/one/logos/veslplugin-logo-dark.png">
+    <img alt="Vuetify ESLint Plugin Logo" src="https://cdn.vuetifyjs.com/docs/images/one/logos/veslplugin-logo-light.png" height="100">
   </picture>
 </div>
 
