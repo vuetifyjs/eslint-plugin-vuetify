@@ -1,3 +1,17 @@
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://cdn.vuetifyjs.com/docs/images/one/logos/veslint-plugin-logo-dark.png">
+    <img alt="Vuetify ESLint Plugin Logo" src="https://cdn.vuetifyjs.com/docs/images/one/logos/veslint-plugin-logo-light.png" height="100">
+  </picture>
+</div>
+
+<p align="center">
+  <a href="https://www.npmjs.com/package/eslint-plugin-vuetify"><img src="https://img.shields.io/npm/v/eslint-plugin-vuetify.svg" alt="npm version"></a>
+  <a href="https://npm.chart.dev/eslint-plugin-vuetify"><img src="https://img.shields.io/npm/dm/eslint-plugin-vuetify?color=blue" alt="npm downloads"></a>
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT"></a>
+  <a href="https://community.vuetifyjs.com"><img src="https://discordapp.com/api/guilds/340160225338195969/widget.png" alt="Discord"></a>
+</p>
+
 # eslint-plugin-vuetify
 
 This package is for migrating from Vuetify v2 to v3, use [eslint-plugin-vuetify@vuetify-2](https://www.npmjs.com/package/eslint-plugin-vuetify/v/vuetify-2) for v1 to v2.
