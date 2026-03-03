@@ -9,7 +9,8 @@
   "scripts": {
     "build": "rimraf lib && babel src --out-dir lib",
     "test": "mocha tests --recursive --reporter dot",
-    "test:8": "ESLINT8=true mocha tests --recursive --reporter dot",
+    "test:8": "cross-env ESLINT8=true mocha tests --recursive --reporter dot",
+    "test:9": "cross-env ESLINT9=true mocha tests --recursive --reporter dot",
     "test:coverage": "nyc mocha tests --recursive --reporter dot",
     "test:ci": "nyc --reporter=lcov mocha tests --recursive --reporter dot",
     "lint": "eslint src tests",
@@ -21,24 +22,26 @@
   ],
   "homepage": "https://github.com/vuetifyjs/eslint-plugin-vuetify#readme",
   "dependencies": {
-    "eslint-plugin-vue": ">=9.6.0",
+    "eslint-plugin-vue": "^10.8.0",
     "requireindex": "^1.2.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.19.3",
-    "bumpp": "^10.1.0",
     "@babel/core": "^7.19.6",
     "@babel/preset-env": "^7.19.4",
-    "@stylistic/eslint-plugin": "^2.10.1",
+    "@stylistic/eslint-plugin": "^4.4.1",
+    "bumpp": "^10.1.0",
     "conventional-changelog-cli": "^2.2.2",
+    "cross-env": "^7.0.3",
     "conventional-changelog-vuetify": "^2.0.2",
     "conventional-github-releaser": "^3.1.5",
-    "eslint": "^9.22.0",
-    "eslint8": "npm:eslint@8.57.1",
+    "eslint": "^10.0.0",
     "eslint-plugin-vue": "^10.0.0",
+    "eslint8": "npm:eslint@8.57.1",
+    "eslint9": "npm:eslint@9",
     "husky": "^8.0.1",
     "mocha": "^10.1.0",
-    "neostandard": "^0.11.8",
+    "neostandard": "^0.13.0",
     "nyc": "^15.1.0",
     "rimraf": "^3.0.2",
     "vue": "^3.5.13",
@@ -46,8 +49,18 @@
     "vuetify": "^3.7.17"
   },
   "peerDependencies": {
-    "eslint": "^8.0.0 || ^9.0.0",
+    "eslint": "^8.0.0 || ^9.0.0 || ^10.0.0",
     "vuetify": "^3.0.0"
   },
-  "packageManager": "pnpm@10.26.1"
+  "packageManager": "pnpm@10.26.1",
+  "pnpm": {
+    "overrides": {
+      "@stylistic/eslint-plugin": "$@stylistic/eslint-plugin"
+    },
+    "peerDependencyRules": {
+      "allowedVersions": {
+        "eslint": "10"
+      }
+    }
+  }
 }
