@@ -28,6 +28,11 @@ tester.run('no-deprecated-classes', rule, {
       errors: [{ messageId: 'replacedWith' }],
     },
     {
+      code: '<template><div class="display-4" /></template>',
+      output: '<template><div class="text-h1" /></template>',
+      errors: [{ messageId: 'replacedWith' }],
+    },
+    {
       code: '<template><div class="rounded-l" /></template>',
       output: '<template><div class="rounded-s" /></template>',
       errors: [{ messageId: 'replacedWith' }],

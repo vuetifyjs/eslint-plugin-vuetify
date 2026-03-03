@@ -67,8 +67,7 @@ module.exports = {
   create (context) {
     if (!isVueTemplate(context)) return {}
 
-    const overrides = context.options[0] || {}
-    const replacements = { ...md3, ...overrides }
+    const replacements = context.options[0] || md3
 
     // Remove entries the user set to false
     for (const key of Object.keys(replacements)) {
