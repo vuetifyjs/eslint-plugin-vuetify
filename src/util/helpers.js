@@ -68,7 +68,8 @@ function mergeDeep (source, target) {
 
 function isVueTemplate (context) {
   if (context.sourceCode.parserServices.defineTemplateBodyVisitor == null) {
-    return path.extname(context.getFilename()) === '.vue'
+    const filename = context.filename ?? context.getFilename?.() ?? ''
+    return path.extname(filename) === '.vue'
   }
   return true
 }
