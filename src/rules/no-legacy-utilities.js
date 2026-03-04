@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-const { isVueTemplate } = require('../util/helpers');
+const { isVueTemplate } = require('../util/helpers')
 
 const defaultReplacements = {
   'd-flex': 'flex',
@@ -33,19 +33,19 @@ const defaultReplacements = {
   'fill-height': 'h-full',
   'w-100': 'w-full',
   'h-100': 'h-full',
-};
+}
 
 // Generate spacing utility mappings only for prefixes that differ between Vuetify and Tailwind
 // ma → m, pa → p (all other prefixes like mx, mt, px, pt etc. are already identical)
 for (let i = 0; i <= 16; i++) {
-  defaultReplacements[`ma-${i}`] = `m-${i}`;
-  defaultReplacements[`pa-${i}`] = `p-${i}`;
+  defaultReplacements[`ma-${i}`] = `m-${i}`
+  defaultReplacements[`pa-${i}`] = `p-${i}`
 }
-defaultReplacements['ma-auto'] = 'm-auto';
+defaultReplacements['ma-auto'] = 'm-auto'
 
 // Negative margins: ma-n1..ma-n16 → -m-1..-m-16
 for (let i = 1; i <= 16; i++) {
-  defaultReplacements[`ma-n${i}`] = `-m-${i}`;
+  defaultReplacements[`ma-n${i}`] = `-m-${i}`
 }
 
 module.exports = {
@@ -70,44 +70,44 @@ module.exports = {
     },
   },
   create (context) {
-    if (!isVueTemplate(context)) return {};
+    if (!isVueTemplate(context)) return {}
 
-    const replacements = { ...defaultReplacements, ...(context.options[0] || {}) };
+    const replacements = { ...defaultReplacements, ...(context.options[0] || {}) }
 
     for (const key of Object.keys(replacements)) {
-      if (replacements[key] === false) delete replacements[key];
+      if (replacements[key] === false) delete replacements[key]
     }
 
     return context.sourceCode.parserServices.defineTemplateBodyVisitor({
       'VAttribute[key.name="class"]' (node) {
-        if (!node.value || !node.value.value) return;
+        if (!node.value || !node.value.value) return
 
-        const classes = node.value.value.split(/\s+/).filter(Boolean);
+        const classes = node.value.value.split(/\s+/).filter(Boolean)
 
         classes.forEach(className => {
-          const replace = replacements[className];
-          if (replace == null) return;
+          const replace = replacements[className]
+          if (replace == null) return
 
-          const idx = node.value.value.indexOf(className) + 1;
+          const idx = node.value.value.indexOf(className) + 1
           const range = [
             node.value.range[0] + idx,
             node.value.range[0] + idx + className.length,
-          ];
+          ]
           const loc = {
             start: context.sourceCode.getLocFromIndex(range[0]),
             end: context.sourceCode.getLocFromIndex(range[1]),
-          };
+          }
 
           context.report({
             loc,
             messageId: 'replacedWith',
             data: { a: className, b: replace },
             fix (fixer) {
-              return fixer.replaceTextRange(range, replace);
+              return fixer.replaceTextRange(range, replace)
             },
-          });
-        });
+          })
+        })
       },
-    });
+    })
   },
-};
+}

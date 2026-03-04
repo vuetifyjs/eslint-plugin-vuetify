@@ -1,18 +1,18 @@
-'use strict';
+'use strict'
 
-const { isVueTemplate } = require('../util/helpers');
-const { addClass, removeAttr } = require('../util/fixers');
+const { isVueTemplate } = require('../util/helpers')
+const { addClass, removeAttr } = require('../util/fixers')
 
 const roundedMap = {
   '': 'rounded',
-  '0': 'rounded-none',
-  'sm': 'rounded-sm',
-  'lg': 'rounded-lg',
-  'xl': 'rounded-xl',
-  'circle': 'rounded-full',
-  'pill': 'rounded-full',
-  'shaped': 'rounded-te-xl rounded-bs-xl',
-};
+  0: 'rounded-none',
+  sm: 'rounded-sm',
+  lg: 'rounded-lg',
+  xl: 'rounded-xl',
+  circle: 'rounded-full',
+  pill: 'rounded-full',
+  shaped: 'rounded-te-xl rounded-bs-xl',
+}
 
 module.exports = {
   meta: {
@@ -28,24 +28,24 @@ module.exports = {
     },
   },
   create (context) {
-    if (!isVueTemplate(context)) return {};
+    if (!isVueTemplate(context)) return {}
 
     return context.sourceCode.parserServices.defineTemplateBodyVisitor({
       VAttribute (attr) {
-        if (attr.directive && (attr.key.name.name !== 'bind' || !attr.key.argument)) return;
+        if (attr.directive && (attr.key.name.name !== 'bind' || !attr.key.argument)) return
 
         const propName = attr.directive
           ? attr.key.argument.rawName
-          : attr.key.rawName;
+          : attr.key.rawName
 
-        if (propName !== 'rounded') return;
+        if (propName !== 'rounded') return
 
-        const element = attr.parent.parent;
-        const propNameNode = attr.directive ? attr.key.argument : attr.key;
+        const element = attr.parent.parent
+        const propNameNode = attr.directive ? attr.key.argument : attr.key
 
         // Boolean attribute (no value) — `rounded` with no `="..."`
         if (!attr.directive && !attr.value) {
-          const className = roundedMap[''];
+          const className = roundedMap['']
           context.report({
             messageId: 'replacedWith',
             data: { valueDisplay: '', className },
@@ -54,19 +54,19 @@ module.exports = {
               return [
                 addClass(context, fixer, element, className),
                 removeAttr(context, fixer, attr),
-              ];
+              ]
             },
-          });
-          return;
+          })
+          return
         }
 
         // Get static value
         const value = attr.directive
           ? (attr.value?.expression?.type === 'Literal' ? String(attr.value.expression.value) : null)
-          : attr.value?.value;
+          : attr.value?.value
 
         if (value != null && roundedMap[value] != null) {
-          const className = roundedMap[value];
+          const className = roundedMap[value]
           context.report({
             messageId: 'replacedWith',
             data: { valueDisplay: `="${value}"`, className },
@@ -75,16 +75,16 @@ module.exports = {
               return [
                 addClass(context, fixer, element, className),
                 removeAttr(context, fixer, attr),
-              ];
+              ]
             },
-          });
+          })
         } else {
           context.report({
             messageId: 'noFix',
             node: propNameNode,
-          });
+          })
         }
       },
-    });
+    })
   },
-};
+}
