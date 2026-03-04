@@ -14,7 +14,9 @@
 
 # eslint-plugin-vuetify
 
-This package is for migrating from Vuetify v2 to v3, use [eslint-plugin-vuetify@vuetify-2](https://www.npmjs.com/package/eslint-plugin-vuetify/v/vuetify-2) for v1 to v2.
+This package helps migrate between Vuetify major versions. It includes rules for **v2 → v3** and **v3 → v4** migrations.
+
+Use [eslint-plugin-vuetify@vuetify-2](https://www.npmjs.com/package/eslint-plugin-vuetify/v/vuetify-2) for v1 to v2.
 
 <br>
 
@@ -26,6 +28,53 @@ This package is for migrating from Vuetify v2 to v3, use [eslint-plugin-vuetify@
     <img src="https://c5.patreon.com/external/logo/become_a_patron_button.png" alt="Become a Patron" />
   </a>
 </p>
+
+## Vuetify 4 Migration
+
+This plugin includes four new rules for migrating from Vuetify v3 to v4:
+
+- **`no-deprecated-typography`** — replaces MD2 typography classes (`text-h1`) with MD3 equivalents (`text-display-large`)
+- **`no-legacy-grid-props`** — converts removed `VRow`/`VCol` props (`align`, `justify`, `dense`) to utility classes or renamed props
+- **`no-elevation-overflow`** — flags elevation classes and props above the MD3 maximum of 5
+- **`no-deprecated-snackbar`** — fixes renamed `VSnackbarQueue` slots and replaced `VSnackbar` props
+
+### Using the recommended-v4 preset
+
+Enable all v4 migration rules at once:
+
+```js
+// eslint.config.js
+import vue from 'eslint-plugin-vue'
+import vuetify from 'eslint-plugin-vuetify'
+
+export default [
+  ...vue.configs['flat/base'],
+  ...vuetify.configs['flat/recommended-v4'],
+]
+```
+
+### Selecting individual rules
+
+You can also enable rules selectively instead of using the preset:
+
+```js
+// eslint.config.js
+import vue from 'eslint-plugin-vue'
+import vuetify from 'eslint-plugin-vuetify'
+
+export default [
+  ...vue.configs['flat/base'],
+  ...vuetify.configs['flat/base'],
+  {
+    rules: {
+      'vuetify/no-deprecated-typography': 'error',
+      'vuetify/no-legacy-grid-props': 'error',
+      'vuetify/no-elevation-overflow': 'error',
+      'vuetify/no-deprecated-snackbar': 'error',
+    }
+  }
+]
+```
 
 ## 💿 Install
 
@@ -89,6 +138,15 @@ These rules are designed to help migrate to the new grid system in Vuetify v3. T
 
 - Warn about unknown attributes not being converted to classes on new grid components ([`grid-unknown-attributes`])
 
+### Vuetify 4
+
+These rules help migrate from Vuetify v3 to v4. They are included in the `recommended-v4` preset.
+
+- Disallow deprecated MD2 typography classes ([`no-deprecated-typography`])
+- Prevent the use of removed grid props ([`no-legacy-grid-props`])
+- Disallow elevation classes above the MD3 maximum ([`no-elevation-overflow`])
+- Disallow deprecated props and slots on snackbar components ([`no-deprecated-snackbar`])
+
 
 [`grid-unknown-attributes`]: ./docs/rules/grid-unknown-attributes.md
 [`no-deprecated-components`]: ./docs/rules/no-deprecated-components.md
@@ -99,6 +157,10 @@ These rules are designed to help migrate to the new grid system in Vuetify v3. T
 [`no-deprecated-slots`]: ./docs/rules/no-deprecated-slots.md
 [`no-deprecated-imports`]: ./docs/rules/no-deprecated-imports.md
 [`icon-button-variant`]: ./docs/rules/icon-button-variant.md
+[`no-deprecated-typography`]: ./docs/rules/no-deprecated-typography.md
+[`no-legacy-grid-props`]: ./docs/rules/no-legacy-grid-props.md
+[`no-elevation-overflow`]: ./docs/rules/no-elevation-overflow.md
+[`no-deprecated-snackbar`]: ./docs/rules/no-deprecated-snackbar.md
 
 
 ## 💪 Supporting Vuetify
