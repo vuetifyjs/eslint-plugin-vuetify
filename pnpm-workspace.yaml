@@ -1,1 +1,10 @@
 minimumReleaseAge: 4320
+minimumReleaseAgeExclude:
+  - neostandard
+
+overrides:
+  '@stylistic/eslint-plugin': '$@stylistic/eslint-plugin'
+
+peerDependencyRules:
+ allowedVersions:
+   eslint: 10

@@ -52,15 +52,5 @@
     "eslint": "^8.0.0 || ^9.0.0 || ^10.0.0",
     "vuetify": "^3.0.0"
   },
-  "packageManager": "pnpm@10.26.1",
-  "pnpm": {
-    "overrides": {
-      "@stylistic/eslint-plugin": "$@stylistic/eslint-plugin"
-    },
-    "peerDependencyRules": {
-      "allowedVersions": {
-        "eslint": "10"
-      }
-    }
-  }
+  "packageManager": "pnpm@10.26.1"
 }
