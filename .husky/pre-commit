@@ -1,4 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-node scripts/warn-npm-install.js && yarn run lint && yarn run test
+node scripts/warn-npm-install.js && pnpm run lint && pnpm run test

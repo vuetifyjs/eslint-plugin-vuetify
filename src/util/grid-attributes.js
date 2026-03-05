@@ -9,6 +9,7 @@ const noFix = {
   VContainer: [...alignmentClasses, /^grid-list-(xs|sm|md|lg|xl)$/],
   VRow: [...alignmentClasses, 'row', 'column', 'reverse', 'wrap'],
   VCol: [
+    'align', 'justify', // user error, don't attempt to fix
     /^align-self-(start|baseline|center|end)$/,
     /^offset-(xs|sm|md|lg|xl)\d{1,2}$/,
     /^order-(xs|sm|md|lg|xl)\d{1,2}$/,

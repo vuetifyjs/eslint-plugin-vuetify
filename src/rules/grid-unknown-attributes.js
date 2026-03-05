@@ -25,7 +25,7 @@ const tags = Object.keys(VGrid).reduce((t, k) => {
 module.exports = {
   meta: {
     docs: {
-      description: 'warn about unknown attributes not being converted to classes on new grid components',
+      description: 'Warn about v1 grid attributes not being auto-converted to classes in v2.',
       category: 'recommended',
     },
     fixable: 'code',
