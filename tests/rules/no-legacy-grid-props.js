@@ -9,6 +9,8 @@ tester.run('no-legacy-grid-props', rule, {
     '<template><v-row no-gutters /></template>',
     // VCol with non-deprecated props
     '<template><v-col cols="6" sm="4" /></template>',
+    // VCol with non-existing prop (user error, we don't intervene)
+    '<template><v-col align="center" /></template>',
     // VRow with new density prop
     '<template><v-row density="compact" /></template>',
     // Non-grid components are ignored

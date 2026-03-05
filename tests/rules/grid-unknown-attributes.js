@@ -10,6 +10,8 @@ tester.run('grid-unknown-attributes', rule, {
     '<template><v-row @click="listener" v-if="condition" slot="name" /></template>',
     // https://github.com/vuetifyjs/eslint-plugin-vuetify/issues/19
     '<template><v-row class></v-row></template>',
+    // https://github.com/vuetifyjs/eslint-plugin-vuetify/issues/121
+    '<template><v-col align="center" /></template>',
   ],
   invalid: [
     {
