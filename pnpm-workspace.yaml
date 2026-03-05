@@ -7,4 +7,4 @@ overrides:
 
 peerDependencyRules:
  allowedVersions:
-   eslint: 10
+   eslint: "10"
