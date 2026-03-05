@@ -51,6 +51,12 @@ tester.run('no-banned-components', rule, {
       options: [{ VSnackbar: false }],
       errors: [{ messageId: 'banned' }],
     },
+    // Banned with custom message
+    {
+      code: '<template><v-snackbar /></template>',
+      options: [{ VSnackbar: { message: 'Use <AppSnackbar> from @/components instead' } }],
+      errors: [{ messageId: 'bannedWithMessage' }],
+    },
     // Kebab-case component usage
     {
       code: '<template><v-snackbar /></template>',

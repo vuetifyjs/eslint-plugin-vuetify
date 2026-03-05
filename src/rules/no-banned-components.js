@@ -16,13 +16,22 @@ module.exports = {
           oneOf: [
             { type: 'string' },
             { type: 'boolean', enum: [false] },
+            {
+              type: 'object',
+              properties: {
+                message: { type: 'string' },
+              },
+              required: ['message'],
+              additionalProperties: false,
+            },
           ],
         },
       },
     ],
     messages: {
       banned: `'{{ name }}' is banned`,
-      bannedWithReplacement: `'{{ name }}' is banned, use '{{ replacement }}' instead`,
+      bannedWithMessage: `'{{ name }}' is banned: {{ message }}`,
+      bannedWithReplacement: `'{{ name }}' is banned, use '<{{ tag }}{{ classAttr }}>' instead`,
     },
   },
   create (context) {
@@ -56,7 +65,8 @@ module.exports = {
             messageId: 'bannedWithReplacement',
             data: {
               name: hyphenate(tag),
-              replacement,
+              tag: replacementTag,
+              classAttr: classes.length ? ` class="${classes.join(' ')}"` : '',
             },
             fix (fixer) {
               const fixes = []
@@ -82,6 +92,15 @@ module.exports = {
               }
 
               return fixes
+            },
+          })
+        } else if (typeof replacement === 'object' && replacement !== null) {
+          context.report({
+            node: element,
+            messageId: 'bannedWithMessage',
+            data: {
+              name: hyphenate(tag),
+              message: replacement.message,
             },
           })
         } else {

@@ -33,8 +33,9 @@ Examples of **correct** code for this rule:
 
 The rule takes a single object where each key is a component name (PascalCase or kebab-case) and the value is either:
 
-- A **string** replacement using dot notation: the first segment is the replacement tag and subsequent segments are CSS classes to add (e.g. `"div.grid.grid-cols-12"` produces `<div class="grid grid-cols-12">`)
-- **`false`** to ban the component with no auto-fix
+- A **string** replacement using dot notation: the first segment is the replacement tag and subsequent segments are CSS classes to add (e.g. `"div.grid.grid-cols-12"` produces `<div class="grid grid-cols-12">`). Auto-fixable.
+- An **object** with a `message` property for a custom error message (report only, no auto-fix)
+- **`false`** to ban the component with no auto-fix and a generic message
 
 ```js
 {
@@ -46,10 +47,18 @@ The rule takes a single object where each key is a component name (PascalCase or
     // Simple tag replacement (auto-fixable)
     VCard: 'app-card',
 
+    // Ban with a custom message (report only)
+    VSnackbar: { message: 'Use <AppSnackbar> from @/components instead' },
+
     // Ban with no replacement (report only)
-    VSnackbar: false,
+    VBottomSheet: false,
   }]
 }
 ```
+
+The error messages are human-readable:
+- String replacement: `'v-row' is banned, use '<div class="grid grid-cols-12">' instead`
+- Custom message: `'v-snackbar' is banned: Use <AppSnackbar> from @/components instead`
+- False: `'v-bottom-sheet' is banned`
 
 When a replacement includes classes and the element already has a `class` attribute, the new classes are appended to the existing value.
