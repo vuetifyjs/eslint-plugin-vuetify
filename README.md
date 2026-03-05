@@ -31,6 +31,9 @@ Use [eslint-plugin-vuetify@vuetify-2](https://www.npmjs.com/package/eslint-plugi
 
 ## Vuetify 4 Migration
 
+> [!IMPORTANT]
+> We suggest running [vuetify-codemods](https://www.npmjs.com/package/vuetify-codemods) first to automatically apply most migration fixes
+
 This plugin includes four new rules for migrating from Vuetify v3 to v4:
 
 - **`no-deprecated-typography`** — replaces MD2 typography classes (`text-h1`) with MD3 equivalents (`text-display-large`)
