@@ -6,7 +6,6 @@ module.exports = {
   meta: {
     docs: {
       description: 'Disallow usage of specified component props, with optional replacements',
-      category: 'experimental',
     },
     fixable: 'code',
     schema: [
