@@ -1,11 +1,11 @@
 const { tester } = require('../setup')
-const rule = require('../../src/rules/no-banned-components')
+const rule = require('../../src/rules/custom-deprecated-components')
 
-tester.run('no-banned-components', rule, {
+tester.run('custom-deprecated-components', rule, {
   valid: [
     // No options — rule is a no-op
     '<template><v-row /></template>',
-    // Component not in ban list
+    // Component not in list
     {
       code: '<template><v-container /></template>',
       options: [{ VRow: 'div.grid.grid-cols-12' }],
@@ -22,46 +22,46 @@ tester.run('no-banned-components', rule, {
       code: '<template><v-row></v-row></template>',
       output: '<template><div class="grid grid-cols-12"></div></template>',
       options: [{ VRow: 'div.grid.grid-cols-12' }],
-      errors: [{ messageId: 'bannedWithReplacement' }],
+      errors: [{ messageId: 'deprecatedWithReplacement' }],
     },
     // Multiple classes from dot notation
     {
       code: '<template><v-col /></template>',
       output: '<template><div class="pa-3 col-span-4" /></template>',
       options: [{ VCol: 'div.pa-3.col-span-4' }],
-      errors: [{ messageId: 'bannedWithReplacement' }],
+      errors: [{ messageId: 'deprecatedWithReplacement' }],
     },
     // Replacement merges with existing class
     {
       code: '<template><v-row class="mb-4"></v-row></template>',
       output: '<template><div class="mb-4 grid grid-cols-12"></div></template>',
       options: [{ VRow: 'div.grid.grid-cols-12' }],
-      errors: [{ messageId: 'bannedWithReplacement' }],
+      errors: [{ messageId: 'deprecatedWithReplacement' }],
     },
     // Simple tag replacement (no classes)
     {
       code: '<template><v-row /></template>',
       output: '<template><custom-row /></template>',
       options: [{ VRow: 'custom-row' }],
-      errors: [{ messageId: 'bannedWithReplacement' }],
+      errors: [{ messageId: 'deprecatedWithReplacement' }],
     },
-    // Banned with no replacement (false)
+    // Deprecated with no replacement (false)
     {
       code: '<template><v-snackbar /></template>',
       options: [{ VSnackbar: false }],
-      errors: [{ messageId: 'banned' }],
+      errors: [{ messageId: 'deprecated' }],
     },
-    // Banned with custom message
+    // Deprecated with custom message
     {
       code: '<template><v-snackbar /></template>',
       options: [{ VSnackbar: { message: 'Use <AppSnackbar> from @/components instead' } }],
-      errors: [{ messageId: 'bannedWithMessage' }],
+      errors: [{ messageId: 'deprecatedWithMessage' }],
     },
     // Kebab-case component usage
     {
       code: '<template><v-snackbar /></template>',
       options: [{ 'v-snackbar': false }],
-      errors: [{ messageId: 'banned' }],
+      errors: [{ messageId: 'deprecated' }],
     },
   ],
 })

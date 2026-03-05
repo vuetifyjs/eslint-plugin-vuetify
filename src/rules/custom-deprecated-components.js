@@ -29,9 +29,9 @@ module.exports = {
       },
     ],
     messages: {
-      banned: `'{{ name }}' is banned`,
-      bannedWithMessage: `'{{ name }}' is banned: {{ message }}`,
-      bannedWithReplacement: `'{{ name }}' is banned, use '<{{ tag }}{{ classAttr }}>' instead`,
+      deprecated: `'{{ name }}' is deprecated`,
+      deprecatedWithMessage: `'{{ name }}' is deprecated: {{ message }}`,
+      deprecatedWithReplacement: `'{{ name }}' is deprecated, use '<{{ tag }}{{ classAttr }}>' instead`,
     },
   },
   create (context) {
@@ -62,7 +62,7 @@ module.exports = {
 
           context.report({
             node: element,
-            messageId: 'bannedWithReplacement',
+            messageId: 'deprecatedWithReplacement',
             data: {
               name: hyphenate(tag),
               tag: replacementTag,
@@ -97,7 +97,7 @@ module.exports = {
         } else if (typeof replacement === 'object' && replacement !== null) {
           context.report({
             node: element,
-            messageId: 'bannedWithMessage',
+            messageId: 'deprecatedWithMessage',
             data: {
               name: hyphenate(tag),
               message: replacement.message,
@@ -106,7 +106,7 @@ module.exports = {
         } else {
           context.report({
             node: element,
-            messageId: 'banned',
+            messageId: 'deprecated',
             data: { name: hyphenate(tag) },
           })
         }

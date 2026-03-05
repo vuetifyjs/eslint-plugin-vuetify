@@ -141,10 +141,6 @@ These rules are designed to help migrate to the new grid system in Vuetify v3. T
 
 - Warn about unknown attributes not being converted to classes on new grid components ([`grid-unknown-attributes`])
 
-### Experimental
-
-- Disallow usage of specified components, with optional replacements ([`no-banned-components`])
-
 ### Vuetify 4
 
 These rules help migrate from Vuetify v3 to v4. They are included in the `recommended-v4` preset.
@@ -154,6 +150,14 @@ These rules help migrate from Vuetify v3 to v4. They are included in the `recomm
 - Disallow elevation classes above the MD3 maximum ([`no-elevation-overflow`])
 - Disallow deprecated props and slots on snackbar components ([`no-deprecated-snackbar`])
 
+### Custom deprecations
+
+User-configurable rules for deprecating components, props, events, and slots - helpful to enforce standardization.
+
+- Disallow usage of specified components, with optional replacements ([`custom-deprecated-components`])
+- Disallow usage of specified component props ([`custom-deprecated-props`])
+- Disallow usage of specified component events ([`custom-deprecated-events`])
+- Disallow usage of specified component slots ([`custom-deprecated-slots`])
 
 [`grid-unknown-attributes`]: ./docs/rules/grid-unknown-attributes.md
 [`no-deprecated-components`]: ./docs/rules/no-deprecated-components.md
@@ -164,11 +168,13 @@ These rules help migrate from Vuetify v3 to v4. They are included in the `recomm
 [`no-deprecated-slots`]: ./docs/rules/no-deprecated-slots.md
 [`no-deprecated-imports`]: ./docs/rules/no-deprecated-imports.md
 [`icon-button-variant`]: ./docs/rules/icon-button-variant.md
+[`custom-deprecated-components`]: ./docs/rules/custom-deprecated-components.md
+[`custom-deprecated-props`]: ./docs/rules/custom-deprecated-props.md
+[`custom-deprecated-events`]: ./docs/rules/custom-deprecated-events.md
+[`custom-deprecated-slots`]: ./docs/rules/custom-deprecated-slots.md
 [`no-deprecated-typography`]: ./docs/rules/no-deprecated-typography.md
 [`no-legacy-grid-props`]: ./docs/rules/no-legacy-grid-props.md
 [`no-elevation-overflow`]: ./docs/rules/no-elevation-overflow.md
-[`no-deprecated-snackbar`]: ./docs/rules/no-deprecated-snackbar.md
-[`no-banned-components`]: ./docs/rules/no-banned-components.md
 
 
 ## 💪 Supporting Vuetify
