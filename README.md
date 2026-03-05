@@ -138,6 +138,10 @@ These rules are designed to help migrate to the new grid system in Vuetify v3. T
 
 - Warn about unknown attributes not being converted to classes on new grid components ([`grid-unknown-attributes`])
 
+### Experimental
+
+- Disallow usage of specified components, with optional replacements ([`no-banned-components`])
+
 ### Vuetify 4
 
 These rules help migrate from Vuetify v3 to v4. They are included in the `recommended-v4` preset.
@@ -161,6 +165,7 @@ These rules help migrate from Vuetify v3 to v4. They are included in the `recomm
 [`no-legacy-grid-props`]: ./docs/rules/no-legacy-grid-props.md
 [`no-elevation-overflow`]: ./docs/rules/no-elevation-overflow.md
 [`no-deprecated-snackbar`]: ./docs/rules/no-deprecated-snackbar.md
+[`no-banned-components`]: ./docs/rules/no-banned-components.md
 
 
 ## 💪 Supporting Vuetify
