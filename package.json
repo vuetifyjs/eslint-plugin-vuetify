@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-vuetify",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "description": "An eslint plugin for Vuetify",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
