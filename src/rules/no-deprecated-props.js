@@ -539,7 +539,6 @@ const replacements = {
     outlined: { name: 'variant', value: 'outlined' },
     right: { name: 'location', value: 'right' },
     shaped: false,
-    text: false,
     top: { name: 'location', value: 'top' },
     value: 'model-value',
     ...theme,
