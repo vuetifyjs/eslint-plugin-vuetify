@@ -31,9 +31,9 @@ module.exports = {
       },
     ],
     messages: {
-      replacedWith: `{{ tag }}: @{{ a }} has been replaced with @{{ b }}`,
-      removed: `{{ tag }}: @{{ name }} has been removed`,
-      removedWithMessage: `{{ tag }}: @{{ name }} has been removed: {{ message }}`,
+      removed: `{{ tag }}: do not use @{{ name }} (custom policy)`,
+      replacedWith: `{{ tag }}: do not use @{{ a }}, use @{{ b }} instead`,
+      removedWithMessage: `{{ tag }}: @{{ name }} {{ message }}`,
     },
   },
 

@@ -28,9 +28,9 @@ module.exports = {
       },
     ],
     messages: {
-      deprecated: `'{{ name }}' is deprecated`,
-      deprecatedWithMessage: `'{{ name }}' is deprecated: {{ message }}`,
-      deprecatedWithReplacement: `'{{ name }}' is deprecated, use '<{{ tag }}{{ classAttr }}>' instead`,
+      deprecated: `do not use '{{ name }}' (custom policy)`,
+      deprecatedWithMessage: `'{{ name }}' {{ message }}`,
+      deprecatedWithReplacement: `do not use '{{ name }}', use '<{{ tag }}{{ classAttr }}>' instead`,
     },
   },
   create (context) {

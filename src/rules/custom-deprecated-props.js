@@ -31,9 +31,9 @@ module.exports = {
       },
     ],
     messages: {
-      replacedWith: `'{{ a }}' has been replaced with '{{ b }}'`,
-      removed: `'{{ name }}' has been removed`,
-      removedWithMessage: `'{{ name }}' has been removed: {{ message }}`,
+      removed: `do not use '{{ name }}' (custom policy)`,
+      replacedWith: `do not use '{{ a }}', use '{{ b }}' instead`,
+      removedWithMessage: `'{{ name }}' {{ message }}`,
     },
   },
 

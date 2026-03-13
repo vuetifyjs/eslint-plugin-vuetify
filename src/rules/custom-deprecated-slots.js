@@ -31,9 +31,9 @@ module.exports = {
       },
     ],
     messages: {
-      replacedWith: `{{ component }}'s '{{ slot }}' slot has been replaced with '{{ newSlot }}'`,
-      removed: `{{ component }}'s '{{ slot }}' slot has been removed`,
-      removedWithMessage: `{{ component }}'s '{{ slot }}' slot has been removed: {{ message }}`,
+      removed: `do not use {{ component }}'s '{{ slot }}' slot (custom policy)`,
+      replacedWith: `do not use {{ component }}'s '{{ slot }}' slot, use '{{ newSlot }}' instead`,
+      removedWithMessage: `{{ component }}'s '{{ slot }}' slot {{ message }}`,
     },
   },
 
