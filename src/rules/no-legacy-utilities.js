@@ -85,9 +85,15 @@ module.exports = {
         const classes = node.value.value.split(/\s+/).filter(Boolean)
 
         classes.forEach(className => {
-          const replace = replacements[className]
+          // Support variant prefixes like md:pa-6, dark:flex-grow-1
+          const parts = className.split(':')
+          const baseClass = parts.pop()
+          const prefix = parts.length ? parts.join(':') + ':' : ''
+
+          const replace = replacements[baseClass]
           if (replace == null) return
 
+          const fullReplace = prefix + replace
           const idx = node.value.value.indexOf(className) + 1
           const range = [
             node.value.range[0] + idx,
@@ -101,9 +107,9 @@ module.exports = {
           context.report({
             loc,
             messageId: 'replacedWith',
-            data: { a: className, b: replace },
+            data: { a: className, b: fullReplace },
             fix (fixer) {
-              return fixer.replaceTextRange(range, replace)
+              return fixer.replaceTextRange(range, fullReplace)
             },
           })
         })

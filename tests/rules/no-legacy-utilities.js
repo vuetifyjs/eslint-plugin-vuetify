@@ -143,6 +143,22 @@ tester.run('no-legacy-utilities', rule, {
         { messageId: 'replacedWith' },
       ],
     },
+    // Variant prefixes
+    {
+      code: '<template><div class="md:pa-6" /></template>',
+      output: '<template><div class="md:p-6" /></template>',
+      errors: [{ messageId: 'replacedWith', data: { a: 'md:pa-6', b: 'md:p-6' } }],
+    },
+    {
+      code: '<template><div class="dark:flex-grow-1" /></template>',
+      output: '<template><div class="dark:grow" /></template>',
+      errors: [{ messageId: 'replacedWith', data: { a: 'dark:flex-grow-1', b: 'dark:grow' } }],
+    },
+    {
+      code: '<template><div class="md:dark:d-flex" /></template>',
+      output: '<template><div class="md:dark:flex" /></template>',
+      errors: [{ messageId: 'replacedWith', data: { a: 'md:dark:d-flex', b: 'md:dark:flex' } }],
+    },
     // Custom mapping override
     {
       code: '<template><div class="d-flex" /></template>',
