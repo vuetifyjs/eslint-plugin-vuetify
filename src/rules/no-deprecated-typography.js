@@ -34,6 +34,9 @@ const md3 = {
   'text-overline': 'text-label-small',
 }
 
+const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl']
+const responsiveClassPattern = new RegExp(`^text-(${breakpoints.join('|')})-(.+)$`)
+
 // ------------------------------------------------------------------------------
 // Rule Definition
 // ------------------------------------------------------------------------------
@@ -69,9 +72,24 @@ module.exports = {
 
     const replacements = { ...(context.options[0] || md3) }
 
-    // Remove entries the user set to false
-    for (const key of Object.keys(replacements)) {
-      if (replacements[key] === false) delete replacements[key]
+    function getReplace (className) {
+      const direct = replacements[className]
+      if (direct === false) return null
+      if (direct != null) return direct
+
+      const match = responsiveClassPattern.exec(className)
+      if (!match) return null
+
+      const [, breakpoint, variant] = match
+      const base = `text-${variant}`
+      const baseReplace = replacements[base]
+      if (baseReplace == null || baseReplace === false) return null
+
+      const newVariant = baseReplace.startsWith('text-')
+        ? baseReplace.slice(5)
+        : baseReplace
+
+      return `text-${breakpoint}-${newVariant}`
     }
 
     return context.sourceCode.parserServices.defineTemplateBodyVisitor({
@@ -81,7 +99,7 @@ module.exports = {
         const classes = node.value.value.split(/\s+/).filter(Boolean)
 
         classes.forEach(className => {
-          const replace = replacements[className]
+          const replace = getReplace(className)
           if (replace == null) return
 
           const idx = node.value.value.indexOf(className) + 1

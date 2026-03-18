@@ -11,6 +11,9 @@ tester.run('no-deprecated-typography', rule, {
     '<template><div class="display-4" /></template>',
     '<template><div class="headline" /></template>',
     '<template><div class="caption" /></template>',
+    // Breakpoint-prefixed MD3 classes are fine
+    '<template><div class="text-md-headline-small" /></template>',
+    '<template><div class="text-sm-display-large" /></template>',
     // Unrelated classes
     '<template><div class="pa-2 ma-1" /></template>',
     // Empty
@@ -20,6 +23,11 @@ tester.run('no-deprecated-typography', rule, {
     {
       code: '<template><div class="text-h1" /></template>',
       options: [{ 'text-h1': false }],
+    },
+    // Disabling base class also suppresses its responsive variants
+    {
+      code: '<template><div class="text-md-h6" /></template>',
+      options: [{ 'text-h6': false }],
     },
   ],
   invalid: [
@@ -133,6 +141,33 @@ tester.run('no-deprecated-typography', rule, {
       code: '<template><div class="display-4 text-h5" /></template>',
       output: '<template><div class="text-h1 text-headline-medium" /></template>',
       options: [{ ...rule.md2, ...rule.md3 }],
+      errors: [{ messageId: 'replacedWith' }, { messageId: 'replacedWith' }],
+    },
+    // Breakpoint-prefixed typography classes
+    {
+      code: '<template><div class="text-md-h6" /></template>',
+      output: '<template><div class="text-md-headline-small" /></template>',
+      errors: [{ messageId: 'replacedWith', data: { a: 'text-md-h6', b: 'text-md-headline-small' } }],
+    },
+    {
+      code: '<template><div class="text-sm-h1" /></template>',
+      output: '<template><div class="text-sm-display-large" /></template>',
+      errors: [{ messageId: 'replacedWith' }],
+    },
+    {
+      code: '<template><div class="text-lg-body-2" /></template>',
+      output: '<template><div class="text-lg-body-medium" /></template>',
+      errors: [{ messageId: 'replacedWith' }],
+    },
+    {
+      code: '<template><div class="text-xl-caption" /></template>',
+      output: '<template><div class="text-xl-body-small" /></template>',
+      errors: [{ messageId: 'replacedWith' }],
+    },
+    // Mixed breakpoint and non-breakpoint
+    {
+      code: '<template><div class="text-h1 text-md-h6" /></template>',
+      output: '<template><div class="text-display-large text-md-headline-small" /></template>',
       errors: [{ messageId: 'replacedWith' }, { messageId: 'replacedWith' }],
     },
   ],
