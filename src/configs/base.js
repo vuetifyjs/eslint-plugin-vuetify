@@ -1,5 +1,7 @@
 'use strict'
 
+const { md2 } = require('../rules/no-deprecated-typography')
+
 module.exports = {
   plugins: [
     'vuetify',
@@ -16,5 +18,6 @@ module.exports = {
     'vuetify/no-deprecated-props': 'error',
     'vuetify/no-deprecated-slots': 'error',
     'vuetify/no-deprecated-imports': 'error',
+    'vuetify/no-deprecated-typography': ['error', md2],
   },
 }

@@ -130,6 +130,7 @@ These rules will help you avoid deprecated components, props, and classes. They 
 - Prevent the use of the old theme class syntax ([`no-deprecated-colors`])
 - Prevent the use of slots that have been removed from Vuetify ([`no-deprecated-slots`])
 - Prevent the use of deprecated import paths ([`no-deprecated-imports`])
+- Disallow deprecated MD1 typography classes, with configurable replacements ([`no-deprecated-typography`])
 
 Additional rule (not included in presets):
 
