@@ -37,7 +37,7 @@ jobs:
       with:
         fetch-depth: 0
     - uses: vuetifyjs/setup-action@master
-    - run: npm install -g npm@latest
+    - run: npm install -g npm@11
     - run: npm publish
     - name: GitHub release
       run: pnpm conventional-github-releaser -p vuetify
