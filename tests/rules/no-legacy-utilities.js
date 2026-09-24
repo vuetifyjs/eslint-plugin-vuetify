@@ -91,6 +91,11 @@ tester.run('no-legacy-utilities', rule, {
     },
     // Text utilities
     {
+      code: '<template><div class="text-decoration-none text-uppercase text-none font-italic font-weight-semibold" /></template>',
+      output: '<template><div class="no-underline uppercase normal-case italic font-semibold" /></template>',
+      errors: 5,
+    },
+    {
       code: '<template><div class="text-truncate" /></template>',
       output: '<template><div class="truncate" /></template>',
       errors: [{ messageId: 'replacedWith' }],
